@@ -6,10 +6,10 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title><?php echo $title;?></title>
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        
         <link rel="stylesheet" href="resources/css/normalize.css">
         <link rel="stylesheet" href="resources/css/main.css">
         <script src="resources/js/modernizr-2.8.2.min.js"></script>
@@ -19,7 +19,27 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <p>Hello world! This is HTML5 Boilerplate.</p>
+        <div class="site-wrapper">
+            <div class="site-wrapper-inner">
+                <div class="cover-container">
+                    <div class="masthead clearfix">
+                        <div class="inner">
+                            <?php echo $header;?>
+                        </div>
+                    </div>
+
+                    <div class="inner cover">
+                        <?php echo $body;?>
+                    </div>
+
+                    <div class="mastfoot">
+                        <div class="inner">
+                            <?php echo $footer;?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="resources/js/jquery-2.1.1.min.js"><\/script>')</script>

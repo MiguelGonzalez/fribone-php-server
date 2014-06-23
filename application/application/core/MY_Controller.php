@@ -33,7 +33,7 @@ class MY_Controller extends CI_Controller {
         $toTpl["title"] = $this->title;
 
         //data
-        $toBody["content_body"] = $this->load->view(
+        $toBody["body"] = $this->load->view(
                 $this->template . '/pages/' . $view,
                 array_merge($this->data, $toTpl),
                 true);
