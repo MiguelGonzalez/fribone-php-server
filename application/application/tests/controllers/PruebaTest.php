@@ -1,6 +1,6 @@
 <?php
 
-class EmailHelperTest extends PHPUnit_Framework_TestCase
+class CITestCase extends PHPUnit_Framework_TestCase
 {
 	private $CI;
 	
