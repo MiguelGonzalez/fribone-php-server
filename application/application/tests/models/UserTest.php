@@ -4,9 +4,11 @@ class UserTest extends PHPUnit_Framework_TestCase {
 	private $CI;
 	
 	public function setUp() {
-        $this->CI = &get_instance();
-
-        
+		try {
+        	$this->CI = &get_instance();
+        } catch(Exception $ex) {
+        	$this->fail($ex);
+        }
     }
 
 	public function testPublicUser() {
