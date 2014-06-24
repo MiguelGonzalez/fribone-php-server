@@ -11,7 +11,7 @@ class UserTest extends PHPUnit_Framework_TestCase {
 	public function setUp() {
 		echo "Setup";
 		try {
-	        $this->pdo = new PDO("mysql:dbname=fribone_test;host=127.0.0.1","test", NULL);
+	        $this->pdo = new PDO("mysql:dbname=fribone_test;host=localhost","root", "");
 	        
 	        $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	        $this->pdo->query(
