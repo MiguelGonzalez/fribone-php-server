@@ -49,7 +49,7 @@ $active_group = 'default';
 $active_record = TRUE;
 
 if (defined('ENVIRONMENT') && ENVIRONMENT == 'testing') {
-	$db['default']['username'] = 'travis';
+	$db['default']['username'] = 'root';
 	$db['default']['password'] = '';
 	$db['default']['database'] = 'fribone_test';
 } else {

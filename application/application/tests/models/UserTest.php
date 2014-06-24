@@ -6,10 +6,9 @@ class UserTest extends PHPUnit_Framework_TestCase {
 	/**
 	* @var PDO
 	*/
-    private $pdo;
+    private $pdo = NULL;
 
 	public function setUp() {
-		echo "Setup";
 		try {
 	        $this->pdo = new PDO("mysql:dbname=fribone_test;host=localhost","root", "");
 	        
@@ -35,11 +34,23 @@ class UserTest extends PHPUnit_Framework_TestCase {
     }
 
     public function tearDown() {
-        $this->pdo->query("DROP TABLE my_user");
+    	try {
+        	$this->pdo->query("DROP TABLE my_user");
+    	} catch(Exception $ex) {
+    		$this->fail($ex->getMessage());
+    	}
     }
 
 
 	public function testPublicUser() {
+		$this->CI->load->model('User');
+
+		$this->assertEquals(0, $this->CI->User->getIdUser());
+		$this->assertFalse($this->CI->User->isLogged());
+		$this->assertFalse($this->CI->User->isAdmin());
+	}
+
+	public function testPublicUserDos() {
 		$this->CI->load->model('User');
 
 		$this->assertEquals(0, $this->CI->User->getIdUser());
