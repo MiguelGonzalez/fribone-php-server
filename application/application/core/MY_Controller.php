@@ -11,12 +11,8 @@ class MY_Controller extends CI_Controller {
     function __construct() {
         parent::__construct();
 
-        if (defined('ENVIRONMENT')) {
-            if(ENVIRONMENT == 'testing') {
-                $this->load->add_package_path(APPPATH.'tests');
-            } else {
-                $this->load->model('User');
-            }
+        if (defined('ENVIRONMENT') && ENVIRONMENT == 'testing') {
+            $this->load->add_package_path(APPPATH.'tests');
         } else {
             $this->load->model('User');
         }

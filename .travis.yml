@@ -2,5 +2,8 @@ language: php
 php:
   - 5.5
 
+before_script:
+	- mysql -e 'create database fribone;'
+
 script:
   - phpunit .
