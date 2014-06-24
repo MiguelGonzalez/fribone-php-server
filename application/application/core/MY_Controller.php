@@ -14,10 +14,12 @@ class MY_Controller extends CI_Controller {
         if (defined('ENVIRONMENT')) {
             if(ENVIRONMENT == 'testing') {
                 $this->load->add_package_path(APPPATH.'tests');
+            } else {
+                $this->load->model('User');
             }
+        } else {
+            $this->load->model('User');
         }
-
-        $this->load->model('User');
     }
 
     protected function _renderJson($json) {
