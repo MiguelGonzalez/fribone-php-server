@@ -3,7 +3,7 @@ php:
   - 5.5
 
 before_script:
-  - mysql -e 'create database fribone_test;' -uroot; fi
+  - mysql -e 'create database fribone_test;' -uroot
 
 script:
   - phpunit .
