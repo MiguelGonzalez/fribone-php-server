@@ -1,5 +1,0 @@
-test:
-  adapter: mysql2
-  database: fribone_test
-  username: test
-  encoding: utf8
