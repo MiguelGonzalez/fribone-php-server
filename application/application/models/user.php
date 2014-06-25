@@ -1,4 +1,5 @@
 <?php
+
 class User extends CI_Model {
 
 	const IS_INVITED = 0;
@@ -9,9 +10,8 @@ class User extends CI_Model {
 	public function __construct() {
 		parent::__construct();
 
-		$this->load->library('session');
 		$this->load->database();
-
+		$this->load->library('session');
 		$this->inicializateUserData();
 	}
 
@@ -20,16 +20,17 @@ class User extends CI_Model {
 		$this->userData["permission"] = 0;
 
 		$idUser = $this->session->userdata('idUser');
-		if(isset($idUser)) {
+		if(isset($idUser) && $idUser != FALSE) {
 			$this->db->select('permission');
-			$this->db->from('my_user');
+			$this->db->from('user');
 			$this->db->where('state', 'A');
 			$this->db->where('idUser', $idUser);
 
-			$queryUser = $this->db->get();
-
-			if ($queryUser->num_rows() > 0) {
-				$this->userData["permission"] = $query->row()->permissions;
+			$query = $this->db->get(); 
+			if ($query->num_rows() > 0) {
+            	$entry = $query->row();
+            	$this->userData["idUser"] = $idUser;
+				$this->userData["permission"] = $entry->permission;
 			}
 		}
 	}

@@ -13,7 +13,6 @@ class CI_Session {
 	var $flashdata_key				= 'flash';
 
 	function __construct() {
-
     }
 
     /**

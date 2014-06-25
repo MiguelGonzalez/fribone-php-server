@@ -22,6 +22,10 @@ class UserTest extends PHPUnit_Framework_TestCase {
 				") ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1"
 
 	    	);
+
+	    	$this->pdo->query(
+	        	"INSERT INTO `my_user` (`permission`,`state`) VALUES (1,'A');" 
+	    	);
     	} catch(Exception $ex) {
     		$this->fail($ex->getMessage());
     	}
@@ -43,18 +47,27 @@ class UserTest extends PHPUnit_Framework_TestCase {
 
 
 	public function testPublicUser() {
-		$this->CI->load->model('User');
+		$this->CI->load->model('User','user1');
 
-		$this->assertEquals(0, $this->CI->User->getIdUser());
-		$this->assertFalse($this->CI->User->isLogged());
-		$this->assertFalse($this->CI->User->isAdmin());
+		$this->assertEquals(0, $this->CI->user1->getIdUser());
+		$this->assertFalse($this->CI->user1->isLogged());
+		$this->assertFalse($this->CI->user1->isAdmin());
 	}
 
-	public function testPublicUserDos() {
-		$this->CI->load->model('User');
+	public function testLoginUser() {
+		$this->CI->load->library('session');
 
-		$this->assertEquals(0, $this->CI->User->getIdUser());
-		$this->assertFalse($this->CI->User->isLogged());
-		$this->assertFalse($this->CI->User->isAdmin());
+		$datosUsuario = array(
+            'idUser'  => 1,
+            'permission' => 1
+        );
+
+        $this->CI->session->set_userdata($datosUsuario);
+
+		$this->CI->load->model('User','user2');
+
+		$this->assertEquals(1, $this->CI->user2->getIdUser());
+		$this->assertTrue($this->CI->user2->isLogged());
+		$this->assertFalse($this->CI->user2->isAdmin());
 	}
 }
