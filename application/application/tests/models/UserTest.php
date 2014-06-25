@@ -6,14 +6,14 @@ class UserTest extends PHPUnit_Framework_TestCase {
 	/**
 	* @var PDO
 	*/
-    private $pdo = NULL;
+   protected static $pdo = NULL;
 
-	public function setUp() {
-		try {
-	        $this->pdo = new PDO("mysql:dbname=fribone_test;host=localhost","root", "");
+    public static function setUpBeforeClass() {
+    	try {
+	        self::$pdo = new PDO("mysql:dbname=fribone_test;host=localhost","root", "");
 	        
-	        $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	        $this->pdo->query(
+	        self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	        self::$pdo->query(
 	        	"CREATE TABLE IF NOT EXISTS `my_user` (" .
 				  "`idUser` int(11) NOT NULL AUTO_INCREMENT," .
 				  "`permission` char(1) NOT NULL," .
@@ -23,40 +23,49 @@ class UserTest extends PHPUnit_Framework_TestCase {
 
 	    	);
 
-	    	$this->pdo->query(
+	    	self::$pdo->query(
 	        	"INSERT INTO `my_user` (`permission`,`state`) VALUES (1,'A');" 
 	    	);
+	    	self::$pdo->query(
+	        	"INSERT INTO `my_user` (`permission`,`state`) VALUES (2,'A');" 
+	    	);
     	} catch(Exception $ex) {
-    		$this->fail($ex->getMessage());
+    		self::fail($ex->getMessage());
     	}
+    }
 
+    public static function tearDownAfterClass() {
+    	try {
+        	self::$pdo->query("DROP TABLE my_user");
+        	self::$pdo = NULL;
+    	} catch(Exception $ex) {
+    		self::fail($ex->getMessage());
+    	}
+    }
+
+	public function setUp() {
 		try {
         	$this->CI = &get_instance();
+        	$this->CI->load->library('session');
+        	$this->CI->session->sess_create();
         } catch(Exception $ex) {
         	$this->fail($ex);
         }
     }
 
     public function tearDown() {
-    	try {
-        	$this->pdo->query("DROP TABLE my_user");
-    	} catch(Exception $ex) {
-    		$this->fail($ex->getMessage());
-    	}
+    	$this->CI->session->sess_destroy();
     }
 
-
 	public function testPublicUser() {
-		$this->CI->load->model('User','user1');
+		$this->CI->load->model('User','userPublic');
 
-		$this->assertEquals(0, $this->CI->user1->getIdUser());
-		$this->assertFalse($this->CI->user1->isLogged());
-		$this->assertFalse($this->CI->user1->isAdmin());
+		$this->assertEquals(0, $this->CI->userPublic->getIdUser());
+		$this->assertFalse($this->CI->userPublic->isLogged());
+		$this->assertFalse($this->CI->userPublic->isAdmin());
 	}
 
 	public function testLoginUser() {
-		$this->CI->load->library('session');
-
 		$datosUsuario = array(
             'idUser'  => 1,
             'permission' => 1
@@ -64,10 +73,27 @@ class UserTest extends PHPUnit_Framework_TestCase {
 
         $this->CI->session->set_userdata($datosUsuario);
 
-		$this->CI->load->model('User','user2');
+		$this->CI->load->model('User','userLogin');
 
-		$this->assertEquals(1, $this->CI->user2->getIdUser());
-		$this->assertTrue($this->CI->user2->isLogged());
-		$this->assertFalse($this->CI->user2->isAdmin());
+		$this->assertEquals(1, $this->CI->userLogin->getIdUser());
+		$this->assertTrue($this->CI->userLogin->isLogged());
+		$this->assertFalse($this->CI->userLogin->isAdmin());
+	}
+
+	public function testAdminUser() {
+		$this->CI->load->library('session');
+
+		$datosUsuario = array(
+            'idUser'  => 2,
+            'permission' => 2
+        );
+
+        $this->CI->session->set_userdata($datosUsuario);
+
+		$this->CI->load->model('User','userAdmin');
+
+		$this->assertEquals(2, $this->CI->userAdmin->getIdUser());
+		$this->assertTrue($this->CI->userAdmin->isLogged());
+		$this->assertTrue($this->CI->userAdmin->isAdmin());
 	}
 }
