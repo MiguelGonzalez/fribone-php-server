@@ -105,7 +105,7 @@ class Login_auth {
 		} else {
 			$data = array(
 				'username'	=> $username,
-				'password'	=> $this->get_hashed_password($password),
+				'password'	=> password_hash($password, PASSWORD_BCRYPT),
 				'email'		=> $email,
 				'last_ip'	=> $this->ci->input->ip_address(),
 			);
@@ -123,13 +123,5 @@ class Login_auth {
 
 	public function is_email_available($email) {
 		return ((strlen($email) > 0) AND $this->ci->User->is_email_available($email));
-	}
-
-	public function get_hashed_password($password) {
-		return password_hash($password, PASSWORD_BCRYPT);
-	}
-
-	public function password_verify($password, $hashPassword) {
-		return password_verify($password, $hashPassword);
 	}
 }

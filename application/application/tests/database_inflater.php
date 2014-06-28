@@ -27,7 +27,7 @@ class DataBase_inflater {
 				") ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1"
 	    	);
     	} catch(Exception $ex) {
-    		new Exception($ex->getMessage());
+    		throw new Exception($ex->getMessage());
     	}
 	}
 
@@ -35,7 +35,7 @@ class DataBase_inflater {
 		try {
         	self::$pdo->query("DROP TABLE my_user");
     	} catch(Exception $ex) {
-    		new Exception($ex->getMessage());
+    		throw new Exception($ex->getMessage());
     	}
 	}
 

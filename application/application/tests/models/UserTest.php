@@ -60,4 +60,23 @@ class UserTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals(1, $user->permission);
         $this->assertEquals('A', $user->state);
 	}
+
+    public function testCreateUser() {
+        $data = array(
+            'username'  => 'TestName',
+            'password'  => password_hash('12345678', PASSWORD_BCRYPT),
+            'email'     => 'test@test.com',
+            'last_ip'   => '127.0.0.1',
+        );
+        $resUser = $this->CI->User->create_user($data);
+        $this->assertTrue($resUser !== NULL);
+
+        try {
+            //No se puede crear otro usuario igual
+            $resUser = $this->CI->User->create_user($data);
+        } catch(Exception $ex) {
+            return;
+        }
+        $this->fail('An expected exception has not been raised.');
+    }
 }

@@ -36,6 +36,7 @@ class User extends CI_Model {
 			
 			return array('user_id' => $user_id);
 		}
+		
 		return NULL;
 	}
 
