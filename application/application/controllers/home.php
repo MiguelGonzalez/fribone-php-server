@@ -59,7 +59,7 @@ class Home extends MY_Controller {
 			$username = $this->input->post('username');
 			$password = $this->input->post('password');
 
-			$idUser = $this->login_auth->create_user($username, $email, $password);
+			$idUser = $this->login_auth->create_user($email, $username, $password);
 
 			if(!is_null($idUser)) {
 				redirect(site_url(

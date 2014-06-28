@@ -53,5 +53,25 @@ class HomeTest extends PHPUnit_Framework_TestCase {
     	self::$dataBase_inflater->create_user('test@test.com', 'TestName', '123456');
     	$res = $this->CI->login_auth->login('test@test.com', '123456');
     	$this->assertTrue($res);
+
+    	$this->assertTrue($this->CI->login_auth->is_logged_in());
+    	$this->assertEquals('test@test.com', $this->CI->login_auth->get_email());
+    	$this->assertEquals('TestName', $this->CI->login_auth->get_username());
+
+    	$this->CI->login_auth->logout();
+    	$this->assertFalse($this->CI->login_auth->is_logged_in());
+    	$this->assertFalse($this->CI->login_auth->get_email());
+    	$this->assertFalse($this->CI->login_auth->get_username());
+    }
+
+    public function testCreateUser() {
+    	$res = $this->CI->login_auth->create_user('', 'TestName', '123456');
+    	$this->assertNull($res);
+
+    	$res = $this->CI->login_auth->create_user('test@test.com', 'TestName' , '123456');
+    	$this->assertTrue($res !== NULL);
+
+    	$res = $this->CI->login_auth->create_user('test@test.com', 'TestName', '123456');
+    	$this->assertNull($res);
     }
 }

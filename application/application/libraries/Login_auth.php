@@ -5,6 +5,7 @@ define('LOGIN_STATUS_NOT_ACTIVATED', 'I');
 define('LOGIN_STATUS_BANNED', 'B');
 define('LOGIN_INCORRECT_LOGIN', 'login_1');
 define('LOGIN_EMAIL_IN_USE', 'login_2');
+define('CREATE_NOT_SET_ALL_PARAMETERS', 'create_1');
 
 class Login_auth {
 
@@ -79,6 +80,7 @@ class Login_auth {
 		$this->ci->session->set_userdata(
 			array(
 				'user_id' => '',
+				'email' => '',
 				'username' => '',
 				'status' => ''
 			)
@@ -88,19 +90,25 @@ class Login_auth {
 	}
 
 	public function is_logged_in() {
-		return $this->ci->session->userdata('id');
+		return $this->ci->session->userdata('id') !== FALSE;
 	}
 
 	public function get_user_id() {
 		return $this->ci->session->userdata('user_id');
 	}
 
+	public function get_email() {
+		return $this->ci->session->userdata('email');
+	}
+
 	public function get_username() {
 		return $this->ci->session->userdata('username');
 	}
 
-	public function create_user($username, $email, $password) {
-		if ((strlen($email) > 0) AND !$this->is_email_available($email)) {
+	public function create_user($email, $username, $password) {
+		if(strlen($email) === 0 || strlen($username) === 0 || strlen($password) === 0) {
+			$this->error = CREATE_NOT_SET_ALL_PARAMETERS;
+		} elseif (!$this->is_email_available($email)) {
 			$this->error = LOGIN_EMAIL_IN_USE;
 		} else {
 			$resCreate = $this->ci->User->create_user(
@@ -109,7 +117,7 @@ class Login_auth {
 				password_hash($password, PASSWORD_BCRYPT)
 			);
 			if (!is_null($resCreate)) {
-				$data['user_id'] = $res['user_id'];
+				$data['user_id'] = $resCreate['user_id'];
 
 				unset($data['last_ip']);
 				unset($data['password']);

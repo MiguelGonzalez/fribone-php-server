@@ -37,9 +37,11 @@ class User extends CI_Model {
 			'login_attempts' => 0
 		);		
 
-		if ($this->db->insert('user', $data)) {
+		$this->db->insert('user', $data);
+
+		if ($this->db->affected_rows() === 1) {
 			$user_id = $this->db->insert_id();
-			
+
 			return array('user_id' => $user_id);
 		}
 
