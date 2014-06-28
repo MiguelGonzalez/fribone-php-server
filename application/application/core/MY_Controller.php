@@ -13,8 +13,6 @@ class MY_Controller extends CI_Controller {
 
         if (defined('ENVIRONMENT') && ENVIRONMENT == 'testing') {
             $this->load->add_package_path(APPPATH.'tests');
-        } else {
-            $this->load->model('User');
         }
     }
 
@@ -54,7 +52,6 @@ class MY_Controller extends CI_Controller {
                 $this->data,
                 true);
 
-        //render view
         $this->load->view(
                 $this->template . '/template/skeleton',
                 $toBody);

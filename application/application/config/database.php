@@ -54,7 +54,7 @@ if (defined('ENVIRONMENT') && ENVIRONMENT == 'testing') {
 	$db['default']['database'] = 'fribone_test';
 } else {
 	$db['default']['username'] = 'root';
-	$db['default']['password'] = 'a1s2d3';
+	$db['default']['password'] = '';
 	$db['default']['database'] = 'fribone';
 }
 $db['default']['hostname'] = 'localhost';

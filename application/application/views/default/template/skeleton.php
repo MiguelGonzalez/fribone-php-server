@@ -10,9 +10,9 @@
         <title><?php echo $title;?></title>
         <meta name="description" content="">
         
-        <link rel="stylesheet" href="resources/css/normalize.css">
-        <link rel="stylesheet" href="resources/css/main.css">
-        <script src="resources/js/modernizr-2.8.2.min.js"></script>
+        <link rel="stylesheet" href="<?php echo base_url('resources/css/normalize.css');?>">
+        <link rel="stylesheet" href="<?php echo base_url('resources/css/main.css');?>">
+        <script src="<?php echo base_url('resources/js/modernizr-2.8.2.min.js');?>"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -42,9 +42,9 @@
         </div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="resources/js/jquery-2.1.1.min.js"><\/script>')</script>
-        <script src="resources/js/plugins.js"></script>
-        <script src="resources/js/main.js"></script>
+        <script>window.jQuery || document.write('<script src="<?php echo base_url('resources/js/jquery-2.1.1.min.js');?>"><\/script>')</script>
+        <script src="<?php echo base_url('resources/js/plugins.js');?>"></script>
+        <script src="<?php echo base_url('resources/js/main.js');?>"></script>
 
         <script>
            /* (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
