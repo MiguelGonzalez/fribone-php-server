@@ -62,13 +62,10 @@ class UserTest extends PHPUnit_Framework_TestCase {
 	}
 
     public function testCreateUser() {
-        $data = array(
-            'username'  => 'TestName',
-            'password'  => password_hash('12345678', PASSWORD_BCRYPT),
-            'email'     => 'test@test.com',
-            'last_ip'   => '127.0.0.1',
-        );
-        $resUser = $this->CI->User->create_user($data);
+        $resUser = $this->CI->User->create_user(
+            'test@test.com',
+            'TestName',
+            password_hash('12345678', PASSWORD_BCRYPT));
         $this->assertTrue($resUser !== NULL);
 
         try {
@@ -78,5 +75,50 @@ class UserTest extends PHPUnit_Framework_TestCase {
             return;
         }
         $this->fail('An expected exception has not been raised.');
+    }
+
+    public function testUpdateLoginInfo() {
+        self::$dataBase_inflater->create_user('test@test.com', 'TestName', '123456');
+        
+
+        $user = $this->CI->User->get_user('test@test.com');
+        $last_access = $user->last_access;
+
+        sleep(1);
+        $res = $this->CI->User->update_login_info($user->id);
+
+        $user = $this->CI->User->get_user('test@test.com');
+        $this->assertFalse($last_access === $user->last_access);
+    }
+
+    public function testIncreseClearLoginAttempts() {
+        self::$dataBase_inflater->create_user('test@test.com', 'TestName', '123456');
+        
+        $this->CI->User->increase_login_attempt('test@test.com');
+        $numAttempts = $this->CI->User->get_login_attempts('test@test.com');
+
+        $this->assertTrue(1 == $numAttempts);
+
+        $this->CI->User->increase_login_attempt('test@test.com');
+        $numAttempts = $this->CI->User->get_login_attempts('test@test.com');
+
+        $this->assertTrue(2 == $numAttempts);
+
+        $this->CI->User->clear_login_attempts('test@test.com');
+        $user = $this->CI->User->get_user('test@test.com');
+        $numAttempts = $this->CI->User->get_login_attempts($user->id);
+
+        $this->assertTrue(0 == $numAttempts);
+    }
+
+    public function testIsEmailAvailable() {
+        $this->assertTrue($this->CI->User->is_email_available('test@test.com'));
+
+        self::$dataBase_inflater->create_user('test@test.com', 'TestName', '123456');
+
+        $this->assertFalse($this->CI->User->is_email_available('test@test.com'));
+        $this->assertFalse($this->CI->User->is_email_available('teSt@test.com'));
+        $this->assertFalse($this->CI->User->is_email_available('teSt@test.com '));
+        $this->assertFalse($this->CI->User->is_email_available(' teSt@test.com'));
     }
 }

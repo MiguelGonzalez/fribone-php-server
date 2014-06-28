@@ -103,14 +103,12 @@ class Login_auth {
 		if ((strlen($email) > 0) AND !$this->is_email_available($email)) {
 			$this->error = LOGIN_EMAIL_IN_USE;
 		} else {
-			$data = array(
-				'username'	=> $username,
-				'password'	=> password_hash($password, PASSWORD_BCRYPT),
-				'email'		=> $email,
-				'last_ip'	=> $this->ci->input->ip_address(),
+			$resCreate = $this->ci->User->create_user(
+				$email,
+				$username,
+				password_hash($password, PASSWORD_BCRYPT)
 			);
-
-			if (!is_null($res = $this->ci->User->create_user($data))) {
+			if (!is_null($resCreate)) {
 				$data['user_id'] = $res['user_id'];
 
 				unset($data['last_ip']);

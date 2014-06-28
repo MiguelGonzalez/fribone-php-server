@@ -12,7 +12,7 @@ class DataBase_inflater {
 	public function create() {
 		try {
 	        self::$pdo->query(
-				"CREATE TABLE `my_user` (" .
+				"CREATE TABLE IF NOT EXISTS `my_user` (" .
 				"  `id` int(11) NOT NULL AUTO_INCREMENT," .
 				"  `email` varchar(128) NOT NULL," .
 				"  `username` varchar(128) NOT NULL," .
@@ -42,7 +42,7 @@ class DataBase_inflater {
 	public function create_user($email, $username, $password) {
 		$password = password_hash($password, PASSWORD_BCRYPT);
 
-		self::$pdo->query(
+		return self::$pdo->exec(
 			"INSERT INTO `my_user` ( " .
 			" `email` , `username` , `password` , `permission` , `state` , `last_ip` , `last_access` , `login_attempts` " .
 			" ) " .
