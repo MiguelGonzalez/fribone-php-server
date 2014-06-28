@@ -10,7 +10,6 @@ class UserTest extends PHPUnit_Framework_TestCase {
     public static function setUpBeforeClass() {
     	try {
 	        self::$dataBase_inflater = new DataBase_inflater();
-	        
     	} catch(Exception $ex) {
     		self::fail($ex->getMessage());
     	}
@@ -18,7 +17,6 @@ class UserTest extends PHPUnit_Framework_TestCase {
 
     public static function tearDownAfterClass() {
     	try {
-        	
         	self::$dataBase_inflater = NULL;
     	} catch(Exception $ex) {
     		self::fail($ex->getMessage());
@@ -70,7 +68,11 @@ class UserTest extends PHPUnit_Framework_TestCase {
 
         try {
             //No se puede crear otro usuario igual
-            $resUser = $this->CI->User->create_user($data);
+            $resUser = $this->CI->User->create_user(
+                'test@test.com',
+                'TestName',
+                password_hash('12345678', PASSWORD_BCRYPT)
+            );
         } catch(Exception $ex) {
             return;
         }
@@ -80,7 +82,6 @@ class UserTest extends PHPUnit_Framework_TestCase {
     public function testUpdateLoginInfo() {
         self::$dataBase_inflater->create_user('test@test.com', 'TestName', '123456');
         
-
         $user = $this->CI->User->get_user('test@test.com');
         $last_access = $user->last_access;
 

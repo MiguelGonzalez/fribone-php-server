@@ -4,7 +4,7 @@ define('ENVIRONMENT', 'testing');
 
 $_SERVER["REMOTE_ADDR"]     = array_key_exists( 'REMOTE_ADDR',      $_SERVER) ? $_SERVER['REMOTE_ADDR']     : '127.0.0.1'; 
 
-error_reporting(0);
+error_reporting(E_ALL ^ E_NOTICE);
 $system_path = '../../system';
 $application_folder = '../../application';
 

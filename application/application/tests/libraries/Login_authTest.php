@@ -10,7 +10,6 @@ class HomeTest extends PHPUnit_Framework_TestCase {
     public static function setUpBeforeClass() {
         try {
             self::$dataBase_inflater = new DataBase_inflater();
-            
         } catch(Exception $ex) {
             self::fail($ex->getMessage());
         }
@@ -18,7 +17,6 @@ class HomeTest extends PHPUnit_Framework_TestCase {
 
     public static function tearDownAfterClass() {
         try {
-            
             self::$dataBase_inflater = NULL;
         } catch(Exception $ex) {
             self::fail($ex->getMessage());
@@ -29,6 +27,7 @@ class HomeTest extends PHPUnit_Framework_TestCase {
         parent::__construct();
 
         $this->CI = &get_instance();
+        $this->CI->load->library('login_auth');
     }
 
     public function setUp() {
@@ -47,6 +46,12 @@ class HomeTest extends PHPUnit_Framework_TestCase {
         }
     }
 
-    public function testEmpty() {
+    public function testLogin() {
+    	$res = $this->CI->login_auth->login('test@test.com', '123456');
+    	$this->assertFalse($res);
+
+    	self::$dataBase_inflater->create_user('test@test.com', 'TestName', '123456');
+    	$res = $this->CI->login_auth->login('test@test.com', '123456');
+    	$this->assertTrue($res);
     }
 }

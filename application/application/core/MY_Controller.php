@@ -12,7 +12,9 @@ class MY_Controller extends CI_Controller {
         parent::__construct();
 
         if (defined('ENVIRONMENT') && ENVIRONMENT == 'testing') {
-            $this->load->add_package_path(APPPATH.'tests');
+            $this->load->add_package_path(APPPATH.'tests/mockups');
+        } else {
+            $this->load->library('login_auth');
         }
     }
 

@@ -7,13 +7,16 @@ class Home extends MY_Controller {
 	}
 
 	public function index() {
-		if ($this->login_auth->is_logged_in()) {
-			$this->data['logged'] = TRUE;
+		if (defined('ENVIRONMENT') && ENVIRONMENT == 'testing') {
 		} else {
-			$this->data['logged'] = FALSE;
-		}
+			if ($this->login_auth->is_logged_in()) {
+				$this->data['logged'] = TRUE;
+			} else {
+				$this->data['logged'] = FALSE;
+			}
 
-		$this->_render('home');
+			$this->_render('home');
+		}
 	}
 
 	public function login_error() {

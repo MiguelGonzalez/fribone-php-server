@@ -53,7 +53,7 @@ class Login_auth {
 					$this->ci->User->increase_login_attempt($email);	
 				}
 			} else {
-				delay(1);
+				sleep(1);
 				$this->error = LOGIN_INCORRECT_LOGIN;
 				$this->ci->User->increase_login_attempt($email);
 			}
