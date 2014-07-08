@@ -40,21 +40,25 @@ class DataBase_inflater {
 	}
 
 	public function create_user($email, $username, $password) {
-		$password = NULL;
-
-		if (strnatcmp(phpversion(),'5.5.0') >= 0) {
-			$password = password_hash($password, PASSWORD_BCRYPT);
-		} else {
-			$password = crypt($password);
-		}
-
 		return self::$pdo->exec(
 			"INSERT INTO `my_user` ( " .
 			" `email` , `username` , `password` , `permission` , `state` , `last_ip` , `last_access` , `login_attempts` " .
 			" ) " .
 			" VALUES ( " .
-			" '" . $email . "', '" . $username . "', '" . $password . "', '1', 'A', '127.0.0.1', NOW( ) , '0' " .
+			" '" . $email . "', '" . $username . "', '" . $this->get_password_hash($password) . "', '1', 'A', '127.0.0.1', NOW( ) , '0' " .
 			" ) "
 		);
 	}
+
+	private function get_password_hash($password) {
+        $password = NULL;
+
+        if (strnatcmp(phpversion(),'5.5.0') >= 0) {
+            $password = password_hash($password, PASSWORD_BCRYPT);
+        } else {
+            $password = crypt($password);
+        }
+
+        return $password;
+    }
 }

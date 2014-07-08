@@ -227,3 +227,20 @@ ERROR - 2014-07-08 16:29:57 --> Severity: Notice  --> Use of undefined constant 
 DEBUG - 2014-07-08 16:29:57 --> DB Transaction Failure
 ERROR - 2014-07-08 16:29:57 --> Query error: Duplicate entry 'test@test.com' for key 'email'
 ERROR - 2014-07-08 16:29:57 --> Severity: Notice  --> Array to string conversion /var/www/fribone-php-server/application/system/database/DB_driver.php 1165
+DEBUG - 2014-07-08 17:39:00 --> Config Class Initialized
+DEBUG - 2014-07-08 17:39:00 --> Hooks Class Initialized
+DEBUG - 2014-07-08 17:39:00 --> Utf8 Class Initialized
+DEBUG - 2014-07-08 17:39:00 --> UTF-8 Support Enabled
+DEBUG - 2014-07-08 17:39:00 --> URI Class Initialized
+DEBUG - 2014-07-08 17:39:00 --> Router Class Initialized
+DEBUG - 2014-07-08 17:39:00 --> No URI present. Default controller set.
+DEBUG - 2014-07-08 17:39:00 --> Output Class Initialized
+DEBUG - 2014-07-08 17:39:00 --> Security Class Initialized
+DEBUG - 2014-07-08 17:39:00 --> Input Class Initialized
+DEBUG - 2014-07-08 17:39:00 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-07-08 17:39:00 --> Language Class Initialized
+DEBUG - 2014-07-08 17:39:00 --> Loader Class Initialized
+DEBUG - 2014-07-08 17:39:00 --> Helper loaded: url_helper
+DEBUG - 2014-07-08 17:39:00 --> Database Driver Class Initialized
+ERROR - 2014-07-08 17:39:00 --> Severity: Warning  --> mysql_pconnect(): Access denied for user 'root'@'localhost' (using password: NO) /var/www/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+ERROR - 2014-07-08 17:39:00 --> Unable to connect to the database
