@@ -5,7 +5,7 @@ class DataBase_inflater {
 	protected static $pdo = NULL;
 
 	public function __construct() {
-		self::$pdo = new PDO("mysql:dbname=fribone_test;host=localhost","root", "root");
+		self::$pdo = new PDO("mysql:dbname=fribone_test;host=localhost","root", "");
 		self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	}
 
