@@ -1163,18 +1163,24 @@ class CI_DB_driver {
 	{
 		if (defined('ENVIRONMENT') && ENVIRONMENT == 'testing') {
 			$message = $error . ' ' . $swap;
+
+			$LANG =& load_class('Lang', 'core');
+			$LANG->load('db');
+			
+			$message = ( ! is_array($error)) ? array(str_replace('%s', $swap, $LANG->line($error))) : $error;
+			if(is_array($message)) {
+				$message = implode(" || " , $message);
+			}
+			
 			throw new Exception($message);
 		} else {
 			$LANG =& load_class('Lang', 'core');
 			$LANG->load('db');
 			$heading = $LANG->line('db_error_heading');
 
-			if ($native == TRUE)
-			{
+			if ($native == TRUE) {
 				$message = $error;
-			}
-			else
-			{
+			} else {
 				$message = ( ! is_array($error)) ? array(str_replace('%s', $swap, $LANG->line($error))) : $error;
 			}
 
