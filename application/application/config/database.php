@@ -50,11 +50,11 @@ $active_record = TRUE;
 
 if (defined('ENVIRONMENT') && ENVIRONMENT == 'testing') {
 	$db['default']['username'] = 'root';
-	$db['default']['password'] = '';
+	$db['default']['password'] = 'root';
 	$db['default']['database'] = 'fribone_test';
 } else {
-	$db['default']['username'] = 'root';
-	$db['default']['password'] = '';
+	$db['default']['username'] = 'fribone';
+	$db['default']['password'] = 'fribone';
 	$db['default']['database'] = 'fribone';
 }
 $db['default']['hostname'] = 'localhost';

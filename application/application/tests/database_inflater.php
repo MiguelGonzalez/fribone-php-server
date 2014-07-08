@@ -5,7 +5,7 @@ class DataBase_inflater {
 	protected static $pdo = NULL;
 
 	public function __construct() {
-		self::$pdo = new PDO("mysql:dbname=fribone_test;host=localhost","root", "");
+		self::$pdo = new PDO("mysql:dbname=fribone_test;host=localhost","root", "root");
 		self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	}
 
@@ -40,7 +40,13 @@ class DataBase_inflater {
 	}
 
 	public function create_user($email, $username, $password) {
-		$password = password_hash($password, PASSWORD_BCRYPT);
+		$password = NULL;
+
+		if (strnatcmp(phpversion(),'5.5.0') >= 0) {
+			$password = password_hash($password, PASSWORD_BCRYPT);
+		} else {
+			$password = crypt($password);
+		}
 
 		return self::$pdo->exec(
 			"INSERT INTO `my_user` ( " .

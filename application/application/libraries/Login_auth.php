@@ -28,7 +28,7 @@ class Login_auth {
 			if (!is_null($user)) {
 				$hashPassword = $user->password;
 
-				if(password_verify($password, $hashPassword)) {
+				if($this->is_password_verify($password, $hashPassword)) {
 					if ($user->state === LOGIN_STATUS_NOT_ACTIVATED) {
 						$this->error = LOGIN_STATUS_NOT_ACTIVATED;
 					} elseif ($user->state === LOGIN_STATUS_BANNED) {
@@ -51,7 +51,7 @@ class Login_auth {
 				} else {
 					$this->check_attempts($email);
 					$this->error = LOGIN_INCORRECT_LOGIN;
-					$this->ci->User->increase_login_attempt($email);	
+					$this->ci->User->increase_login_attempt($email);
 				}
 			} else {
 				sleep(1);
@@ -114,7 +114,7 @@ class Login_auth {
 			$resCreate = $this->ci->User->create_user(
 				$email,
 				$username,
-				password_hash($password, PASSWORD_BCRYPT)
+				$this->get_password_hash($password, PASSWORD_BCRYPT)
 			);
 			if (!is_null($resCreate)) {
 				$data['user_id'] = $resCreate['user_id'];
@@ -129,5 +129,29 @@ class Login_auth {
 
 	public function is_email_available($email) {
 		return ((strlen($email) > 0) AND $this->ci->User->is_email_available($email));
+	}
+
+	private function get_password_hash($password) {
+		$password = NULL;
+
+		if (strnatcmp(phpversion(),'5.5.0') >= 0) {
+			$password = password_hash($password, PASSWORD_BCRYPT);
+		} else {
+			$password = crypt($password);
+		}
+
+		return $password;
+	}
+
+	private function is_password_verify($password, $hashed_password) {
+		$verify = FALSE;
+
+		if (strnatcmp(phpversion(),'5.5.0') >= 0) {
+			$verify = password_verify($password, $hashed_password);
+		} else {
+			$verify = crypt($password, $hashed_password);
+		}
+
+		return $verify;
 	}
 }

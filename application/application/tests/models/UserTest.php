@@ -4,7 +4,7 @@ require_once dirname(__FILE__) . '/../database_inflater.php';
 
 class UserTest extends PHPUnit_Framework_TestCase {
 	private $CI;
-	
+
 	private static $dataBase_inflater;
 
     public static function setUpBeforeClass() {
@@ -63,7 +63,7 @@ class UserTest extends PHPUnit_Framework_TestCase {
         $resUser = $this->CI->User->create_user(
             'test@test.com',
             'TestName',
-            password_hash('12345678', PASSWORD_BCRYPT));
+            $this->get_password_hash('12345678', PASSWORD_BCRYPT));
         $this->assertTrue($resUser !== NULL);
 
         try {
@@ -71,7 +71,7 @@ class UserTest extends PHPUnit_Framework_TestCase {
             $resUser = $this->CI->User->create_user(
                 'test@test.com',
                 'TestName',
-                password_hash('12345678', PASSWORD_BCRYPT)
+                $this->get_password_hash('12345678', PASSWORD_BCRYPT)
             );
         } catch(Exception $ex) {
             return;
@@ -81,7 +81,7 @@ class UserTest extends PHPUnit_Framework_TestCase {
 
     public function testUpdateLoginInfo() {
         self::$dataBase_inflater->create_user('test@test.com', 'TestName', '123456');
-        
+
         $user = $this->CI->User->get_user('test@test.com');
         $last_access = $user->last_access;
 
@@ -94,7 +94,7 @@ class UserTest extends PHPUnit_Framework_TestCase {
 
     public function testIncreseClearLoginAttempts() {
         self::$dataBase_inflater->create_user('test@test.com', 'TestName', '123456');
-        
+
         $this->CI->User->increase_login_attempt('test@test.com');
         $numAttempts = $this->CI->User->get_login_attempts('test@test.com');
 
@@ -121,5 +121,29 @@ class UserTest extends PHPUnit_Framework_TestCase {
         $this->assertFalse($this->CI->User->is_email_available('teSt@test.com'));
         $this->assertFalse($this->CI->User->is_email_available('teSt@test.com '));
         $this->assertFalse($this->CI->User->is_email_available(' teSt@test.com'));
+    }
+
+    private function get_password_hash($password) {
+        $password = NULL;
+
+        if (strnatcmp(phpversion(),'5.5.0') >= 0) {
+            $password = password_hash($password, PASSWORD_BCRYPT);
+        } else {
+            $password = crypt($password);
+        }
+
+        return $password;
+    }
+
+    private function is_password_verify($password, $hashed_password) {
+        $verify = FALSE;
+
+        if (strnatcmp(phpversion(),'5.5.0') >= 0) {
+            $verify = password_verify($password, $hashed_password);
+        } else {
+            $verify = crypt($password, $hashed_password);
+        }
+
+        return $verify;
     }
 }
