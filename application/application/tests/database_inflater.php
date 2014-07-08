@@ -26,6 +26,17 @@ class DataBase_inflater {
 				"  UNIQUE KEY `email` (`email`)" .
 				") ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1"
 	    	);
+
+	    	self::$pdo->query(
+				" CREATE TABLE IF NOT EXISTS `my_user_remember_token` ( " .
+				  " `email` varchar(128) NOT NULL, " .
+				  " `token` varchar(60) NOT NULL, " .
+				  " `creation_date` datetime NOT NULL, " .
+				  " `attempts` tinyint(3) unsigned NOT NULL DEFAULT '0', " .
+				  " `state` char(1) NOT NULL DEFAULT 'A', " .
+				  " PRIMARY KEY (`email`,`creation_date`) " .
+				" ) ENGINE=InnoDB DEFAULT CHARSET=utf8 "
+	    	);
     	} catch(Exception $ex) {
     		throw new Exception($ex->getMessage());
     	}
@@ -34,6 +45,7 @@ class DataBase_inflater {
 	public function destroy() {
 		try {
         	self::$pdo->query("DROP TABLE my_user");
+        	self::$pdo->query("DROP TABLE my_user_remember_token");
     	} catch(Exception $ex) {
     		throw new Exception($ex->getMessage());
     	}

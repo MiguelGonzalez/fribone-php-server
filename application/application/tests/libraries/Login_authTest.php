@@ -74,4 +74,28 @@ class HomeTest extends PHPUnit_Framework_TestCase {
     	$res = $this->CI->login_auth->create_user('test@test.com', 'TestName', '123456');
     	$this->assertNull($res);
     }
+
+    public function testRememberPassword() {
+        self::$dataBase_inflater->create_user('test@test.com', 'TestName', '123456');
+
+        $remember_token = $this->CI->login_auth->password_remember('test@test.com');
+        $this->assertTrue(!is_null($remember_token));
+
+        $res = $this->CI->login_auth->password_remember_change('test@test.com', $remember_token, '9876543');
+        $this->assertTrue($res);
+
+        $res = $this->CI->login_auth->login('test@test.com', '9876543');
+        $this->assertTrue($res);
+
+        $remember_token = $this->CI->login_auth->password_remember('test@test.com');
+        $res = $this->CI->login_auth->password_remember_change('test@test.com', 'invalid', '9876543');
+        $this->assertFalse($res);
+        $res = $this->CI->login_auth->password_remember_change('test@test.com', 'invalid', '9876543');
+        $this->assertFalse($res);
+        $res = $this->CI->login_auth->password_remember_change('test@test.com', 'invalid', '9876543');
+        $this->assertFalse($res);
+
+        $res = $this->CI->login_auth->password_remember_change('test@test.com', $remember_token, '9876543');
+        $this->assertFalse($res);        
+    }
 }

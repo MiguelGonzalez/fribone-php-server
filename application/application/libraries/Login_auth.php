@@ -17,10 +17,11 @@ class Login_auth {
 
 		$this->ci->load->library('session');
 		$this->ci->load->model('User');
+		$this->ci->load->helper('email');
 	}
 
 	public function login($email, $password) {
-		if ((strlen($email) > 0) AND (strlen($password) > 0)) {
+		if (valid_email($email) AND strlen($password) > 0) {
 			$user = $this->ci->User->get_user(
 				$email
 			);
@@ -84,6 +85,48 @@ class Login_auth {
 		return NULL;
 	}
 
+	public function password_remember($email) {
+		if (valid_email($email)) {
+			$user = $this->ci->User->get_user(
+				$email
+			);
+
+			if (!is_null($user)) {
+				$token = uniqid('', true);
+				$hashed_token = $this->get_password_hash($token);
+
+				$resCreate = $this->ci->User->add_token_remember(
+					$email,
+					$hashed_token
+				);
+
+				if ($resCreate) {
+					return $token;
+				}
+			}
+		}
+
+		return NULL;
+	}
+
+	public function password_remember_change($email, $token, $new_password) {
+		if (valid_email($email)) {
+			if($this->check_password_remember($email, $token)) {
+				$resCreate = $this->ci->User->change_password(
+					$email,
+					$this->get_password_hash($new_password, PASSWORD_BCRYPT)
+				);
+
+				if($resCreate) {
+					return TRUE;
+				}
+			}
+			
+			$this->ci->User->increase_remember_attemps($email);
+		}
+		return FALSE;
+	}
+
 	public function logout() {
 		$this->ci->session->set_userdata(
 			array(
@@ -129,6 +172,22 @@ class Login_auth {
 		} else {
 			sleep(45);
 		}
+	}
+
+	private function check_password_remember($email, $token_check) {
+		$token_hashed = $this->ci->User->get_token_remember(
+			$email
+		);
+
+		if (!is_null($token_hashed)) {
+			if($this->is_password_verify($token_check, $token_hashed)) {
+				$this->ci->User->invalidate_token_remember($email);
+
+				return TRUE;
+			}
+		}
+
+		return FALSE;
 	}
 
 	private function get_password_hash($password) {

@@ -123,6 +123,54 @@ class UserTest extends PHPUnit_Framework_TestCase {
         $this->assertFalse($this->CI->User->is_email_available(' teSt@test.com'));
     }
 
+    public function testChangePassword() {
+        self::$dataBase_inflater->create_user('test@test.com', 'TestName', '123456');
+
+        $user = $this->CI->User->get_user('test@test.com');
+
+        $this->CI->User->change_password('test@test.com', '9876543');
+
+        $user_password_changed = $this->CI->User->get_user('test@test.com');
+
+        $this->assertFalse($user->password == $user_password_changed->password);
+    }
+
+    public function testTokenRemember() {
+        $token = uniqid('', true);
+        $hashed_token = $this->get_password_hash($token);
+
+
+        self::$dataBase_inflater->create_user('test@test.com', 'TestName', '123456');
+
+        $token = $this->CI->User->get_token_remember('test@test.com');
+        $this->assertNull($token);
+
+        $res = $this->CI->User->add_token_remember('test@test.com', $hashed_token);
+        $this->assertTrue($res);
+
+        $token = $this->CI->User->get_token_remember('test@test.com');
+        $this->assertEquals($token, $hashed_token);
+
+        $this->CI->User->increase_remember_attemps('test@test.com');
+        $token = $this->CI->User->get_token_remember('test@test.com');
+        $this->assertEquals($token, $hashed_token);
+
+        $this->CI->User->increase_remember_attemps('test@test.com');
+        $token = $this->CI->User->get_token_remember('test@test.com');
+        $this->assertEquals($token, $hashed_token);
+
+        $this->CI->User->increase_remember_attemps('test@test.com');
+        $token = $this->CI->User->get_token_remember('test@test.com');
+        $this->assertNull($token);
+
+        $res = $this->CI->User->add_token_remember('test@test.com', $hashed_token);
+        $res = $this->CI->User->invalidate_token_remember('test@test.com');
+        $this->assertTrue($res);
+
+        $token = $this->CI->User->get_token_remember('test@test.com');
+        $this->assertNull($token);
+    }
+
     private function get_password_hash($password) {
         $password = NULL;
 

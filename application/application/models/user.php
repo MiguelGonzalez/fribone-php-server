@@ -19,7 +19,7 @@ class User extends CI_Model {
 
 		$query = $this->db->get();
 
-		if ($query->num_rows() == 1) {
+		if ($query->num_rows() === 1) {
         	return $query->row();
 		}
 		return NULL;
@@ -48,6 +48,16 @@ class User extends CI_Model {
 		return NULL;
 	}
 
+	public function change_password($email, $password) {
+		$this->db->set('password', $password);
+		$this->db->where('LOWER(email)', strtolower(trim($email)));
+		$this->db->where('state','A');
+
+		$this->db->update('user');
+
+		return $this->db->affected_rows() === 1;
+	}
+
 	public function update_login_info($user_id) {
 		$last_ip = $this->input->ip_address();
 
@@ -57,6 +67,7 @@ class User extends CI_Model {
 		);
 		$this->db->where('id', $user_id);
 		$this->db->update('user', $data);
+		$this->db->where('state','A');
 
 		return $this->db->affected_rows() === 1;
 	}
@@ -71,19 +82,21 @@ class User extends CI_Model {
 		}
 
 		$this->db->set('login_attempts', $login_attempts);
-		$this->db->where('email', $email);
+		$this->db->where('LOWER(email)', strtolower(trim($email)));
+		$this->db->where('state','A');
 
 		$this->db->update('user');
-		return $this->db->affected_rows() == 1;
+		return $this->db->affected_rows() === 1;
 	}
 
 	public function get_login_attempts($email) {
 		$this->db->select('login_attempts');
 		$this->db->from('user');
+		$this->db->where('state','A');
 		$this->db->where('LOWER(email)', strtolower(trim($email)));
 
 		$query = $this->db->get();
-		if ($query->num_rows() == 1) {
+		if ($query->num_rows() === 1) {
         	return $query->row()->login_attempts;
 		}
 		return NULL;
@@ -92,9 +105,10 @@ class User extends CI_Model {
 	public function clear_login_attempts($id_user) {
 		$this->db->set('login_attempts', 0);
 		$this->db->where('id', $id_user);
-
+		$this->db->where('state','A');
 		$this->db->update('user');
-		return $this->db->affected_rows() == 1;
+		
+		return $this->db->affected_rows() === 1;
 	}
 
 	public function is_email_available($email) {
@@ -103,6 +117,88 @@ class User extends CI_Model {
 		$this->db->where('LOWER(email)', strtolower(trim($email)));
 
 		$query = $this->db->get();
-		return $query->num_rows() == 0;
+		return $query->num_rows() === 0;
+	}
+
+	public function add_token_remember($email, $token) {
+		$this->pause_for_add_token_remember();
+
+		$this->invalidate_token_remember($email);
+
+		$data = array(
+			'email' => trim($email),
+			'token' => $token,
+			'creation_date' => date('Y-m-d H:i:s'),
+			'attempts' => 0,
+			'state' => 'A'
+		);		
+
+		$this->db->insert('user_remember_token', $data);
+
+		if ($this->db->affected_rows() === 1) {
+			return TRUE;
+		}
+
+		return FALSE;
+	}
+
+	private function pause_for_add_token_remember() {
+		sleep(1);
+	}
+
+	public function get_token_remember($email) {
+		$this->db->select('token');
+		$this->db->from('user_remember_token');
+		$this->db->where('LOWER(email)', strtolower(trim($email)));
+		$this->db->where('state','A');
+
+		$query = $this->db->get();
+		if ($query->num_rows() === 1) {
+        	return $query->row()->token;
+		}
+
+		return NULL;
+	}
+
+	public function invalidate_token_remember($email) {
+		$this->db->set('state', 'I');
+		$this->db->where('email', $email);
+		$this->db->where('state','A');
+
+		$this->db->update('user_remember_token');
+		return $this->db->affected_rows() !== 0;
+	}
+
+	public function increase_remember_attemps($email) {
+		$attempts = $this->get_remember_attemps($email);
+
+		if(!is_null($attempts)) {
+			$attempts++;
+
+			if($attempts === 3) {
+				$this->invalidate_token_remember($email);
+			} else {
+				$this->db->set('attempts', $attempts);
+				$this->db->where('email', $email);
+				$this->db->where('state','A');
+
+				$this->db->update('user_remember_token');
+				return $this->db->affected_rows() !== 0;
+			}
+		}
+	}
+
+	private function get_remember_attemps($email) {
+		$this->db->select('attempts');
+		$this->db->from('user_remember_token');
+		$this->db->where('LOWER(email)', strtolower(trim($email)));
+		$this->db->where('state','A');
+
+		$query = $this->db->get();
+		if ($query->num_rows() === 1) {
+			return $query->row()->attempts;
+		}
+
+		return NULL;
 	}
 }
