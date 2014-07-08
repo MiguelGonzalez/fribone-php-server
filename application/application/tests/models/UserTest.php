@@ -139,9 +139,11 @@ class UserTest extends PHPUnit_Framework_TestCase {
         $verify = FALSE;
 
         if (strnatcmp(phpversion(),'5.5.0') >= 0) {
+            echo "VERSION MAYOR";
             $verify = password_verify($password, $hashed_password);
         } else {
-            $verify = crypt($password, $hashed_password);
+            echo "VERSION MENOR";
+            $verify = crypt($password, $hashed_password) === $hashed_password;
         }
 
         return $verify;

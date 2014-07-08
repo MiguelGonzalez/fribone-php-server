@@ -132,15 +132,15 @@ class Login_auth {
 	}
 
 	private function get_password_hash($password) {
-		$password = NULL;
+		$password_hashed = NULL;
 
 		if (strnatcmp(phpversion(),'5.5.0') >= 0) {
-			$password = password_hash($password, PASSWORD_BCRYPT);
+			$password_hashed = password_hash($password, PASSWORD_BCRYPT);
 		} else {
-			$password = crypt($password);
+			$password_hashed = crypt($password);
 		}
 
-		return $password;
+		return $password_hashed;
 	}
 
 	private function is_password_verify($password, $hashed_password) {
@@ -149,7 +149,7 @@ class Login_auth {
 		if (strnatcmp(phpversion(),'5.5.0') >= 0) {
 			$verify = password_verify($password, $hashed_password);
 		} else {
-			$verify = crypt($password, $hashed_password);
+			$verify = crypt($password, $hashed_password) == $hashed_password;
 		}
 
 		return $verify;

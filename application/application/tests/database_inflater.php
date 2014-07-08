@@ -40,25 +40,26 @@ class DataBase_inflater {
 	}
 
 	public function create_user($email, $username, $password) {
+		$hashed_password = $this->get_password_hash($password);
 		return self::$pdo->exec(
 			"INSERT INTO `my_user` ( " .
 			" `email` , `username` , `password` , `permission` , `state` , `last_ip` , `last_access` , `login_attempts` " .
 			" ) " .
 			" VALUES ( " .
-			" '" . $email . "', '" . $username . "', '" . $this->get_password_hash($password) . "', '1', 'A', '127.0.0.1', NOW( ) , '0' " .
+			" '" . $email . "', '" . $username . "', '" . $hashed_password . "', '1', 'A', '127.0.0.1', NOW( ) , '0' " .
 			" ) "
 		);
 	}
 
 	private function get_password_hash($password) {
-        $password = NULL;
+        $password_hashed = NULL;
 
         if (strnatcmp(phpversion(),'5.5.0') >= 0) {
-            $password = password_hash($password, PASSWORD_BCRYPT);
+            $password_hashed = password_hash($password, PASSWORD_BCRYPT);
         } else {
-            $password = crypt($password);
+            $password_hashed = crypt($password);
         }
 
-        return $password;
+        return $password_hashed;
     }
 }
