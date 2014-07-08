@@ -160,6 +160,20 @@ class User extends CI_Model {
 		return NULL;
 	}
 
+	public function get_token_date_remember($email) {
+		$this->db->select('creation_date');
+		$this->db->from('user_remember_token');
+		$this->db->where('LOWER(email)', strtolower(trim($email)));
+		$this->db->where('state','A');
+
+		$query = $this->db->get();
+		if ($query->num_rows() === 1) {
+        	return $query->row()->creation_date;
+		}
+
+		return NULL;
+	}
+
 	public function invalidate_token_remember($email) {
 		$this->db->set('state', 'I');
 		$this->db->where('email', $email);

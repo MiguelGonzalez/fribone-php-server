@@ -121,7 +121,7 @@ class Login_auth {
 					return TRUE;
 				}
 			}
-			
+
 			$this->ci->User->increase_remember_attemps($email);
 		}
 		return FALSE;
@@ -181,13 +181,36 @@ class Login_auth {
 
 		if (!is_null($token_hashed)) {
 			if($this->is_password_verify($token_check, $token_hashed)) {
-				$this->ci->User->invalidate_token_remember($email);
+				if($this->is_still_active($email)) {
+					$this->ci->User->invalidate_token_remember($email);
 
-				return TRUE;
+					return TRUE;
+				}
 			}
 		}
 
 		return FALSE;
+	}
+
+	public function is_still_active($email, $system_time = NULL) {
+		$date_token = $this->ci->User->get_token_date_remember(
+			$email
+		);
+
+		if(!is_null($date_token)) {
+			if(is_null($system_time)) {
+				$system_time = strtotime(date('Y-m-d H:i:s'));
+			}
+			if($system_time <= $this->get_date_hours_active($date_token, 1)) {
+				return TRUE;
+			}
+			$this->ci->User->invalidate_token_remember($email);
+		}
+		return FALSE;
+	}
+
+	private function get_date_hours_active($date_token, $num_hours) {
+		return strtotime($date_token) + 60 * 60 * $num_hours;
 	}
 
 	private function get_password_hash($password) {

@@ -2010,3 +2010,453 @@ DEBUG - 2014-07-08 22:05:42 --> DB Transaction Failure
 ERROR - 2014-07-08 22:05:42 --> Query error: Duplicate entry 'test@test.com' for key 'email'
 ERROR - 2014-07-08 22:05:42 --> Severity: Notice  --> Array to string conversion /var/www/github/fribone-php-server/application/system/database/DB_driver.php 1165
 DEBUG - 2014-07-08 22:05:42 --> Language file loaded: language/english/db_lang.php
+DEBUG - 2014-07-08 22:58:14 --> Config Class Initialized
+DEBUG - 2014-07-08 22:58:14 --> Hooks Class Initialized
+DEBUG - 2014-07-08 22:58:14 --> Utf8 Class Initialized
+DEBUG - 2014-07-08 22:58:14 --> UTF-8 Support Enabled
+DEBUG - 2014-07-08 22:58:14 --> URI Class Initialized
+DEBUG - 2014-07-08 22:58:14 --> Router Class Initialized
+DEBUG - 2014-07-08 22:58:14 --> No URI present. Default controller set.
+DEBUG - 2014-07-08 22:58:14 --> Output Class Initialized
+DEBUG - 2014-07-08 22:58:14 --> Security Class Initialized
+DEBUG - 2014-07-08 22:58:14 --> Input Class Initialized
+DEBUG - 2014-07-08 22:58:14 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-07-08 22:58:14 --> Language Class Initialized
+DEBUG - 2014-07-08 22:58:14 --> Loader Class Initialized
+DEBUG - 2014-07-08 22:58:14 --> Helper loaded: url_helper
+DEBUG - 2014-07-08 22:58:14 --> Database Driver Class Initialized
+ERROR - 2014-07-08 22:58:14 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-08 22:58:14 --> Controller Class Initialized
+DEBUG - 2014-07-08 22:58:14 --> Model Class Initialized
+DEBUG - 2014-07-08 22:58:14 --> Model Class Initialized
+DEBUG - 2014-07-08 22:58:14 --> Helper loaded: email_helper
+DEBUG - 2014-07-08 22:58:14 --> Login_auth class already loaded. Second attempt ignored.
+DEBUG - 2014-07-08 22:58:14 --> Login_auth class already loaded. Second attempt ignored.
+DEBUG - 2014-07-08 22:58:14 --> Model Class Initialized
+ERROR - 2014-07-08 22:58:14 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-08 22:58:18 --> DB Transaction Failure
+ERROR - 2014-07-08 22:58:18 --> Query error: Duplicate entry 'test@test.com' for key 'email'
+ERROR - 2014-07-08 22:58:18 --> Severity: Notice  --> Array to string conversion /var/www/github/fribone-php-server/application/system/database/DB_driver.php 1165
+DEBUG - 2014-07-08 22:58:18 --> Language file loaded: language/english/db_lang.php
+DEBUG - 2014-07-08 22:58:32 --> Config Class Initialized
+DEBUG - 2014-07-08 22:58:32 --> Hooks Class Initialized
+DEBUG - 2014-07-08 22:58:32 --> Utf8 Class Initialized
+DEBUG - 2014-07-08 22:58:32 --> UTF-8 Support Enabled
+DEBUG - 2014-07-08 22:58:32 --> URI Class Initialized
+DEBUG - 2014-07-08 22:58:32 --> Router Class Initialized
+DEBUG - 2014-07-08 22:58:32 --> No URI present. Default controller set.
+DEBUG - 2014-07-08 22:58:32 --> Output Class Initialized
+DEBUG - 2014-07-08 22:58:32 --> Security Class Initialized
+DEBUG - 2014-07-08 22:58:32 --> Input Class Initialized
+DEBUG - 2014-07-08 22:58:32 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-07-08 22:58:32 --> Language Class Initialized
+DEBUG - 2014-07-08 22:58:32 --> Loader Class Initialized
+DEBUG - 2014-07-08 22:58:32 --> Helper loaded: url_helper
+DEBUG - 2014-07-08 22:58:32 --> Database Driver Class Initialized
+ERROR - 2014-07-08 22:58:32 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-08 22:58:32 --> Controller Class Initialized
+DEBUG - 2014-07-08 22:58:32 --> Model Class Initialized
+DEBUG - 2014-07-08 22:58:32 --> Model Class Initialized
+DEBUG - 2014-07-08 22:58:32 --> Helper loaded: email_helper
+DEBUG - 2014-07-08 22:58:32 --> Login_auth class already loaded. Second attempt ignored.
+DEBUG - 2014-07-08 22:58:32 --> Login_auth class already loaded. Second attempt ignored.
+DEBUG - 2014-07-08 22:58:32 --> Model Class Initialized
+ERROR - 2014-07-08 22:58:32 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-08 22:58:37 --> DB Transaction Failure
+ERROR - 2014-07-08 22:58:37 --> Query error: Duplicate entry 'test@test.com' for key 'email'
+ERROR - 2014-07-08 22:58:37 --> Severity: Notice  --> Array to string conversion /var/www/github/fribone-php-server/application/system/database/DB_driver.php 1165
+DEBUG - 2014-07-08 22:58:37 --> Language file loaded: language/english/db_lang.php
+DEBUG - 2014-07-08 22:59:45 --> Config Class Initialized
+DEBUG - 2014-07-08 22:59:45 --> Hooks Class Initialized
+DEBUG - 2014-07-08 22:59:45 --> Utf8 Class Initialized
+DEBUG - 2014-07-08 22:59:45 --> UTF-8 Support Enabled
+DEBUG - 2014-07-08 22:59:45 --> URI Class Initialized
+DEBUG - 2014-07-08 22:59:45 --> Router Class Initialized
+DEBUG - 2014-07-08 22:59:45 --> No URI present. Default controller set.
+DEBUG - 2014-07-08 22:59:45 --> Output Class Initialized
+DEBUG - 2014-07-08 22:59:45 --> Security Class Initialized
+DEBUG - 2014-07-08 22:59:45 --> Input Class Initialized
+DEBUG - 2014-07-08 22:59:45 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-07-08 22:59:45 --> Language Class Initialized
+DEBUG - 2014-07-08 22:59:45 --> Loader Class Initialized
+DEBUG - 2014-07-08 22:59:45 --> Helper loaded: url_helper
+DEBUG - 2014-07-08 22:59:45 --> Database Driver Class Initialized
+ERROR - 2014-07-08 22:59:45 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-08 22:59:45 --> Controller Class Initialized
+DEBUG - 2014-07-08 22:59:45 --> Model Class Initialized
+DEBUG - 2014-07-08 22:59:45 --> Model Class Initialized
+DEBUG - 2014-07-08 22:59:45 --> Helper loaded: email_helper
+DEBUG - 2014-07-08 22:59:45 --> Login_auth class already loaded. Second attempt ignored.
+DEBUG - 2014-07-08 22:59:45 --> Login_auth class already loaded. Second attempt ignored.
+DEBUG - 2014-07-08 22:59:45 --> Model Class Initialized
+ERROR - 2014-07-08 22:59:45 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-08 22:59:49 --> DB Transaction Failure
+ERROR - 2014-07-08 22:59:49 --> Query error: Duplicate entry 'test@test.com' for key 'email'
+ERROR - 2014-07-08 22:59:49 --> Severity: Notice  --> Array to string conversion /var/www/github/fribone-php-server/application/system/database/DB_driver.php 1165
+DEBUG - 2014-07-08 22:59:49 --> Language file loaded: language/english/db_lang.php
+DEBUG - 2014-07-08 23:01:16 --> Config Class Initialized
+DEBUG - 2014-07-08 23:01:16 --> Hooks Class Initialized
+DEBUG - 2014-07-08 23:01:16 --> Utf8 Class Initialized
+DEBUG - 2014-07-08 23:01:16 --> UTF-8 Support Enabled
+DEBUG - 2014-07-08 23:01:16 --> URI Class Initialized
+DEBUG - 2014-07-08 23:01:16 --> Router Class Initialized
+DEBUG - 2014-07-08 23:01:16 --> No URI present. Default controller set.
+DEBUG - 2014-07-08 23:01:16 --> Output Class Initialized
+DEBUG - 2014-07-08 23:01:16 --> Security Class Initialized
+DEBUG - 2014-07-08 23:01:16 --> Input Class Initialized
+DEBUG - 2014-07-08 23:01:16 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-07-08 23:01:16 --> Language Class Initialized
+DEBUG - 2014-07-08 23:01:16 --> Loader Class Initialized
+DEBUG - 2014-07-08 23:01:16 --> Helper loaded: url_helper
+DEBUG - 2014-07-08 23:01:16 --> Database Driver Class Initialized
+ERROR - 2014-07-08 23:01:16 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-08 23:01:16 --> Controller Class Initialized
+DEBUG - 2014-07-08 23:01:16 --> Model Class Initialized
+DEBUG - 2014-07-08 23:01:16 --> Model Class Initialized
+DEBUG - 2014-07-08 23:01:16 --> Helper loaded: email_helper
+DEBUG - 2014-07-08 23:01:16 --> Login_auth class already loaded. Second attempt ignored.
+DEBUG - 2014-07-08 23:01:16 --> Login_auth class already loaded. Second attempt ignored.
+DEBUG - 2014-07-08 23:01:16 --> Model Class Initialized
+ERROR - 2014-07-08 23:01:16 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-08 23:01:20 --> DB Transaction Failure
+ERROR - 2014-07-08 23:01:20 --> Query error: Duplicate entry 'test@test.com' for key 'email'
+ERROR - 2014-07-08 23:01:20 --> Severity: Notice  --> Array to string conversion /var/www/github/fribone-php-server/application/system/database/DB_driver.php 1165
+DEBUG - 2014-07-08 23:01:20 --> Language file loaded: language/english/db_lang.php
+DEBUG - 2014-07-08 23:02:00 --> Config Class Initialized
+DEBUG - 2014-07-08 23:02:00 --> Hooks Class Initialized
+DEBUG - 2014-07-08 23:02:00 --> Utf8 Class Initialized
+DEBUG - 2014-07-08 23:02:00 --> UTF-8 Support Enabled
+DEBUG - 2014-07-08 23:02:00 --> URI Class Initialized
+DEBUG - 2014-07-08 23:02:00 --> Router Class Initialized
+DEBUG - 2014-07-08 23:02:00 --> No URI present. Default controller set.
+DEBUG - 2014-07-08 23:02:00 --> Output Class Initialized
+DEBUG - 2014-07-08 23:02:00 --> Security Class Initialized
+DEBUG - 2014-07-08 23:02:00 --> Input Class Initialized
+DEBUG - 2014-07-08 23:02:00 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-07-08 23:02:00 --> Language Class Initialized
+DEBUG - 2014-07-08 23:02:00 --> Loader Class Initialized
+DEBUG - 2014-07-08 23:02:00 --> Helper loaded: url_helper
+DEBUG - 2014-07-08 23:02:00 --> Database Driver Class Initialized
+ERROR - 2014-07-08 23:02:00 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-08 23:02:00 --> Controller Class Initialized
+DEBUG - 2014-07-08 23:02:19 --> Config Class Initialized
+DEBUG - 2014-07-08 23:02:19 --> Hooks Class Initialized
+DEBUG - 2014-07-08 23:02:19 --> Utf8 Class Initialized
+DEBUG - 2014-07-08 23:02:19 --> UTF-8 Support Enabled
+DEBUG - 2014-07-08 23:02:19 --> URI Class Initialized
+DEBUG - 2014-07-08 23:02:19 --> Router Class Initialized
+DEBUG - 2014-07-08 23:02:19 --> No URI present. Default controller set.
+DEBUG - 2014-07-08 23:02:19 --> Output Class Initialized
+DEBUG - 2014-07-08 23:02:19 --> Security Class Initialized
+DEBUG - 2014-07-08 23:02:19 --> Input Class Initialized
+DEBUG - 2014-07-08 23:02:19 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-07-08 23:02:19 --> Language Class Initialized
+DEBUG - 2014-07-08 23:02:19 --> Loader Class Initialized
+DEBUG - 2014-07-08 23:02:19 --> Helper loaded: url_helper
+DEBUG - 2014-07-08 23:02:19 --> Database Driver Class Initialized
+ERROR - 2014-07-08 23:02:19 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-08 23:02:19 --> Controller Class Initialized
+DEBUG - 2014-07-08 23:02:39 --> Config Class Initialized
+DEBUG - 2014-07-08 23:02:39 --> Hooks Class Initialized
+DEBUG - 2014-07-08 23:02:39 --> Utf8 Class Initialized
+DEBUG - 2014-07-08 23:02:39 --> UTF-8 Support Enabled
+DEBUG - 2014-07-08 23:02:39 --> URI Class Initialized
+DEBUG - 2014-07-08 23:02:39 --> Router Class Initialized
+DEBUG - 2014-07-08 23:02:39 --> No URI present. Default controller set.
+DEBUG - 2014-07-08 23:02:39 --> Output Class Initialized
+DEBUG - 2014-07-08 23:02:39 --> Security Class Initialized
+DEBUG - 2014-07-08 23:02:39 --> Input Class Initialized
+DEBUG - 2014-07-08 23:02:39 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-07-08 23:02:39 --> Language Class Initialized
+DEBUG - 2014-07-08 23:02:39 --> Loader Class Initialized
+DEBUG - 2014-07-08 23:02:39 --> Helper loaded: url_helper
+DEBUG - 2014-07-08 23:02:39 --> Database Driver Class Initialized
+ERROR - 2014-07-08 23:02:39 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-08 23:02:39 --> Controller Class Initialized
+DEBUG - 2014-07-08 23:02:39 --> Model Class Initialized
+DEBUG - 2014-07-08 23:02:39 --> Model Class Initialized
+DEBUG - 2014-07-08 23:02:39 --> Helper loaded: email_helper
+DEBUG - 2014-07-08 23:02:39 --> Login_auth class already loaded. Second attempt ignored.
+DEBUG - 2014-07-08 23:02:39 --> Login_auth class already loaded. Second attempt ignored.
+DEBUG - 2014-07-08 23:02:39 --> Model Class Initialized
+ERROR - 2014-07-08 23:02:39 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-08 23:02:43 --> DB Transaction Failure
+ERROR - 2014-07-08 23:02:43 --> Query error: Duplicate entry 'test@test.com' for key 'email'
+ERROR - 2014-07-08 23:02:43 --> Severity: Notice  --> Array to string conversion /var/www/github/fribone-php-server/application/system/database/DB_driver.php 1165
+DEBUG - 2014-07-08 23:02:43 --> Language file loaded: language/english/db_lang.php
+DEBUG - 2014-07-08 23:03:50 --> Config Class Initialized
+DEBUG - 2014-07-08 23:03:50 --> Hooks Class Initialized
+DEBUG - 2014-07-08 23:03:50 --> Utf8 Class Initialized
+DEBUG - 2014-07-08 23:03:50 --> UTF-8 Support Enabled
+DEBUG - 2014-07-08 23:03:50 --> URI Class Initialized
+DEBUG - 2014-07-08 23:03:50 --> Router Class Initialized
+DEBUG - 2014-07-08 23:03:50 --> No URI present. Default controller set.
+DEBUG - 2014-07-08 23:03:50 --> Output Class Initialized
+DEBUG - 2014-07-08 23:03:50 --> Security Class Initialized
+DEBUG - 2014-07-08 23:03:50 --> Input Class Initialized
+DEBUG - 2014-07-08 23:03:50 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-07-08 23:03:50 --> Language Class Initialized
+DEBUG - 2014-07-08 23:03:50 --> Loader Class Initialized
+DEBUG - 2014-07-08 23:03:50 --> Helper loaded: url_helper
+DEBUG - 2014-07-08 23:03:50 --> Database Driver Class Initialized
+ERROR - 2014-07-08 23:03:50 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-08 23:03:50 --> Controller Class Initialized
+DEBUG - 2014-07-08 23:03:50 --> Model Class Initialized
+DEBUG - 2014-07-08 23:03:50 --> Model Class Initialized
+DEBUG - 2014-07-08 23:03:50 --> Helper loaded: email_helper
+DEBUG - 2014-07-08 23:03:50 --> Login_auth class already loaded. Second attempt ignored.
+DEBUG - 2014-07-08 23:03:50 --> Login_auth class already loaded. Second attempt ignored.
+DEBUG - 2014-07-08 23:03:50 --> Model Class Initialized
+ERROR - 2014-07-08 23:03:50 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+ERROR - 2014-07-08 23:03:53 --> Severity: Notice  --> Undefined property: stdClass::$token /var/www/github/fribone-php-server/application/application/models/user.php 171
+DEBUG - 2014-07-08 23:03:54 --> DB Transaction Failure
+ERROR - 2014-07-08 23:03:54 --> Query error: Duplicate entry 'test@test.com' for key 'email'
+ERROR - 2014-07-08 23:03:54 --> Severity: Notice  --> Array to string conversion /var/www/github/fribone-php-server/application/system/database/DB_driver.php 1165
+DEBUG - 2014-07-08 23:03:54 --> Language file loaded: language/english/db_lang.php
+DEBUG - 2014-07-08 23:04:17 --> Config Class Initialized
+DEBUG - 2014-07-08 23:04:17 --> Hooks Class Initialized
+DEBUG - 2014-07-08 23:04:17 --> Utf8 Class Initialized
+DEBUG - 2014-07-08 23:04:17 --> UTF-8 Support Enabled
+DEBUG - 2014-07-08 23:04:17 --> URI Class Initialized
+DEBUG - 2014-07-08 23:04:17 --> Router Class Initialized
+DEBUG - 2014-07-08 23:04:17 --> No URI present. Default controller set.
+DEBUG - 2014-07-08 23:04:17 --> Output Class Initialized
+DEBUG - 2014-07-08 23:04:17 --> Security Class Initialized
+DEBUG - 2014-07-08 23:04:17 --> Input Class Initialized
+DEBUG - 2014-07-08 23:04:17 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-07-08 23:04:17 --> Language Class Initialized
+DEBUG - 2014-07-08 23:04:17 --> Loader Class Initialized
+DEBUG - 2014-07-08 23:04:17 --> Helper loaded: url_helper
+DEBUG - 2014-07-08 23:04:17 --> Database Driver Class Initialized
+ERROR - 2014-07-08 23:04:17 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-08 23:04:17 --> Controller Class Initialized
+DEBUG - 2014-07-08 23:04:17 --> Model Class Initialized
+DEBUG - 2014-07-08 23:04:17 --> Model Class Initialized
+DEBUG - 2014-07-08 23:04:17 --> Helper loaded: email_helper
+DEBUG - 2014-07-08 23:04:17 --> Login_auth class already loaded. Second attempt ignored.
+DEBUG - 2014-07-08 23:04:17 --> Login_auth class already loaded. Second attempt ignored.
+DEBUG - 2014-07-08 23:04:17 --> Model Class Initialized
+ERROR - 2014-07-08 23:04:18 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-08 23:04:23 --> DB Transaction Failure
+ERROR - 2014-07-08 23:04:23 --> Query error: Duplicate entry 'test@test.com' for key 'email'
+ERROR - 2014-07-08 23:04:23 --> Severity: Notice  --> Array to string conversion /var/www/github/fribone-php-server/application/system/database/DB_driver.php 1165
+DEBUG - 2014-07-08 23:04:23 --> Language file loaded: language/english/db_lang.php
+DEBUG - 2014-07-08 23:05:38 --> Config Class Initialized
+DEBUG - 2014-07-08 23:05:38 --> Hooks Class Initialized
+DEBUG - 2014-07-08 23:05:38 --> Utf8 Class Initialized
+DEBUG - 2014-07-08 23:05:38 --> UTF-8 Support Enabled
+DEBUG - 2014-07-08 23:05:38 --> URI Class Initialized
+DEBUG - 2014-07-08 23:05:38 --> Router Class Initialized
+DEBUG - 2014-07-08 23:05:38 --> No URI present. Default controller set.
+DEBUG - 2014-07-08 23:05:38 --> Output Class Initialized
+DEBUG - 2014-07-08 23:05:38 --> Security Class Initialized
+DEBUG - 2014-07-08 23:05:38 --> Input Class Initialized
+DEBUG - 2014-07-08 23:05:38 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-07-08 23:05:38 --> Language Class Initialized
+DEBUG - 2014-07-08 23:05:38 --> Loader Class Initialized
+DEBUG - 2014-07-08 23:05:38 --> Helper loaded: url_helper
+DEBUG - 2014-07-08 23:05:38 --> Database Driver Class Initialized
+ERROR - 2014-07-08 23:05:38 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-08 23:05:38 --> Controller Class Initialized
+DEBUG - 2014-07-08 23:05:38 --> Model Class Initialized
+DEBUG - 2014-07-08 23:05:38 --> Model Class Initialized
+DEBUG - 2014-07-08 23:05:38 --> Helper loaded: email_helper
+DEBUG - 2014-07-08 23:05:38 --> Login_auth class already loaded. Second attempt ignored.
+DEBUG - 2014-07-08 23:05:38 --> Login_auth class already loaded. Second attempt ignored.
+DEBUG - 2014-07-08 23:05:38 --> Model Class Initialized
+ERROR - 2014-07-08 23:05:38 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-08 23:05:44 --> DB Transaction Failure
+ERROR - 2014-07-08 23:05:44 --> Query error: Duplicate entry 'test@test.com' for key 'email'
+ERROR - 2014-07-08 23:05:44 --> Severity: Notice  --> Array to string conversion /var/www/github/fribone-php-server/application/system/database/DB_driver.php 1165
+DEBUG - 2014-07-08 23:05:44 --> Language file loaded: language/english/db_lang.php
+DEBUG - 2014-07-08 23:07:04 --> Config Class Initialized
+DEBUG - 2014-07-08 23:07:04 --> Hooks Class Initialized
+DEBUG - 2014-07-08 23:07:04 --> Utf8 Class Initialized
+DEBUG - 2014-07-08 23:07:04 --> UTF-8 Support Enabled
+DEBUG - 2014-07-08 23:07:04 --> URI Class Initialized
+DEBUG - 2014-07-08 23:07:04 --> Router Class Initialized
+DEBUG - 2014-07-08 23:07:04 --> No URI present. Default controller set.
+DEBUG - 2014-07-08 23:07:04 --> Output Class Initialized
+DEBUG - 2014-07-08 23:07:04 --> Security Class Initialized
+DEBUG - 2014-07-08 23:07:04 --> Input Class Initialized
+DEBUG - 2014-07-08 23:07:04 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-07-08 23:07:04 --> Language Class Initialized
+DEBUG - 2014-07-08 23:07:04 --> Loader Class Initialized
+DEBUG - 2014-07-08 23:07:04 --> Helper loaded: url_helper
+DEBUG - 2014-07-08 23:07:04 --> Database Driver Class Initialized
+ERROR - 2014-07-08 23:07:04 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-08 23:07:04 --> Controller Class Initialized
+DEBUG - 2014-07-08 23:07:52 --> Config Class Initialized
+DEBUG - 2014-07-08 23:07:52 --> Hooks Class Initialized
+DEBUG - 2014-07-08 23:07:52 --> Utf8 Class Initialized
+DEBUG - 2014-07-08 23:07:52 --> UTF-8 Support Enabled
+DEBUG - 2014-07-08 23:07:52 --> URI Class Initialized
+DEBUG - 2014-07-08 23:07:52 --> Router Class Initialized
+DEBUG - 2014-07-08 23:07:52 --> No URI present. Default controller set.
+DEBUG - 2014-07-08 23:07:52 --> Output Class Initialized
+DEBUG - 2014-07-08 23:07:52 --> Security Class Initialized
+DEBUG - 2014-07-08 23:07:52 --> Input Class Initialized
+DEBUG - 2014-07-08 23:07:52 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-07-08 23:07:52 --> Language Class Initialized
+DEBUG - 2014-07-08 23:07:52 --> Loader Class Initialized
+DEBUG - 2014-07-08 23:07:52 --> Helper loaded: url_helper
+DEBUG - 2014-07-08 23:07:52 --> Database Driver Class Initialized
+ERROR - 2014-07-08 23:07:52 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-08 23:07:52 --> Controller Class Initialized
+DEBUG - 2014-07-08 23:07:52 --> Model Class Initialized
+DEBUG - 2014-07-08 23:07:52 --> Model Class Initialized
+DEBUG - 2014-07-08 23:07:52 --> Helper loaded: email_helper
+DEBUG - 2014-07-08 23:07:52 --> Login_auth class already loaded. Second attempt ignored.
+DEBUG - 2014-07-08 23:07:52 --> Login_auth class already loaded. Second attempt ignored.
+DEBUG - 2014-07-08 23:07:52 --> Model Class Initialized
+ERROR - 2014-07-08 23:07:52 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-08 23:07:57 --> DB Transaction Failure
+ERROR - 2014-07-08 23:07:57 --> Query error: Duplicate entry 'test@test.com' for key 'email'
+ERROR - 2014-07-08 23:07:57 --> Severity: Notice  --> Array to string conversion /var/www/github/fribone-php-server/application/system/database/DB_driver.php 1165
+DEBUG - 2014-07-08 23:07:57 --> Language file loaded: language/english/db_lang.php
+DEBUG - 2014-07-08 23:11:06 --> Config Class Initialized
+DEBUG - 2014-07-08 23:11:06 --> Hooks Class Initialized
+DEBUG - 2014-07-08 23:11:06 --> Utf8 Class Initialized
+DEBUG - 2014-07-08 23:11:06 --> UTF-8 Support Enabled
+DEBUG - 2014-07-08 23:11:06 --> URI Class Initialized
+DEBUG - 2014-07-08 23:11:06 --> Router Class Initialized
+DEBUG - 2014-07-08 23:11:06 --> No URI present. Default controller set.
+DEBUG - 2014-07-08 23:11:06 --> Output Class Initialized
+DEBUG - 2014-07-08 23:11:06 --> Security Class Initialized
+DEBUG - 2014-07-08 23:11:06 --> Input Class Initialized
+DEBUG - 2014-07-08 23:11:06 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-07-08 23:11:06 --> Language Class Initialized
+DEBUG - 2014-07-08 23:11:06 --> Loader Class Initialized
+DEBUG - 2014-07-08 23:11:06 --> Helper loaded: url_helper
+DEBUG - 2014-07-08 23:11:06 --> Database Driver Class Initialized
+ERROR - 2014-07-08 23:11:06 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-08 23:11:06 --> Controller Class Initialized
+DEBUG - 2014-07-08 23:11:06 --> Model Class Initialized
+DEBUG - 2014-07-08 23:11:06 --> Model Class Initialized
+DEBUG - 2014-07-08 23:11:06 --> Helper loaded: email_helper
+DEBUG - 2014-07-08 23:11:06 --> Login_auth class already loaded. Second attempt ignored.
+DEBUG - 2014-07-08 23:11:06 --> Login_auth class already loaded. Second attempt ignored.
+DEBUG - 2014-07-08 23:11:06 --> Login_auth class already loaded. Second attempt ignored.
+DEBUG - 2014-07-08 23:11:06 --> Model Class Initialized
+ERROR - 2014-07-08 23:11:07 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-08 23:11:13 --> DB Transaction Failure
+ERROR - 2014-07-08 23:11:13 --> Query error: Duplicate entry 'test@test.com' for key 'email'
+ERROR - 2014-07-08 23:11:13 --> Severity: Notice  --> Array to string conversion /var/www/github/fribone-php-server/application/system/database/DB_driver.php 1165
+DEBUG - 2014-07-08 23:11:13 --> Language file loaded: language/english/db_lang.php
+DEBUG - 2014-07-08 23:11:39 --> Config Class Initialized
+DEBUG - 2014-07-08 23:11:39 --> Hooks Class Initialized
+DEBUG - 2014-07-08 23:11:39 --> Utf8 Class Initialized
+DEBUG - 2014-07-08 23:11:39 --> UTF-8 Support Enabled
+DEBUG - 2014-07-08 23:11:39 --> URI Class Initialized
+DEBUG - 2014-07-08 23:11:39 --> Router Class Initialized
+DEBUG - 2014-07-08 23:11:39 --> No URI present. Default controller set.
+DEBUG - 2014-07-08 23:11:39 --> Output Class Initialized
+DEBUG - 2014-07-08 23:11:39 --> Security Class Initialized
+DEBUG - 2014-07-08 23:11:39 --> Input Class Initialized
+DEBUG - 2014-07-08 23:11:39 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-07-08 23:11:39 --> Language Class Initialized
+DEBUG - 2014-07-08 23:11:39 --> Loader Class Initialized
+DEBUG - 2014-07-08 23:11:39 --> Helper loaded: url_helper
+DEBUG - 2014-07-08 23:11:39 --> Database Driver Class Initialized
+ERROR - 2014-07-08 23:11:39 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-08 23:11:39 --> Controller Class Initialized
+DEBUG - 2014-07-08 23:11:39 --> Model Class Initialized
+DEBUG - 2014-07-08 23:11:39 --> Model Class Initialized
+DEBUG - 2014-07-08 23:11:39 --> Helper loaded: email_helper
+DEBUG - 2014-07-08 23:11:39 --> Login_auth class already loaded. Second attempt ignored.
+DEBUG - 2014-07-08 23:11:39 --> Login_auth class already loaded. Second attempt ignored.
+DEBUG - 2014-07-08 23:11:39 --> Login_auth class already loaded. Second attempt ignored.
+DEBUG - 2014-07-08 23:11:39 --> Model Class Initialized
+ERROR - 2014-07-08 23:11:40 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-08 23:11:46 --> DB Transaction Failure
+ERROR - 2014-07-08 23:11:46 --> Query error: Duplicate entry 'test@test.com' for key 'email'
+ERROR - 2014-07-08 23:11:46 --> Severity: Notice  --> Array to string conversion /var/www/github/fribone-php-server/application/system/database/DB_driver.php 1165
+DEBUG - 2014-07-08 23:11:46 --> Language file loaded: language/english/db_lang.php
+DEBUG - 2014-07-08 23:12:49 --> Config Class Initialized
+DEBUG - 2014-07-08 23:12:49 --> Hooks Class Initialized
+DEBUG - 2014-07-08 23:12:49 --> Utf8 Class Initialized
+DEBUG - 2014-07-08 23:12:49 --> UTF-8 Support Enabled
+DEBUG - 2014-07-08 23:12:49 --> URI Class Initialized
+DEBUG - 2014-07-08 23:12:49 --> Router Class Initialized
+DEBUG - 2014-07-08 23:12:49 --> No URI present. Default controller set.
+DEBUG - 2014-07-08 23:12:49 --> Output Class Initialized
+DEBUG - 2014-07-08 23:12:49 --> Security Class Initialized
+DEBUG - 2014-07-08 23:12:49 --> Input Class Initialized
+DEBUG - 2014-07-08 23:12:49 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-07-08 23:12:49 --> Language Class Initialized
+DEBUG - 2014-07-08 23:12:49 --> Loader Class Initialized
+DEBUG - 2014-07-08 23:12:49 --> Helper loaded: url_helper
+DEBUG - 2014-07-08 23:12:49 --> Database Driver Class Initialized
+ERROR - 2014-07-08 23:12:49 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-08 23:12:49 --> Controller Class Initialized
+DEBUG - 2014-07-08 23:12:49 --> Model Class Initialized
+DEBUG - 2014-07-08 23:12:49 --> Model Class Initialized
+DEBUG - 2014-07-08 23:12:49 --> Helper loaded: email_helper
+DEBUG - 2014-07-08 23:12:49 --> Login_auth class already loaded. Second attempt ignored.
+DEBUG - 2014-07-08 23:12:49 --> Login_auth class already loaded. Second attempt ignored.
+DEBUG - 2014-07-08 23:12:49 --> Login_auth class already loaded. Second attempt ignored.
+DEBUG - 2014-07-08 23:12:49 --> Model Class Initialized
+ERROR - 2014-07-08 23:12:49 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-08 23:12:56 --> DB Transaction Failure
+ERROR - 2014-07-08 23:12:56 --> Query error: Duplicate entry 'test@test.com' for key 'email'
+ERROR - 2014-07-08 23:12:56 --> Severity: Notice  --> Array to string conversion /var/www/github/fribone-php-server/application/system/database/DB_driver.php 1165
+DEBUG - 2014-07-08 23:12:56 --> Language file loaded: language/english/db_lang.php
+DEBUG - 2014-07-08 23:13:15 --> Config Class Initialized
+DEBUG - 2014-07-08 23:13:15 --> Hooks Class Initialized
+DEBUG - 2014-07-08 23:13:15 --> Utf8 Class Initialized
+DEBUG - 2014-07-08 23:13:15 --> UTF-8 Support Enabled
+DEBUG - 2014-07-08 23:13:15 --> URI Class Initialized
+DEBUG - 2014-07-08 23:13:15 --> Router Class Initialized
+DEBUG - 2014-07-08 23:13:15 --> No URI present. Default controller set.
+DEBUG - 2014-07-08 23:13:15 --> Output Class Initialized
+DEBUG - 2014-07-08 23:13:15 --> Security Class Initialized
+DEBUG - 2014-07-08 23:13:15 --> Input Class Initialized
+DEBUG - 2014-07-08 23:13:15 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-07-08 23:13:15 --> Language Class Initialized
+DEBUG - 2014-07-08 23:13:15 --> Loader Class Initialized
+DEBUG - 2014-07-08 23:13:15 --> Helper loaded: url_helper
+DEBUG - 2014-07-08 23:13:15 --> Database Driver Class Initialized
+ERROR - 2014-07-08 23:13:15 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-08 23:13:15 --> Controller Class Initialized
+DEBUG - 2014-07-08 23:13:15 --> Model Class Initialized
+DEBUG - 2014-07-08 23:13:15 --> Model Class Initialized
+DEBUG - 2014-07-08 23:13:15 --> Helper loaded: email_helper
+DEBUG - 2014-07-08 23:13:15 --> Login_auth class already loaded. Second attempt ignored.
+DEBUG - 2014-07-08 23:13:15 --> Login_auth class already loaded. Second attempt ignored.
+DEBUG - 2014-07-08 23:13:15 --> Login_auth class already loaded. Second attempt ignored.
+DEBUG - 2014-07-08 23:13:15 --> Model Class Initialized
+ERROR - 2014-07-08 23:13:15 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-08 23:13:21 --> DB Transaction Failure
+ERROR - 2014-07-08 23:13:21 --> Query error: Duplicate entry 'test@test.com' for key 'email'
+ERROR - 2014-07-08 23:13:21 --> Severity: Notice  --> Array to string conversion /var/www/github/fribone-php-server/application/system/database/DB_driver.php 1165
+DEBUG - 2014-07-08 23:13:21 --> Language file loaded: language/english/db_lang.php
+DEBUG - 2014-07-08 23:13:50 --> Config Class Initialized
+DEBUG - 2014-07-08 23:13:50 --> Hooks Class Initialized
+DEBUG - 2014-07-08 23:13:50 --> Utf8 Class Initialized
+DEBUG - 2014-07-08 23:13:50 --> UTF-8 Support Enabled
+DEBUG - 2014-07-08 23:13:50 --> URI Class Initialized
+DEBUG - 2014-07-08 23:13:50 --> Router Class Initialized
+DEBUG - 2014-07-08 23:13:50 --> No URI present. Default controller set.
+DEBUG - 2014-07-08 23:13:50 --> Output Class Initialized
+DEBUG - 2014-07-08 23:13:50 --> Security Class Initialized
+DEBUG - 2014-07-08 23:13:50 --> Input Class Initialized
+DEBUG - 2014-07-08 23:13:50 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-07-08 23:13:50 --> Language Class Initialized
+DEBUG - 2014-07-08 23:13:50 --> Loader Class Initialized
+DEBUG - 2014-07-08 23:13:50 --> Helper loaded: url_helper
+DEBUG - 2014-07-08 23:13:50 --> Database Driver Class Initialized
+ERROR - 2014-07-08 23:13:50 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-08 23:13:50 --> Controller Class Initialized
+DEBUG - 2014-07-08 23:13:50 --> Model Class Initialized
+DEBUG - 2014-07-08 23:13:50 --> Model Class Initialized
+DEBUG - 2014-07-08 23:13:50 --> Helper loaded: email_helper
+DEBUG - 2014-07-08 23:13:50 --> Login_auth class already loaded. Second attempt ignored.
+DEBUG - 2014-07-08 23:13:50 --> Login_auth class already loaded. Second attempt ignored.
+DEBUG - 2014-07-08 23:13:50 --> Login_auth class already loaded. Second attempt ignored.
+DEBUG - 2014-07-08 23:13:50 --> Login_auth class already loaded. Second attempt ignored.
+DEBUG - 2014-07-08 23:13:50 --> Model Class Initialized
+ERROR - 2014-07-08 23:13:50 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-08 23:13:58 --> DB Transaction Failure
+ERROR - 2014-07-08 23:13:58 --> Query error: Duplicate entry 'test@test.com' for key 'email'
+ERROR - 2014-07-08 23:13:58 --> Severity: Notice  --> Array to string conversion /var/www/github/fribone-php-server/application/system/database/DB_driver.php 1165
+DEBUG - 2014-07-08 23:13:58 --> Language file loaded: language/english/db_lang.php

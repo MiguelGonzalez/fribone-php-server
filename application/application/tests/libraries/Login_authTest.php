@@ -86,6 +86,12 @@ class HomeTest extends PHPUnit_Framework_TestCase {
 
         $res = $this->CI->login_auth->login('test@test.com', '9876543');
         $this->assertTrue($res);
+    }
+
+    public function testRememberPasswordInvalid() {
+        self::$dataBase_inflater->create_user('test@test.com', 'TestName', '123456');
+
+        $remember_token = $this->CI->login_auth->password_remember('test@test.com');
 
         $remember_token = $this->CI->login_auth->password_remember('test@test.com');
         $res = $this->CI->login_auth->password_remember_change('test@test.com', 'invalid', '9876543');
@@ -96,6 +102,21 @@ class HomeTest extends PHPUnit_Framework_TestCase {
         $this->assertFalse($res);
 
         $res = $this->CI->login_auth->password_remember_change('test@test.com', $remember_token, '9876543');
-        $this->assertFalse($res);        
+        $this->assertFalse($res);      
+    }
+
+    public function testRememberPasswordExcededTime() {
+        self::$dataBase_inflater->create_user('test@test.com', 'TestName', '123456');
+
+        $remember_token = $this->CI->login_auth->password_remember('test@test.com');
+        $this->assertTrue(!is_null($remember_token));
+
+        $exceded_date_by_one_second = strtotime(date('Y-m-d H:i:s')) + 60 * 60 * 2 + 1;
+
+        $stillActive = $this->CI->login_auth->is_still_active('test@test.com', $exceded_date_by_one_second);
+        $this->assertFalse($stillActive);
+
+        $res = $this->CI->login_auth->password_remember_change('test@test.com', $remember_token, '9876543');
+        $this->assertFalse($res);
     }
 }
