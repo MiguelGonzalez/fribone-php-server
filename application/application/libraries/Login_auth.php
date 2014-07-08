@@ -62,18 +62,26 @@ class Login_auth {
 		return FALSE;
 	}
 
-	private function check_attempts($email) {
-		$numAttemps = $this->ci->User->get_login_attempts($email);
-
-		if($numAttemps === NULL) {
-			/* Do Nothing */
-		} elseif($numAttemps < 10) {
-			sleep($numAttemps);
-		} elseif($numAttemps < 20) {
-			sleep($numAttemps * 2);
+	public function create_user($email, $username, $password) {
+		if(strlen($email) === 0 || strlen($username) === 0 || strlen($password) === 0) {
+			$this->error = CREATE_NOT_SET_ALL_PARAMETERS;
+		} elseif (!$this->is_email_available($email)) {
+			$this->error = LOGIN_EMAIL_IN_USE;
 		} else {
-			sleep(45);
+			$resCreate = $this->ci->User->create_user(
+				$email,
+				$username,
+				$this->get_password_hash($password, PASSWORD_BCRYPT)
+			);
+			if (!is_null($resCreate)) {
+				$data['user_id'] = $resCreate['user_id'];
+
+				unset($data['last_ip']);
+				unset($data['password']);
+				return $data;
+			}
 		}
+		return NULL;
 	}
 
 	public function logout() {
@@ -105,30 +113,22 @@ class Login_auth {
 		return $this->ci->session->userdata('username');
 	}
 
-	public function create_user($email, $username, $password) {
-		if(strlen($email) === 0 || strlen($username) === 0 || strlen($password) === 0) {
-			$this->error = CREATE_NOT_SET_ALL_PARAMETERS;
-		} elseif (!$this->is_email_available($email)) {
-			$this->error = LOGIN_EMAIL_IN_USE;
-		} else {
-			$resCreate = $this->ci->User->create_user(
-				$email,
-				$username,
-				$this->get_password_hash($password, PASSWORD_BCRYPT)
-			);
-			if (!is_null($resCreate)) {
-				$data['user_id'] = $resCreate['user_id'];
-
-				unset($data['last_ip']);
-				unset($data['password']);
-				return $data;
-			}
-		}
-		return NULL;
-	}
-
 	public function is_email_available($email) {
 		return ((strlen($email) > 0) AND $this->ci->User->is_email_available($email));
+	}
+
+	private function check_attempts($email) {
+		$numAttemps = $this->ci->User->get_login_attempts($email);
+
+		if($numAttemps === NULL) {
+			/* Do Nothing */
+		} elseif($numAttemps < 10) {
+			sleep($numAttemps);
+		} elseif($numAttemps < 20) {
+			sleep($numAttemps * 2);
+		} else {
+			sleep(45);
+		}
 	}
 
 	private function get_password_hash($password) {
