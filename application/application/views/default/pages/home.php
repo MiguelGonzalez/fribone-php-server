@@ -14,6 +14,7 @@
 		</form>
 		<br>
 		<a href="<?php echo base_url(array('home','register'));?>">Registrarse</a>
+		<a href="<?php echo base_url(array('home','register'));?>">Recuperar contraseña</a>
 	<?php endif;?>
 </p>
 <p class="lead">

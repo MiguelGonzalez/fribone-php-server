@@ -649,3 +649,562 @@ DEBUG - 2014-07-09 20:42:39 --> DB Transaction Failure
 ERROR - 2014-07-09 20:42:39 --> Query error: Duplicate entry 'test@test.com' for key 'email'
 ERROR - 2014-07-09 20:42:39 --> Severity: Notice  --> Array to string conversion /var/www/github/fribone-php-server/application/system/database/DB_driver.php 1165
 DEBUG - 2014-07-09 20:42:39 --> Language file loaded: language/english/db_lang.php
+DEBUG - 2014-07-09 22:36:36 --> Config Class Initialized
+ERROR - 2014-07-09 22:36:36 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:36:36 --> Hooks Class Initialized
+ERROR - 2014-07-09 22:36:36 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:36:36 --> Utf8 Class Initialized
+ERROR - 2014-07-09 22:36:36 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:36:36 --> UTF-8 Support Enabled
+ERROR - 2014-07-09 22:36:36 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:36:36 --> URI Class Initialized
+ERROR - 2014-07-09 22:36:36 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:36:36 --> Router Class Initialized
+ERROR - 2014-07-09 22:36:36 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:36:36 --> No URI present. Default controller set.
+ERROR - 2014-07-09 22:36:36 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:36:36 --> Output Class Initialized
+ERROR - 2014-07-09 22:36:36 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:36:36 --> Security Class Initialized
+ERROR - 2014-07-09 22:36:36 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:36:36 --> Input Class Initialized
+ERROR - 2014-07-09 22:36:36 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:36:36 --> Global POST and COOKIE data sanitized
+ERROR - 2014-07-09 22:36:36 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:36:36 --> Language Class Initialized
+ERROR - 2014-07-09 22:36:36 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:36:36 --> Loader Class Initialized
+ERROR - 2014-07-09 22:36:36 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:36:36 --> Helper loaded: url_helper
+ERROR - 2014-07-09 22:36:36 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:36:36 --> Database Driver Class Initialized
+ERROR - 2014-07-09 22:36:36 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+ERROR - 2014-07-09 22:36:36 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+ERROR - 2014-07-09 22:36:36 --> Severity: Warning  --> mysql_pconnect(): Access denied for user 'fribone'@'localhost' (using password: YES) /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+ERROR - 2014-07-09 22:36:36 --> Unable to connect to the database
+ERROR - 2014-07-09 22:36:36 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:36:36 --> Language file loaded: language/english/db_lang.php
+ERROR - 2014-07-09 22:36:36 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:36:36 --> Config Class Initialized
+ERROR - 2014-07-09 22:36:36 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:36:36 --> Hooks Class Initialized
+ERROR - 2014-07-09 22:36:36 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:36:36 --> Utf8 Class Initialized
+ERROR - 2014-07-09 22:36:36 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:36:36 --> UTF-8 Support Enabled
+ERROR - 2014-07-09 22:36:36 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:36:36 --> URI Class Initialized
+ERROR - 2014-07-09 22:36:36 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:36:36 --> Router Class Initialized
+ERROR - 2014-07-09 22:36:36 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+ERROR - 2014-07-09 22:36:36 --> 404 Page Not Found --> favicon.ico
+ERROR - 2014-07-09 22:36:36 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:36:36 --> Config Class Initialized
+ERROR - 2014-07-09 22:36:36 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:36:36 --> Hooks Class Initialized
+ERROR - 2014-07-09 22:36:36 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:36:36 --> Utf8 Class Initialized
+ERROR - 2014-07-09 22:36:36 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:36:36 --> UTF-8 Support Enabled
+ERROR - 2014-07-09 22:36:36 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:36:36 --> URI Class Initialized
+ERROR - 2014-07-09 22:36:36 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:36:36 --> Router Class Initialized
+ERROR - 2014-07-09 22:36:36 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+ERROR - 2014-07-09 22:36:36 --> 404 Page Not Found --> favicon.ico
+ERROR - 2014-07-09 22:36:36 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:01 --> Config Class Initialized
+ERROR - 2014-07-09 22:37:01 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:01 --> Hooks Class Initialized
+ERROR - 2014-07-09 22:37:01 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:01 --> Utf8 Class Initialized
+ERROR - 2014-07-09 22:37:01 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:01 --> UTF-8 Support Enabled
+ERROR - 2014-07-09 22:37:01 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:01 --> URI Class Initialized
+ERROR - 2014-07-09 22:37:01 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:01 --> Router Class Initialized
+ERROR - 2014-07-09 22:37:01 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:01 --> No URI present. Default controller set.
+ERROR - 2014-07-09 22:37:01 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:01 --> Output Class Initialized
+ERROR - 2014-07-09 22:37:01 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:01 --> Security Class Initialized
+ERROR - 2014-07-09 22:37:01 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:01 --> Input Class Initialized
+ERROR - 2014-07-09 22:37:01 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:01 --> Global POST and COOKIE data sanitized
+ERROR - 2014-07-09 22:37:01 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:01 --> Language Class Initialized
+ERROR - 2014-07-09 22:37:01 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:01 --> Loader Class Initialized
+ERROR - 2014-07-09 22:37:01 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:01 --> Helper loaded: url_helper
+ERROR - 2014-07-09 22:37:01 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:01 --> Database Driver Class Initialized
+ERROR - 2014-07-09 22:37:01 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+ERROR - 2014-07-09 22:37:01 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-09 22:37:01 --> Controller Class Initialized
+ERROR - 2014-07-09 22:37:01 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:01 --> Session Class Initialized
+ERROR - 2014-07-09 22:37:01 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:01 --> Helper loaded: string_helper
+ERROR - 2014-07-09 22:37:01 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:01 --> Encrypt Class Initialized
+ERROR - 2014-07-09 22:37:01 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:01 --> A session cookie was not found.
+ERROR - 2014-07-09 22:37:01 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:01 --> Session routines successfully run
+ERROR - 2014-07-09 22:37:01 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:01 --> Model Class Initialized
+ERROR - 2014-07-09 22:37:01 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:01 --> Model Class Initialized
+ERROR - 2014-07-09 22:37:01 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:01 --> Helper loaded: email_helper
+ERROR - 2014-07-09 22:37:01 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:01 --> File loaded: application/views/default/pages/home.php
+ERROR - 2014-07-09 22:37:01 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:01 --> File loaded: application/views/default/template/header.php
+ERROR - 2014-07-09 22:37:01 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:01 --> File loaded: application/views/default/template/footer.php
+ERROR - 2014-07-09 22:37:01 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:01 --> File loaded: application/views/default/template/skeleton.php
+ERROR - 2014-07-09 22:37:01 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:01 --> Final output sent to browser
+ERROR - 2014-07-09 22:37:01 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:01 --> Total execution time: 0.1462
+ERROR - 2014-07-09 22:37:01 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:47 --> Config Class Initialized
+ERROR - 2014-07-09 22:37:47 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:47 --> Hooks Class Initialized
+ERROR - 2014-07-09 22:37:47 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:47 --> Utf8 Class Initialized
+ERROR - 2014-07-09 22:37:47 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:47 --> UTF-8 Support Enabled
+ERROR - 2014-07-09 22:37:47 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:47 --> URI Class Initialized
+ERROR - 2014-07-09 22:37:47 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:47 --> Router Class Initialized
+ERROR - 2014-07-09 22:37:47 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:47 --> No URI present. Default controller set.
+ERROR - 2014-07-09 22:37:47 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:47 --> Output Class Initialized
+ERROR - 2014-07-09 22:37:47 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:47 --> Security Class Initialized
+ERROR - 2014-07-09 22:37:47 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:47 --> Input Class Initialized
+ERROR - 2014-07-09 22:37:47 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:47 --> Global POST and COOKIE data sanitized
+ERROR - 2014-07-09 22:37:47 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:47 --> Language Class Initialized
+ERROR - 2014-07-09 22:37:47 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:47 --> Loader Class Initialized
+ERROR - 2014-07-09 22:37:47 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:47 --> Helper loaded: url_helper
+ERROR - 2014-07-09 22:37:47 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:47 --> Database Driver Class Initialized
+ERROR - 2014-07-09 22:37:47 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+ERROR - 2014-07-09 22:37:47 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-09 22:37:47 --> Controller Class Initialized
+ERROR - 2014-07-09 22:37:47 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:47 --> Session Class Initialized
+ERROR - 2014-07-09 22:37:47 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:47 --> Helper loaded: string_helper
+ERROR - 2014-07-09 22:37:47 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:47 --> Encrypt Class Initialized
+ERROR - 2014-07-09 22:37:47 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:47 --> Session routines successfully run
+ERROR - 2014-07-09 22:37:47 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:47 --> Model Class Initialized
+ERROR - 2014-07-09 22:37:47 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:47 --> Model Class Initialized
+ERROR - 2014-07-09 22:37:47 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:47 --> Helper loaded: email_helper
+ERROR - 2014-07-09 22:37:47 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:47 --> File loaded: application/views/default/pages/home.php
+ERROR - 2014-07-09 22:37:47 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:47 --> File loaded: application/views/default/template/header.php
+ERROR - 2014-07-09 22:37:47 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:47 --> File loaded: application/views/default/template/footer.php
+ERROR - 2014-07-09 22:37:47 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:47 --> File loaded: application/views/default/template/skeleton.php
+ERROR - 2014-07-09 22:37:47 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:47 --> Final output sent to browser
+ERROR - 2014-07-09 22:37:47 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:37:47 --> Total execution time: 0.0183
+ERROR - 2014-07-09 22:37:47 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:10 --> Config Class Initialized
+ERROR - 2014-07-09 22:38:10 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:10 --> Hooks Class Initialized
+ERROR - 2014-07-09 22:38:10 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:10 --> Utf8 Class Initialized
+ERROR - 2014-07-09 22:38:10 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:10 --> UTF-8 Support Enabled
+ERROR - 2014-07-09 22:38:10 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:10 --> URI Class Initialized
+ERROR - 2014-07-09 22:38:10 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:10 --> Router Class Initialized
+ERROR - 2014-07-09 22:38:10 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:10 --> Output Class Initialized
+ERROR - 2014-07-09 22:38:10 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:10 --> Security Class Initialized
+ERROR - 2014-07-09 22:38:10 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:10 --> Input Class Initialized
+ERROR - 2014-07-09 22:38:10 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:10 --> Global POST and COOKIE data sanitized
+ERROR - 2014-07-09 22:38:10 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:10 --> Language Class Initialized
+ERROR - 2014-07-09 22:38:10 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:10 --> Loader Class Initialized
+ERROR - 2014-07-09 22:38:10 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:10 --> Helper loaded: url_helper
+ERROR - 2014-07-09 22:38:10 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:10 --> Database Driver Class Initialized
+ERROR - 2014-07-09 22:38:10 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+ERROR - 2014-07-09 22:38:10 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-09 22:38:10 --> Controller Class Initialized
+ERROR - 2014-07-09 22:38:10 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:10 --> Session Class Initialized
+ERROR - 2014-07-09 22:38:10 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:10 --> Helper loaded: string_helper
+ERROR - 2014-07-09 22:38:10 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:10 --> Encrypt Class Initialized
+ERROR - 2014-07-09 22:38:10 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:10 --> Session routines successfully run
+ERROR - 2014-07-09 22:38:10 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:10 --> Model Class Initialized
+ERROR - 2014-07-09 22:38:10 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:10 --> Model Class Initialized
+ERROR - 2014-07-09 22:38:10 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:10 --> Helper loaded: email_helper
+ERROR - 2014-07-09 22:38:10 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:10 --> File loaded: application/views/default/pages/register.php
+ERROR - 2014-07-09 22:38:10 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:10 --> File loaded: application/views/default/template/header.php
+ERROR - 2014-07-09 22:38:10 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:10 --> File loaded: application/views/default/template/footer.php
+ERROR - 2014-07-09 22:38:10 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:10 --> File loaded: application/views/default/template/skeleton.php
+ERROR - 2014-07-09 22:38:10 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:10 --> Final output sent to browser
+ERROR - 2014-07-09 22:38:10 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:10 --> Total execution time: 0.0514
+ERROR - 2014-07-09 22:38:10 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:41 --> Config Class Initialized
+ERROR - 2014-07-09 22:38:41 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:41 --> Hooks Class Initialized
+ERROR - 2014-07-09 22:38:41 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:41 --> Utf8 Class Initialized
+ERROR - 2014-07-09 22:38:41 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:41 --> UTF-8 Support Enabled
+ERROR - 2014-07-09 22:38:41 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:41 --> URI Class Initialized
+ERROR - 2014-07-09 22:38:41 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:41 --> Router Class Initialized
+ERROR - 2014-07-09 22:38:41 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:41 --> Output Class Initialized
+ERROR - 2014-07-09 22:38:41 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:41 --> Security Class Initialized
+ERROR - 2014-07-09 22:38:41 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:41 --> Input Class Initialized
+ERROR - 2014-07-09 22:38:41 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:41 --> Global POST and COOKIE data sanitized
+ERROR - 2014-07-09 22:38:41 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:41 --> Language Class Initialized
+ERROR - 2014-07-09 22:38:41 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:41 --> Loader Class Initialized
+ERROR - 2014-07-09 22:38:41 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:41 --> Helper loaded: url_helper
+ERROR - 2014-07-09 22:38:41 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:41 --> Database Driver Class Initialized
+ERROR - 2014-07-09 22:38:41 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+ERROR - 2014-07-09 22:38:41 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-09 22:38:41 --> Controller Class Initialized
+ERROR - 2014-07-09 22:38:41 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:41 --> Session Class Initialized
+ERROR - 2014-07-09 22:38:41 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:41 --> Helper loaded: string_helper
+ERROR - 2014-07-09 22:38:41 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:41 --> Encrypt Class Initialized
+ERROR - 2014-07-09 22:38:41 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:41 --> Session routines successfully run
+ERROR - 2014-07-09 22:38:41 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:41 --> Model Class Initialized
+ERROR - 2014-07-09 22:38:41 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:41 --> Model Class Initialized
+ERROR - 2014-07-09 22:38:41 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:41 --> Helper loaded: email_helper
+ERROR - 2014-07-09 22:38:41 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:41 --> File loaded: application/views/default/pages/register.php
+ERROR - 2014-07-09 22:38:41 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:41 --> File loaded: application/views/default/template/header.php
+ERROR - 2014-07-09 22:38:41 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:41 --> File loaded: application/views/default/template/footer.php
+ERROR - 2014-07-09 22:38:41 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:41 --> File loaded: application/views/default/template/skeleton.php
+ERROR - 2014-07-09 22:38:41 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:41 --> Final output sent to browser
+ERROR - 2014-07-09 22:38:41 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:38:41 --> Total execution time: 0.0099
+ERROR - 2014-07-09 22:38:41 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:17 --> Config Class Initialized
+ERROR - 2014-07-09 22:39:17 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:17 --> Hooks Class Initialized
+ERROR - 2014-07-09 22:39:17 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:17 --> Utf8 Class Initialized
+ERROR - 2014-07-09 22:39:17 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:17 --> UTF-8 Support Enabled
+ERROR - 2014-07-09 22:39:17 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:17 --> URI Class Initialized
+ERROR - 2014-07-09 22:39:17 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:17 --> Router Class Initialized
+ERROR - 2014-07-09 22:39:17 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:17 --> Output Class Initialized
+ERROR - 2014-07-09 22:39:17 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:17 --> Security Class Initialized
+ERROR - 2014-07-09 22:39:17 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:17 --> Input Class Initialized
+ERROR - 2014-07-09 22:39:17 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:17 --> Global POST and COOKIE data sanitized
+ERROR - 2014-07-09 22:39:17 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:17 --> Language Class Initialized
+ERROR - 2014-07-09 22:39:17 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:17 --> Loader Class Initialized
+ERROR - 2014-07-09 22:39:17 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:17 --> Helper loaded: url_helper
+ERROR - 2014-07-09 22:39:17 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:17 --> Database Driver Class Initialized
+ERROR - 2014-07-09 22:39:17 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+ERROR - 2014-07-09 22:39:17 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-09 22:39:17 --> Controller Class Initialized
+ERROR - 2014-07-09 22:39:17 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:17 --> Session Class Initialized
+ERROR - 2014-07-09 22:39:17 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:17 --> Helper loaded: string_helper
+ERROR - 2014-07-09 22:39:17 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:17 --> Encrypt Class Initialized
+ERROR - 2014-07-09 22:39:17 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:17 --> Session routines successfully run
+ERROR - 2014-07-09 22:39:17 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:17 --> Model Class Initialized
+ERROR - 2014-07-09 22:39:17 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:17 --> Model Class Initialized
+ERROR - 2014-07-09 22:39:17 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:17 --> Helper loaded: email_helper
+ERROR - 2014-07-09 22:39:17 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:17 --> File loaded: application/views/default/pages/home.php
+ERROR - 2014-07-09 22:39:17 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:17 --> File loaded: application/views/default/template/header.php
+ERROR - 2014-07-09 22:39:17 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:17 --> File loaded: application/views/default/template/footer.php
+ERROR - 2014-07-09 22:39:17 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:17 --> File loaded: application/views/default/template/skeleton.php
+ERROR - 2014-07-09 22:39:17 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:17 --> Final output sent to browser
+ERROR - 2014-07-09 22:39:17 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:17 --> Total execution time: 0.0162
+ERROR - 2014-07-09 22:39:17 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Config Class Initialized
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Hooks Class Initialized
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Utf8 Class Initialized
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> UTF-8 Support Enabled
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> URI Class Initialized
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Router Class Initialized
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Output Class Initialized
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Security Class Initialized
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Input Class Initialized
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Global POST and COOKIE data sanitized
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Language Class Initialized
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Loader Class Initialized
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Helper loaded: url_helper
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Database Driver Class Initialized
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+ERROR - 2014-07-09 22:39:39 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-09 22:39:39 --> Controller Class Initialized
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Session Class Initialized
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Helper loaded: string_helper
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Encrypt Class Initialized
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Session routines successfully run
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Model Class Initialized
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Model Class Initialized
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Helper loaded: email_helper
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Config Class Initialized
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Hooks Class Initialized
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Utf8 Class Initialized
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> UTF-8 Support Enabled
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> URI Class Initialized
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Router Class Initialized
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Output Class Initialized
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Security Class Initialized
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Input Class Initialized
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Global POST and COOKIE data sanitized
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Language Class Initialized
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Loader Class Initialized
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Helper loaded: url_helper
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Database Driver Class Initialized
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+ERROR - 2014-07-09 22:39:39 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-09 22:39:39 --> Controller Class Initialized
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Session Class Initialized
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Helper loaded: string_helper
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Encrypt Class Initialized
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Session routines successfully run
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Model Class Initialized
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Model Class Initialized
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Helper loaded: email_helper
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> File loaded: application/views/default/pages/error_login.php
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> File loaded: application/views/default/template/header.php
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> File loaded: application/views/default/template/footer.php
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> File loaded: application/views/default/template/skeleton.php
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Final output sent to browser
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:39 --> Total execution time: 0.0245
+ERROR - 2014-07-09 22:39:39 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:45 --> Config Class Initialized
+ERROR - 2014-07-09 22:39:45 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:45 --> Hooks Class Initialized
+ERROR - 2014-07-09 22:39:45 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:45 --> Utf8 Class Initialized
+ERROR - 2014-07-09 22:39:45 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:45 --> UTF-8 Support Enabled
+ERROR - 2014-07-09 22:39:45 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:45 --> URI Class Initialized
+ERROR - 2014-07-09 22:39:45 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:45 --> Router Class Initialized
+ERROR - 2014-07-09 22:39:45 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:45 --> Output Class Initialized
+ERROR - 2014-07-09 22:39:45 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:45 --> Security Class Initialized
+ERROR - 2014-07-09 22:39:45 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:45 --> Input Class Initialized
+ERROR - 2014-07-09 22:39:45 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:45 --> Global POST and COOKIE data sanitized
+ERROR - 2014-07-09 22:39:45 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:45 --> Language Class Initialized
+ERROR - 2014-07-09 22:39:45 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:45 --> Loader Class Initialized
+ERROR - 2014-07-09 22:39:45 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:45 --> Helper loaded: url_helper
+ERROR - 2014-07-09 22:39:45 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:45 --> Database Driver Class Initialized
+ERROR - 2014-07-09 22:39:45 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+ERROR - 2014-07-09 22:39:45 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-09 22:39:45 --> Controller Class Initialized
+ERROR - 2014-07-09 22:39:45 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:45 --> Session Class Initialized
+ERROR - 2014-07-09 22:39:45 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:45 --> Helper loaded: string_helper
+ERROR - 2014-07-09 22:39:45 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:45 --> Encrypt Class Initialized
+ERROR - 2014-07-09 22:39:45 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:45 --> Session routines successfully run
+ERROR - 2014-07-09 22:39:45 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:45 --> Model Class Initialized
+ERROR - 2014-07-09 22:39:45 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:45 --> Model Class Initialized
+ERROR - 2014-07-09 22:39:45 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:45 --> Helper loaded: email_helper
+ERROR - 2014-07-09 22:39:45 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:46 --> Config Class Initialized
+ERROR - 2014-07-09 22:39:46 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:46 --> Hooks Class Initialized
+ERROR - 2014-07-09 22:39:46 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:46 --> Utf8 Class Initialized
+ERROR - 2014-07-09 22:39:46 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:46 --> UTF-8 Support Enabled
+ERROR - 2014-07-09 22:39:46 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:46 --> URI Class Initialized
+ERROR - 2014-07-09 22:39:46 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:46 --> Router Class Initialized
+ERROR - 2014-07-09 22:39:46 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:46 --> Output Class Initialized
+ERROR - 2014-07-09 22:39:46 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:46 --> Security Class Initialized
+ERROR - 2014-07-09 22:39:46 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:46 --> Input Class Initialized
+ERROR - 2014-07-09 22:39:46 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:46 --> Global POST and COOKIE data sanitized
+ERROR - 2014-07-09 22:39:46 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:46 --> Language Class Initialized
+ERROR - 2014-07-09 22:39:46 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:46 --> Loader Class Initialized
+ERROR - 2014-07-09 22:39:46 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:46 --> Helper loaded: url_helper
+ERROR - 2014-07-09 22:39:46 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:46 --> Database Driver Class Initialized
+ERROR - 2014-07-09 22:39:46 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+ERROR - 2014-07-09 22:39:46 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /var/www/github/fribone-php-server/application/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-07-09 22:39:46 --> Controller Class Initialized
+ERROR - 2014-07-09 22:39:46 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:46 --> Session Class Initialized
+ERROR - 2014-07-09 22:39:46 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:46 --> Helper loaded: string_helper
+ERROR - 2014-07-09 22:39:46 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:46 --> Encrypt Class Initialized
+ERROR - 2014-07-09 22:39:46 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:46 --> Session routines successfully run
+ERROR - 2014-07-09 22:39:46 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:46 --> Model Class Initialized
+ERROR - 2014-07-09 22:39:46 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:46 --> Model Class Initialized
+ERROR - 2014-07-09 22:39:46 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:46 --> Helper loaded: email_helper
+ERROR - 2014-07-09 22:39:46 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:46 --> File loaded: application/views/default/pages/error_login.php
+ERROR - 2014-07-09 22:39:46 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:46 --> File loaded: application/views/default/template/header.php
+ERROR - 2014-07-09 22:39:46 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:46 --> File loaded: application/views/default/template/footer.php
+ERROR - 2014-07-09 22:39:46 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:46 --> File loaded: application/views/default/template/skeleton.php
+ERROR - 2014-07-09 22:39:46 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:46 --> Final output sent to browser
+ERROR - 2014-07-09 22:39:46 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
+DEBUG - 2014-07-09 22:39:46 --> Total execution time: 0.0089
+ERROR - 2014-07-09 22:39:46 --> Severity: Warning  --> chmod(): Operation not permitted /var/www/github/fribone-php-server/application/system/libraries/Log.php 106
