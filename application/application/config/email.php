@@ -1,5 +1,6 @@
 <?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 
+$config['email-debug'] = true;
 $config['email-host'] = 'localhost';
 $config['email-port'] = 2500;
 $config['email-SMTPAuth'] = false;

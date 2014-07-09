@@ -18,13 +18,21 @@ class My_PHPMailer {
 
     	$mail = new PHPMailer;
 
+    	if($this->ci->config->item('email-debug')) {
+    		$mail->SMTPDebug = 4;
+    	}
+
 		$mail->isSMTP();
 		$mail->Host = $this->ci->config->item('email-host');
 		$mail->Port = $this->ci->config->item('email-port');
 		$mail->SMTPAuth = $this->ci->config->item('email-SMTPAuth');
+		if($this->ci->config->item('email-SMTPAuth')) {
+			$mail->SMTPSecure = $this->ci->config->item('email-SMTPSecure');
+		}
+		
 		$mail->Username = $this->ci->config->item('email-username');
 		$mail->Password = $this->ci->config->item('email-password');
-		$mail->SMTPSecure = $this->ci->config->item('email-SMTPSecure');
+		
 		$mail->isHTML($this->ci->config->item('email-userHTML'));
 		$mail->CharSet = $this->ci->config->item('email-charSet');
 
