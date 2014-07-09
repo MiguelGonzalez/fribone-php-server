@@ -1,8 +1,8 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 require_once dirname(__FILE__) . '/../database_inflater.php';
 
-class HomeTest extends PHPUnit_Framework_TestCase {
+class Login_authTest extends PHPUnit_Framework_TestCase {
 	private $CI;
 
     private static $dataBase_inflater;
