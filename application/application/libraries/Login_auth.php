@@ -72,7 +72,7 @@ class Login_auth {
 			$resCreate = $this->ci->User->create_user(
 				$email,
 				$username,
-				$this->get_password_hash($password, PASSWORD_BCRYPT)
+				$this->get_password_hash($password)
 			);
 			if (!is_null($resCreate)) {
 				$data['user_id'] = $resCreate['user_id'];
@@ -114,7 +114,7 @@ class Login_auth {
 			if($this->check_password_remember($email, $token)) {
 				$resCreate = $this->ci->User->change_password(
 					$email,
-					$this->get_password_hash($new_password, PASSWORD_BCRYPT)
+					$this->get_password_hash($new_password)
 				);
 
 				if($resCreate) {
@@ -214,16 +214,23 @@ class Login_auth {
 	}
 
 	private function get_password_hash($password) {
-		$password_hashed = NULL;
+        $password_hashed = NULL;
 
-		if (strnatcmp(phpversion(),'5.5.0') >= 0) {
-			$password_hashed = password_hash($password, PASSWORD_BCRYPT);
-		} else {
-			$password_hashed = crypt($password);
-		}
+        if (strnatcmp(phpversion(),'5.5.0') >= 0) {
+            $password_hashed = password_hash($password, PASSWORD_BCRYPT);
+        } else {
+            // Original PHP code by Chirp Internet: www.chirp.com.au
+            // Please acknowledge use of this code by including this header.
+            $salt = "";
+            $salt_chars = array_merge(range('A','Z'), range('a','z'), range(0,9));
+            for($i=0; $i < 22; $i++) {
+                $salt .= $salt_chars[array_rand($salt_chars)];
+            }
+            $password_hashed = crypt($password, sprintf('$2a$%02d$', 7) . $salt);
+        }
 
-		return $password_hashed;
-	}
+        return $password_hashed;
+    }
 
 	private function is_password_verify($password, $hashed_password) {
 		$verify = FALSE;

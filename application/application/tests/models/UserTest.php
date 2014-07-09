@@ -63,7 +63,7 @@ class UserTest extends PHPUnit_Framework_TestCase {
         $resUser = $this->CI->User->create_user(
             'test@test.com',
             'TestName',
-            $this->get_password_hash('12345678', PASSWORD_BCRYPT));
+            $this->get_password_hash('12345678'));
         $this->assertTrue($resUser !== NULL);
 
         try {
@@ -71,7 +71,7 @@ class UserTest extends PHPUnit_Framework_TestCase {
             $resUser = $this->CI->User->create_user(
                 'test@test.com',
                 'TestName',
-                $this->get_password_hash('12345678', PASSWORD_BCRYPT)
+                $this->get_password_hash('12345678')
             );
         } catch(Exception $ex) {
             return;
@@ -139,7 +139,6 @@ class UserTest extends PHPUnit_Framework_TestCase {
         $token = uniqid('', true);
         $hashed_token = $this->get_password_hash($token);
 
-
         self::$dataBase_inflater->create_user('test@test.com', 'TestName', '123456');
 
         $token = $this->CI->User->get_token_remember('test@test.com');
@@ -171,29 +170,23 @@ class UserTest extends PHPUnit_Framework_TestCase {
         $this->assertNull($token);
     }
 
+
     private function get_password_hash($password) {
-        $password = NULL;
+        $password_hashed = NULL;
 
         if (strnatcmp(phpversion(),'5.5.0') >= 0) {
-            $password = password_hash($password, PASSWORD_BCRYPT);
+            $password_hashed = password_hash($password, PASSWORD_BCRYPT);
         } else {
-            $password = crypt($password);
+            // Original PHP code by Chirp Internet: www.chirp.com.au
+            // Please acknowledge use of this code by including this header.
+            $salt = "";
+            $salt_chars = array_merge(range('A','Z'), range('a','z'), range(0,9));
+            for($i=0; $i < 22; $i++) {
+                $salt .= $salt_chars[array_rand($salt_chars)];
+            }
+            $password_hashed = crypt($password, sprintf('$2a$%02d$', 7) . $salt);
         }
 
-        return $password;
-    }
-
-    private function is_password_verify($password, $hashed_password) {
-        $verify = FALSE;
-
-        if (strnatcmp(phpversion(),'5.5.0') >= 0) {
-            echo "VERSION MAYOR";
-            $verify = password_verify($password, $hashed_password);
-        } else {
-            echo "VERSION MENOR";
-            $verify = crypt($password, $hashed_password) === $hashed_password;
-        }
-
-        return $verify;
+        return $password_hashed;
     }
 }

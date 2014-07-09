@@ -4,7 +4,7 @@ require_once dirname(__FILE__) . '/../database_inflater.php';
 
 class HomeTest extends PHPUnit_Framework_TestCase {
 	private $CI;
-    
+
     private static $dataBase_inflater;
 
     public static function setUpBeforeClass() {
@@ -51,6 +51,7 @@ class HomeTest extends PHPUnit_Framework_TestCase {
     	$this->assertFalse($res);
 
     	self::$dataBase_inflater->create_user('test@test.com', 'TestName', '123456');
+        sleep(1);
     	$res = $this->CI->login_auth->login('test@test.com', '123456');
     	$this->assertTrue($res);
 
@@ -102,7 +103,7 @@ class HomeTest extends PHPUnit_Framework_TestCase {
         $this->assertFalse($res);
 
         $res = $this->CI->login_auth->password_remember_change('test@test.com', $remember_token, '9876543');
-        $this->assertFalse($res);      
+        $this->assertFalse($res);
     }
 
     public function testRememberPasswordExcededTime() {
