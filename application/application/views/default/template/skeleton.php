@@ -10,6 +10,7 @@
         <title><?php echo $title;?></title>
         <meta name="description" content="">
         
+        <link href='http://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="<?php echo base_url('resources/css/normalize.css');?>">
         <link rel="stylesheet" href="<?php echo base_url('resources/css/main.css');?>">
         <script src="<?php echo base_url('resources/js/modernizr-2.8.2.min.js');?>"></script>
@@ -19,27 +20,25 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <div class="site-wrapper">
-            <div class="site-wrapper-inner">
-                <div class="cover-container">
-                    <div class="masthead clearfix">
-                        <div class="inner">
-                            <?php echo $header;?>
-                        </div>
-                    </div>
+        <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+            <div class="container">
+                <?php echo $header;?>
+            </div>
+        </header>
 
-                    <div class="inner cover">
-                        <?php echo $body;?>
-                    </div>
-
-                    <div class="mastfoot">
-                        <div class="inner">
-                            <?php echo $footer;?>
-                        </div>
-                    </div>
+        <div class="container bs-docs-container">
+            <div class="row">
+                <div class="col-md-12" role="main">
+                    <?php echo $body;?>
                 </div>
             </div>
         </div>
+
+        <footer class="bs-docs-footer" role="contentinfo">
+            <div class="container">
+                <?php echo $footer;?>
+            </div>
+        </footer>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="<?php echo base_url('resources/js/jquery-2.1.1.min.js');?>"><\/script>')</script>
