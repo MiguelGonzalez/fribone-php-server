@@ -3,9 +3,13 @@
         <h1>Frigorífico</h1>
     </div>
     {{#if productos}}
-    	<p class="well">
-    	Dispones de productos en el frigorífico
-    	</p>
+    	{{#each productos}}
+	    	<ul>
+		    	<li>
+		    		{{titulo}}
+		    	</li>
+	    	</ul>
+    	{{/each}}
     {{else}}
     	<p class="well">
     		No dispones de productos en tu frigorífico

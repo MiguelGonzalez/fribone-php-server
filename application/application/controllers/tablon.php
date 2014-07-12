@@ -1,19 +1,12 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Tablon extends MY_Controller {
+class Tablon extends MY_Controller_User {
 
 	public function __construct() {
 		parent::__construct();
 
-		if (!$this->login_auth->is_logged_in()) {
-			redirect(
-				site_url(),
-	            'refresh'
-	        );
-		} else {
-			$this->data['username'] = $this->login_auth->get_username();
-			$this->template = 'tablon';
-		}
+		$this->data['username'] = $this->login_auth->get_username();
+		$this->template = 'tablon';
 	}
 
 	public function index() {

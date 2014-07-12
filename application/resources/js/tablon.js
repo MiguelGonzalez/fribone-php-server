@@ -9,13 +9,12 @@ App.Router.map(function() {
   this.route("statistics", { path: "/estadisticas" });
 });
 
-App.Frige = Ember.Route.extend({
+App.FridgeRoute = Ember.Route.extend({
 	renderTemplate: function() {
-		this.render(
-			'fridge');
+		this.render('fridge');
 	},
 	model: function() {
-		return {};
+		return Ember.$.getJSON('/fridge/productos');
 	}
 })
 
@@ -41,12 +40,12 @@ App.FridgeController = Ember.ObjectController.extend({
 /*
  * Estadísticas
 */
-App.Statistics = Ember.Route.extend({
+App.StatisticsRoute = Ember.Route.extend({
 	renderTemplate: function() {
 		this.render(
 			'statistics');
 	},
 	model: function() {
-		return {'productos':[]};
+		return {};
 	}
 })
