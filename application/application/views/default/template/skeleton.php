@@ -38,14 +38,16 @@
 
         <footer class="footer" role="contentinfo">
             <div class="container">
-                <?php echo $footer;?>
+                <div class="wrapper">
+                    <?php echo $footer;?>
+                </div>
             </div>
         </footer>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="<?php echo base_url('resources/js/jquery-2.1.1.min.js');?>"><\/script>')</script>
         <script src="<?php echo base_url('resources/js/plugins.js');?>"></script>
-        <script src="<?php echo base_url('resources/js/main.js');?>"></script>
+        <script src="<?php echo base_url('resources/js/default.js');?>"></script>
 
         <script>
            /* (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=

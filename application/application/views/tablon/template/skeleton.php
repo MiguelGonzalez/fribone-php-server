@@ -21,31 +21,54 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <div class="container-fluid">
-            <header class="navbar navbar-static-top" id="top" role="banner">
+        <script type="text/x-handlebars">
+            <div class="container-fluid">
+                <header class="navbar navbar-static-top" id="top" role="banner">
+                    <div class="container">
+                        <?php echo $header;?>
+                    </div>
+                </header>
+
+                <div id="content-center">
+                    <div class="container">
+                        <div class="col-md-2" role="main">
+                            <div id="menu-left">
+                                <div class="list-group">
+                                    {{#link-to 'fridge' class="list-group-item"}}Mi frigorífico{{/link-to}}
+                                    {{#link-to 'statistics' class="list-group-item"}}Estadísticas{{/link-to}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-10" role="main">
+                            <div id="main" class="clearfix">
+                                <?php echo $body;?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="push-footer"></div>
+            </div>
+
+            <footer class="footer" role="contentinfo">
                 <div class="container">
-                    <?php echo $header;?>
+                    <div class="wrapper">
+                        <?php echo $footer;?>
+                    </div>
                 </div>
-            </header>
+            </footer>
+        </script>
 
-            <div class="row">
-                <div class="col-md-12" role="main">
-                    <?php echo $body;?>
-                </div>
-            </div>
-            <div class="push-footer"></div>
-        </div>
-
-        <footer class="footer" role="contentinfo">
-            <div class="container">
-                <?php echo $footer;?>
-            </div>
-        </footer>
+        <script id="fridge" type="text/x-handlebars">
+            <h1>Frigorífico</h1>
+        </script>
+        <script id="statistics" type="text/x-handlebars">
+            <h1>Estadísticas</h1>
+        </script>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="<?php echo base_url('resources/js/jquery-2.1.1.min.js');?>"><\/script>')</script>
         <script src="<?php echo base_url('resources/js/plugins.js');?>"></script>
-        <script src="<?php echo base_url('resources/js/main.js');?>"></script>
+        <script src="<?php echo base_url('resources/js/tablon.js');?>"></script>
 
         <script>
            /* (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=

@@ -1,38 +1,31 @@
-<div class="navbar-header">
-    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
-        <!--<span class="sr-only">Toggle navigation</span>-->
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-    </button>
-    <a href="<?php echo base_url();?>" class="navbar-brand">
-    	Fribone
-    </a>
-    <a href="<?php echo base_url(array('tablon','logout'));?>">
-        Salir sesión
-    </a>
-</div>
-<!--
-<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-    <ul class="nav navbar-nav">
-        <li>
-            <a href="../getting-started">Getting started</a>
-        </li>
-        <li class="active">
-            <a href="../css">CSS</a>
-        </li>
-        <li>
-            <a href="../components">Components</a>
-        </li>
-        <li>
-            <a href="../javascript">JavaScript</a>
-        </li>
-        <li>
-            <a href="../customize">Customize</a>
-        </li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://expo.getbootstrap.com" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');">Expo</a></li>
-        <li><a href="http://blog.getbootstrap.com" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">Blog</a></li>
-    </ul>
-</nav>-->
+<nav class="navbar" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="<?php echo base_url();?>" class="navbar-brand">
+                Fribone
+            </a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active">
+                <a href="#">Home</a>
+            </li>
+            <li>
+                <a href="#">Comunidad</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="#" data-toggle="dropdown" role="button" id="drop6"><i class="ion-android-contact"></i>  <?php echo $username;?> <span class="caret"></span></a>
+                <ul aria-labelledby="drop6" role="menu" class="dropdown-menu" id="menu3">
+                    <li role="presentation"><a href="http://twitter.com/fat" tabindex="-1" role="menuitem">Cuenta</a></li>
+                    <li class="divider" role="presentation"></li>
+                    <li role="presentation">
+                        <a href="<?php echo base_url(array('tablon','logout'));?>" tabindex="-1" role="menuitem">
+                            Salir
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>

@@ -11,6 +11,7 @@ class Tablon extends MY_Controller {
 	            'refresh'
 	        );
 		} else {
+			$this->data['username'] = $this->login_auth->get_username();
 			$this->template = 'tablon';
 		}
 	}

@@ -30,11 +30,20 @@ html, body {
 
 .container-fluid {
 	min-height: 100%;
-    height: auto !important;
     height: 100%;
-    margin: 0 auto -50px;
+    margin: 0 auto -30px;
 }
 
 .footer, .push-footer {
-    height: 50px;
+    height: 30px;
+}
+
+.footer .wrapper {
+	height: 30px;
+	margin: 0 15px;
+	background-color: #FFF;
+}
+
+a:hover, a:active, a:focus, a {
+	outline: 0;
 }
