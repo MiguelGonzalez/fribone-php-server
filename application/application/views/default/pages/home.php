@@ -77,8 +77,8 @@
 	</div>
 </div>
 
-<!-- Small modal -->
-<div id="modal-remember-password" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<!-- Ventana modal para recordatorio de contraseña -->
+<div id="modal-remember-password" class="modal fade" tabindex="-1" role="dialog">
 	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
 			<div class="modal-body">
@@ -108,3 +108,44 @@
 		</div>
 	</div>
 </div>
+
+<!-- Ventana modal para resetear la contraseña -->
+<?php if($reset):?>
+	<div id="modal-reset-password" class="modal fade" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-body">
+					<form name="form-reset-password" class="form-horizontal" role="form">
+						<input type="hidden" name="token" value="<?php echo $token;?>">
+						<div class="form-group">
+							<label for="email" class="col-lg-3 control-label">Email</label>
+							<div class="col-lg-9">
+								<input type="email" class="form-control" name="email" placeholder="Email">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="password" class="col-lg-4 control-label">Contraseña</label>
+							<div class="col-lg-8">
+								<input type="password" class="form-control" name="password" placeholder="********">
+							</div>
+						</div>
+					</form>
+				</div>
+				<div id="reset">
+					<p id="reset-ajax">
+						<i class="icon ion-loading-c"></i> Reseteando contraseña
+					</p>
+					<p id="reset-ok">
+						<i class="ion-checkmark-circled"></i> ¡Contraseña cambiada"
+					</p>
+					<p id="reset-error">
+						<i class="icon ion-close-circled"></i> Se ha producido un error
+					</p>
+				</div>
+				<div class="modal-footer">
+	                 <button id="submit_reset" type="button" class="btn btn-default">Cambiar contraseña</button>
+	            </div>
+			</div>
+		</div>
+	</div>
+<?php endif;?>

@@ -14,7 +14,41 @@ class Home extends MY_Controller {
 			$this->login_ok();
 		} else {
 			$this->data['error_login'] = $logged_error;
+			$this->data['reset'] = false;
 			$this->_render('home');
+		}
+	}
+
+	public function remember_token($token = NULL) {
+		if ($this->login_auth->is_logged_in()) {
+			$this->login_ok();
+		} else if(is_null($token)) {
+			$this->index(FALSE);
+		} else {
+			$this->data['error_login'] = false;
+			$this->data['reset'] = true;
+			$this->data['token'] = $token;
+			$this->_render('home');
+		}	
+	}
+
+	public function reset_password() {
+		if ($this->login_auth->is_logged_in()) {
+			$this->login_ok();
+			return;
+		}
+		$reset_ok = FALSE;
+		if (!$this->login_auth->is_logged_in()) {
+			$token = $this->input->post('token');
+			$email = $this->input->post('email');
+			$password = $this->input->post('password');
+			
+			$reset_ok = $this->login_auth->password_remember_change($email, $token, $password);
+		}
+		if($reset_ok) {
+			$this->_renderJson(array('result' => true));
+		} else {
+			$this->_renderJson(array('result' => false));
 		}
 	}
 
@@ -89,7 +123,7 @@ class Home extends MY_Controller {
 			$this->_renderJson(array('result' => true));
 		} else {
 			$this->_renderJson(array('result' => false));
-		}	
+		}
 	}
 
 	public function validation_email() {

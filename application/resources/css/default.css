@@ -47,27 +47,28 @@
 }
 
 #registrando, #registrando-ok, #registrando-error,
-#recordando, #recordando-ok, #recordando-error {
+#recordando, #recordando-ok, #recordando-error,
+#reset, #reset-ok, #reset-error {
 	display: none;
 }
 
-#registrando, #recordando {
+#registrando, #recordando, #reset {
 	font-size: 15pt;
 	text-align: center;
 }
 
-#registrando > p, #recordando > p {
+#registrando > p, #recordando > p, #reset > p {
 	padding: 10px 5px;
 }
 
-#registrando-ajax, #recordando-ajax {
+#registrando-ajax, #recordando-ajax, #reset-ajax {
 	background-color: #ECE599;
 }
 
-#registrando-ok, #recordando-ok {
+#registrando-ok, #recordando-ok, #reset-ok {
 	background-color: #ECDBD0;
 }
 
-#registrando-error, #recordando-error {
+#registrando-error, #recordando-error, #reset-error {
 	background-color: #EC9293;
 }
