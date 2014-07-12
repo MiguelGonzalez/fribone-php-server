@@ -20,7 +20,7 @@ class Login_auth {
 		$this->ci->load->helper('email');
 	}
 
-	public function login($email, $password) {
+	public function login($email, $password, $remember = FALSE) {
 		if (valid_email($email) AND strlen($password) > 0) {
 			$user = $this->ci->User->get_user(
 				$email
@@ -35,11 +35,16 @@ class Login_auth {
 					} elseif ($user->state === LOGIN_STATUS_BANNED) {
 						$this->error = LOGIN_STATUS_BANNED;
 					} else {
+						if($remember) {
+							$config['sess_expiration'] = 0;
+						}
+
 						$this->ci->session->set_userdata(array(
 							'id'	=> $user->id,
 							'email'	=> $user->email,
 							'username'	=> $user->username,
-							'permission'	=> $user->permission
+							'permission'	=> $user->permission,
+							'remember' => $remember
 						));
 
 						$this->ci->User->clear_login_attempts($user->id);
@@ -133,7 +138,8 @@ class Login_auth {
 				'user_id' => '',
 				'email' => '',
 				'username' => '',
-				'status' => ''
+				'status' => '',
+				'remember' => FALSE
 			)
 		);
 
