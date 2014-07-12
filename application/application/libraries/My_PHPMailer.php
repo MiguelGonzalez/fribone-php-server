@@ -9,7 +9,7 @@ class My_PHPMailer {
         require_once('PHPMailer/class.phpmailer.php');
     }
 
-    public function send_email($email, $subject, $data, $name_template) {
+    public function send_email($email, $subject, $data, $name_template, $email_name = NULL) {
     	if (!valid_email($email)) {
     		return FALSE;
     	}
