@@ -357,6 +357,16 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
+/*
+ * Permite crear otros controladores en la carpeta core
+*/
+function __autoload($class) {
+    if (substr($class,0,3) !== 'CI_') {
+        if (file_exists($file = APPPATH . 'core/' . $class . EXT) {
+            include $file;
+        }
+    }
+}
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */
