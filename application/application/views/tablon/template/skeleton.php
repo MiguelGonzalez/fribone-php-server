@@ -13,7 +13,7 @@
         <link href='http://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="<?php echo base_url('resources/css/normalize.css');?>">
         <link rel="stylesheet" href="<?php echo base_url('resources/css/main.css');?>">
-        <link rel="stylesheet" href="<?php echo base_url('resources/css/default.css');?>">
+        <link rel="stylesheet" href="<?php echo base_url('resources/css/tablon.css');?>">
         <script src="<?php echo base_url('resources/js/modernizr-2.8.2.min.js');?>"></script>
     </head>
     <body>

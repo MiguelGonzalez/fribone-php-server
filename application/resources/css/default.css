@@ -1,0 +1,73 @@
+.navbar-brand {
+	margin-top: 40px;
+	font-family: 'Dancing Script', cursive;
+	color: #FFF;
+	font-size: 70pt;
+	height: auto;
+	font-weight: 600;
+}
+
+.navbar-brand:hover {
+	color: #eee;
+}
+
+#form-login, #form-registro {
+	background-color: #FFF;
+	padding: 20px 20px 5px 20px;
+	border-radious: 10px;
+}
+
+#form-login label,
+#form-registro label {
+	font-weight: 200;
+}
+
+#recuperar-password {
+	color: #333;
+    padding: 8px 0;
+}
+
+#darse-alta {
+	margin-top: 20px;
+	border-radious: 10px;
+}
+
+#darse-alta > p {
+	padding: 20px;
+	background-color: #FFF;
+}
+
+#darse-alta a {
+	font-weight: 600;
+	color: #333;
+}
+
+#form-registro {
+	display: none;
+}
+
+#registrando, #registrando-ok, #registrando-error,
+#recordando, #recordando-ok, #recordando-error {
+	display: none;
+}
+
+#registrando, #recordando {
+	font-size: 15pt;
+	text-align: center;
+}
+
+#registrando > p, #recordando > p {
+	padding: 10px 5px;
+}
+
+#registrando-ajax, #recordando-ajax {
+	background-color: #ECE599;
+}
+
+#registrando-ok, #recordando-ok {
+	background-color: #ECDBD0;
+}
+
+#registrando-error, #recordando-error {
+	background-color: #EC9293;
+}
