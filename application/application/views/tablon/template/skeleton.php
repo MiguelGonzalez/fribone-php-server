@@ -40,8 +40,8 @@
                             </div>
                         </div>
                         <div class="col-md-10" role="main">
-                            <div id="main" class="clearfix">
-                                <?php echo $body;?>
+                            <div id="main" class="clearfix col-md-12">
+                                {{outlet}}
                             </div>
                         </div>
                     </div>
@@ -56,14 +56,27 @@
                     </div>
                 </div>
             </footer>
+            {{outlet modal}}
+
+            <div class="modal fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+
+                        </div>
+                        <div class="modal-body">
+
+                        </div>
+                        <div class="modal-footer">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{bs-growl-notifications}}
         </script>
 
-        <script id="fridge" type="text/x-handlebars">
-            <h1>Frigorífico</h1>
-        </script>
-        <script id="statistics" type="text/x-handlebars">
-            <h1>Estadísticas</h1>
-        </script>
+        <?php echo $body;?>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="<?php echo base_url('resources/js/jquery-2.1.1.min.js');?>"><\/script>')</script>

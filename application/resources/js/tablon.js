@@ -1,4 +1,8 @@
-window.App = Ember.Application.create();
+App = Ember.Application.createWithMixins(Bootstrap);
+
+/*
+ * Frigorífico
+*/
 
 App.Router.map(function() {
   this.route("fridge", { path: "/fridge" });
@@ -15,12 +19,34 @@ App.Frige = Ember.Route.extend({
 	}
 })
 
+App.FridgeController = Ember.ObjectController.extend({
+	myModalButtons: [
+      Ember.Object.create({title: 'Añadir', clicked: 'submit'}),
+      Ember.Object.create({title: 'Cancelar', clicked: 'cancel', dismiss: 'modal'})
+	],
+	actions: {
+	    submit: function() {
+			Bootstrap.GNM.push('Añadir', 'El producto ha sido añadido a tu frigorífico', 'info');
+			return Bootstrap.ModalManager.hide('myModal');
+	    },
+	    cancel: function() {
+			return Bootstrap.GNM.push('Cancelar', 'No has añadido ningún producto', 'warning');
+	    },
+	    show: function() {
+	      return Bootstrap.ModalManager.show('myModal');
+	    }
+	}
+});
+
+/*
+ * Estadísticas
+*/
 App.Statistics = Ember.Route.extend({
 	renderTemplate: function() {
 		this.render(
 			'statistics');
 	},
 	model: function() {
-		return {};
+		return {'productos':[]};
 	}
 })
