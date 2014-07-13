@@ -31,9 +31,7 @@ class User extends CI_Model {
 			'username' => $username,
 			'password' => $password,
 			'permission' => 1,
-			'state' => 'A',
-			'last_ip' => $this->input->ip_address(),
-			'login_attempts' => 0
+			'last_ip' => $this->input->ip_address()
 		);		
 
 		$this->db->insert('user', $data);
@@ -126,9 +124,7 @@ class User extends CI_Model {
 
 		$data = array(
 			'email' => trim($email),
-			'token' => $token,
-			'attempts' => 0,
-			'state' => 'A'
+			'token' => $token
 		);		
 
 		$this->db->insert('user_remember_token', $data);

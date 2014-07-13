@@ -46,15 +46,29 @@ class SupermercadoTest extends PHPUnit_Framework_TestCase {
 		}
     }
 
-	public function testGetSupermercados() {
+	public function testSupermercados() {
 		$supermercados = $this->CI->supermercado->get_supermercados();
 		$this->assertNull($supermercados);
 
         $res = $this->CI->supermercado->add_supermercado('mercadona');
         $this->assertTrue($res !== NULL);
-        
+
         $supermercados = $this->CI->supermercado->get_supermercados();
         $this->assertTrue($supermercados !== NULL);
 	}
 
+    public function testProductoSupermercado() {
+        $res = $this->CI->supermercado->add_supermercado('mercadona');
+        $idSupermercado = $res['supermercado_id'];
+
+        $datosProducto = array(
+            'titulo' => 'Agua',
+            'codigo_barras' => '123006456046',
+            'descripcion' => 'Botella de agua de 1L del mercadona',
+            'precio' => 0.87,
+            'unidades' => 1
+        );
+        $res = $this->CI->supermercado->add_supermercado_producto($idSupermercado, $datosProducto);
+        $this->assertTrue($res !== NULL);
+    }
 }

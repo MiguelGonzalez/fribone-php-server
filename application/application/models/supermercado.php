@@ -39,4 +39,21 @@ class Supermercado extends CI_Model {
 		
 		return NULL;
 	}
+
+	public function add_supermercado_producto($idSupermercado, $datosProducto) {
+		$data = array(
+			'id_supermercado' => $idSupermercado
+		);
+		$data = array_merge($data, $datosProducto);
+
+		$this->db->insert('supermercado_producto', $data);
+
+		if ($this->db->affected_rows() === 1) {
+			$id_producto = $this->db->insert_id();
+
+			return array('id_producto' => $id_producto);
+		}
+		
+		return NULL;
+	}
 }

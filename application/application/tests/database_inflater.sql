@@ -45,7 +45,7 @@ DROP TABLE IF EXISTS `my_supermercado`;
 CREATE TABLE IF NOT EXISTS `my_supermercado` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(128) NOT NULL,
-  `state` char(1) NOT NULL,
+  `state` char(1) NOT NULL DEFAULT 'A',
   `fecha_alta` datetime NOT NULL,
   `fecha_modificacion` datetime NOT NULL,
   `fecha_cierre` datetime,
@@ -60,12 +60,12 @@ DROP TABLE IF EXISTS `my_supermercado_producto`;
 CREATE TABLE IF NOT EXISTS `my_supermercado_producto` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(128) NOT NULL,
-  `codigo_barras` varchar(128) NOT NULL,
-  `codigo_rfid` varchar(128) NOT NULL,
+  `codigo_barras` varchar(128) NULL,
+  `codigo_rfid` varchar(128) NULL,
   `descripcion` text NOT NULL,
   `precio` float NOT NULL,
   `unidades` int(11) NOT NULL,
-  `state` char(1) NOT NULL,
+  `state` char(1) NOT NULL DEFAULT 'A',
   `fecha_alta` datetime NOT NULL,
   `fecha_modificacion` datetime NOT NULL,
   `fecha_baja` datetime,
@@ -78,7 +78,8 @@ CREATE TABLE IF NOT EXISTS `my_supermercado_producto` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 CREATE TRIGGER my_supermercado_producto_OnInsert BEFORE INSERT ON `my_supermercado_producto`
-    FOR EACH ROW SET NEW.fecha_alta = IFNULL(NOW(), NEW.fecha_alta), NEW.fecha_modificacion = IFNULL(NOW(), NEW.fecha_modificacion);
+    FOR EACH ROW SET NEW.fecha_alta = IFNULL(NOW(), NEW.fecha_alta),
+    NEW.fecha_modificacion = IFNULL(NOW(), NEW.fecha_modificacion);
 
 DROP TABLE IF EXISTS `my_user`;
 CREATE TABLE IF NOT EXISTS `my_user` (
@@ -87,10 +88,10 @@ CREATE TABLE IF NOT EXISTS `my_user` (
   `username` varchar(128) NOT NULL,
   `password` char(60) NOT NULL,
   `permission` tinyint(4) NOT NULL,
-  `state` char(1) NOT NULL,
+  `state` char(1) NOT NULL DEFAULT 'A',
   `last_ip` char(15) NOT NULL,
   `last_access` datetime NOT NULL,
-  `login_attempts` int(11) NOT NULL,
+  `login_attempts` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
   KEY `state` (`state`)
@@ -107,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `my_user_frigorifico` (
   `fecha_modificacion` datetime NOT NULL,
   `fecha_baja` datetime,
   `id_user` int(11) NOT NULL,
-  `estado` char(1) NOT NULL,
+  `state` char(1) NOT NULL DEFAULT 'A',
   PRIMARY KEY (`id`),
   KEY `id_user` (`id_user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
