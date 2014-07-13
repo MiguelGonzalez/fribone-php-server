@@ -10,10 +10,14 @@ CREATE TABLE IF NOT EXISTS `my_compra` (
   KEY `id_frigorifico` (`id_frigorifico`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+CREATE TRIGGER my_compra_OnInsert BEFORE INSERT ON `my_compra`
+    FOR EACH ROW SET NEW.fecha_compra = IFNULL(NEW.fecha_compra, NOW());
+
 DROP TABLE IF EXISTS `my_compra_producto`;
 CREATE TABLE IF NOT EXISTS `my_compra_producto` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `fecha_entrada` datetime NOT NULL,
+  `fecha_ultima_salida` datetime NULL,
   `unidades` int(11) NOT NULL,
   `id_compra` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
@@ -24,6 +28,9 @@ CREATE TABLE IF NOT EXISTS `my_compra_producto` (
   KEY `unidades` (`unidades`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+CREATE TRIGGER my_compra_producto_OnInsert BEFORE INSERT ON `my_compra_producto`
+    FOR EACH ROW SET NEW.fecha_entrada = IFNULL(NEW.fecha_entrada, NOW());
+
 DROP TABLE IF EXISTS `my_compra_retirada`;
 CREATE TABLE IF NOT EXISTS `my_compra_retirada` (
   `id_producto` int(11) NOT NULL AUTO_INCREMENT,
@@ -31,14 +38,23 @@ CREATE TABLE IF NOT EXISTS `my_compra_retirada` (
   PRIMARY KEY (`id_producto`,`fecha_retirada`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+CREATE TRIGGER my_compra_retirada_OnInsert BEFORE INSERT ON `my_compra_retirada`
+    FOR EACH ROW SET NEW.fecha_retirada = IFNULL(NEW.fecha_retirada, NOW());
+
 DROP TABLE IF EXISTS `my_supermercado`;
 CREATE TABLE IF NOT EXISTS `my_supermercado` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(128) NOT NULL,
+  `state` char(1) NOT NULL,
   `fecha_alta` datetime NOT NULL,
+  `fecha_modificacion` datetime NOT NULL,
+  `fecha_cierre` datetime,
   PRIMARY KEY (`id`),
-  UNIQUE KEY (titulo)
+  KEY (titulo)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+CREATE TRIGGER my_supermercado_OnInsert BEFORE INSERT ON `my_supermercado`
+    FOR EACH ROW SET NEW.fecha_alta = IFNULL(NEW.fecha_alta, NOW()), NEW.fecha_modificacion = IFNULL(NEW.fecha_modificacion, NOW());
 
 DROP TABLE IF EXISTS `my_supermercado_producto`;
 CREATE TABLE IF NOT EXISTS `my_supermercado_producto` (
@@ -49,15 +65,20 @@ CREATE TABLE IF NOT EXISTS `my_supermercado_producto` (
   `descripcion` text NOT NULL,
   `precio` float NOT NULL,
   `unidades` int(11) NOT NULL,
+  `state` char(1) NOT NULL,
   `fecha_alta` datetime NOT NULL,
   `fecha_modificacion` datetime NOT NULL,
-  `fecha_baja` datetime NOT NULL,
+  `fecha_baja` datetime,
   `id_supermercado` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `codigo_barras` (`codigo_barras`),
-  UNIQUE KEY `codigo_rfid` (`codigo_rfid`),
+  KEY `codigo_barras` (`codigo_barras`),
+  KEY `codigo_rfid` (`codigo_rfid`),
+  KEY `state` (`state`),
   KEY `id_supermercado` (`id_supermercado`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+CREATE TRIGGER my_supermercado_producto_OnInsert BEFORE INSERT ON `my_supermercado_producto`
+    FOR EACH ROW SET NEW.fecha_alta = IFNULL(NEW.fecha_alta, NOW()), NEW.fecha_modificacion = IFNULL(NEW.fecha_modificacion, NOW());
 
 DROP TABLE IF EXISTS `my_user`;
 CREATE TABLE IF NOT EXISTS `my_user` (
@@ -75,17 +96,24 @@ CREATE TABLE IF NOT EXISTS `my_user` (
   KEY `state` (`state`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+CREATE TRIGGER my_user_OnInsert BEFORE INSERT ON `my_user`
+    FOR EACH ROW SET NEW.last_access = IFNULL(NEW.last_access, NOW());
+
 DROP TABLE IF EXISTS `my_user_frigorifico`;
 CREATE TABLE IF NOT EXISTS `my_user_frigorifico` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(128) NOT NULL,
   `fecha_alta` datetime NOT NULL,
-  `fecha_baja` datetime NOT NULL,
+  `fecha_modificacion` datetime NOT NULL,
+  `fecha_baja` datetime,
   `id_user` int(11) NOT NULL,
   `estado` char(1) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_user` (`id_user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+CREATE TRIGGER my_user_frigorifico_OnInsert BEFORE INSERT ON `my_user_frigorifico`
+    FOR EACH ROW SET NEW.fecha_alta = IFNULL(NEW.fecha_alta, NOW()), NEW.fecha_modificacion = IFNULL(NEW.fecha_modificacion, NOW());
 
 DROP TABLE IF EXISTS `my_user_remember_token`;
 CREATE TABLE IF NOT EXISTS `my_user_remember_token` (
@@ -98,6 +126,9 @@ CREATE TABLE IF NOT EXISTS `my_user_remember_token` (
   KEY `state` (`state`),
   KEY `attempts` (`attempts`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TRIGGER my_user_remember_token_OnInsert BEFORE INSERT ON `my_user_remember_token`
+    FOR EACH ROW SET NEW.creation_date = IFNULL(NEW.creation_date, NOW());
 
 ALTER TABLE `my_compra`
   ADD CONSTRAINT `my_compra_ibfk_1` FOREIGN KEY (`id_frigorifico`) REFERENCES `my_user_frigorifico` (`id`);

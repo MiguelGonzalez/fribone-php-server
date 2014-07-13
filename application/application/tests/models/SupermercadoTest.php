@@ -50,7 +50,9 @@ class SupermercadoTest extends PHPUnit_Framework_TestCase {
 		$supermercados = $this->CI->supermercado->get_supermercados();
 		$this->assertNull($supermercados);
 
-        $this->CI->supermercado->add_supermercado('mercadona');
+        $res = $this->CI->supermercado->add_supermercado('mercadona');
+        $this->assertTrue($res !== NULL);
+        
         $supermercados = $this->CI->supermercado->get_supermercados();
         $this->assertTrue($supermercados !== NULL);
 	}
