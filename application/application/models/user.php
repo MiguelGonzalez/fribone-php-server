@@ -33,7 +33,6 @@ class User extends CI_Model {
 			'permission' => 1,
 			'state' => 'A',
 			'last_ip' => $this->input->ip_address(),
-			'last_access' => date('Y-m-d H:i:s'),
 			'login_attempts' => 0
 		);		
 
@@ -128,7 +127,6 @@ class User extends CI_Model {
 		$data = array(
 			'email' => trim($email),
 			'token' => $token,
-			'creation_date' => date('Y-m-d H:i:s'),
 			'attempts' => 0,
 			'state' => 'A'
 		);		

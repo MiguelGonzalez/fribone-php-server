@@ -10,6 +10,7 @@ class Supermercado extends CI_Model {
 		$this->db->select('supermercado.id');
 		$this->db->select('supermercado.titulo');
 		$this->db->select('supermercado.fecha_alta');
+		$this->db->select('supermercado.fecha_modificacion');
 		$this->db->select_count('supermercado_producto.id');
 		$this->db->from('supermercado');
 		$this->db->join('supermercado_producto', 'supermercado.id = supermercado_producto.id_supermercado', 'left');
@@ -25,8 +26,7 @@ class Supermercado extends CI_Model {
 
 	public function add_supermercado($titulo) {
 		$data = array(
-			'titulo' => trim($titulo),
-			'fecha_alta' => date('Y-m-d H:i:s')
+			'titulo' => trim($titulo)
 		);
 
 		$this->db->insert('supermercado', $data);
