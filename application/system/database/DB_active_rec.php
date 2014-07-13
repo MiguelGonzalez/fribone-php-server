@@ -112,7 +112,7 @@ class CI_DB_active_record extends CI_DB_driver {
 	 */
 	public function select_max($select = '', $alias = '')
 	{
-		return $this->_max_min_avg_sum($select, $alias, 'MAX');
+		return $this->_max_min_avg_sum_count($select, $alias, 'MAX');
 	}
 
 	// --------------------------------------------------------------------
@@ -128,7 +128,7 @@ class CI_DB_active_record extends CI_DB_driver {
 	 */
 	public function select_min($select = '', $alias = '')
 	{
-		return $this->_max_min_avg_sum($select, $alias, 'MIN');
+		return $this->_max_min_avg_sum_count($select, $alias, 'MIN');
 	}
 
 	// --------------------------------------------------------------------
@@ -144,7 +144,7 @@ class CI_DB_active_record extends CI_DB_driver {
 	 */
 	public function select_avg($select = '', $alias = '')
 	{
-		return $this->_max_min_avg_sum($select, $alias, 'AVG');
+		return $this->_max_min_avg_sum_count($select, $alias, 'AVG');
 	}
 
 	// --------------------------------------------------------------------
@@ -160,7 +160,7 @@ class CI_DB_active_record extends CI_DB_driver {
 	 */
 	public function select_sum($select = '', $alias = '')
 	{
-		return $this->_max_min_avg_sum($select, $alias, 'SUM');
+		return $this->_max_min_avg_sum_count($select, $alias, 'SUM');
 	}
 
 	// --------------------------------------------------------------------
@@ -177,7 +177,7 @@ class CI_DB_active_record extends CI_DB_driver {
 	 * @param	string	an alias
 	 * @return	object
 	 */
-	protected function _max_min_avg_sum($select = '', $alias = '', $type = 'MAX')
+	protected function _max_min_avg_sum_count($select = '', $alias = '', $type = 'MAX')
 	{
 		if ( ! is_string($select) OR $select == '')
 		{
@@ -186,7 +186,7 @@ class CI_DB_active_record extends CI_DB_driver {
 
 		$type = strtoupper($type);
 
-		if ( ! in_array($type, array('MAX', 'MIN', 'AVG', 'SUM')))
+		if ( ! in_array($type, array('MAX', 'MIN', 'AVG', 'SUM', 'COUNT')))
 		{
 			show_error('Invalid function type: '.$type);
 		}
@@ -207,6 +207,20 @@ class CI_DB_active_record extends CI_DB_driver {
 		}
 
 		return $this;
+	}
+
+	/**
+	 * Select Count
+	 *
+	 * Generates a SELECT COUNT(field) portion of a query
+	 *
+	 * @param	string	the field
+	 * @param	string	an alias
+	 * @return	object
+	 */
+	public function select_count($select = '', $alias = '')
+	{
+		return $this->_max_min_avg_sum_count($select, $alias, 'COUNT');
 	}
 
 	// --------------------------------------------------------------------
