@@ -41,6 +41,9 @@ class Supermercado extends CI_Model {
 	}
 
 	public function get_supermercado_productos($idSupermercado) {
+		if(!$this->exist_supermercado($idSupermercado)) {
+			return NULL;
+		}
 		$this->db->select('supermercado_producto.id');
 		$this->db->select('supermercado_producto.titulo');
 		$this->db->select('supermercado_producto.codigo_barras');
@@ -56,10 +59,7 @@ class Supermercado extends CI_Model {
 
 		$query = $this->db->get();
 
-		if ($query->num_rows() > 0) {
-        	return $query->result();
-		}
-		return NULL;
+    	return $query->result();
 	}
 
 	public function add_supermercado_producto($idSupermercado, $datosProducto) {
@@ -77,5 +77,16 @@ class Supermercado extends CI_Model {
 		}
 		
 		return NULL;
+	}
+
+	private function exist_supermercado($idSupermercado) {
+		$this->db->select('1', FALSE);
+		$this->db->from('supermercado');
+		$this->db->where('state','A');
+		$this->db->where('id', $idSupermercado);
+
+		$query = $this->db->get();
+
+		return $query->num_rows() === 1;
 	}
 }

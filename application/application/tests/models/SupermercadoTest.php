@@ -72,7 +72,7 @@ class SupermercadoTest extends PHPUnit_Framework_TestCase {
         $this->assertTrue($res !== NULL);
     }
 
-    public function textGetProductosSupermercado() {
+    public function testGetProductosSupermercado() {
         $res = $this->CI->supermercado->get_supermercado_productos(-1);
         $this->assertNull($res);
 
@@ -80,7 +80,7 @@ class SupermercadoTest extends PHPUnit_Framework_TestCase {
         $idSupermercado = $res['supermercado_id'];
 
         $res = $this->CI->supermercado->get_supermercado_productos($idSupermercado);
-        $this->assertTrue($res !== NULL);
+        $this->assertEquals(0, count($res));
 
         $datosProducto = array(
             'titulo' => 'Agua',
@@ -93,6 +93,6 @@ class SupermercadoTest extends PHPUnit_Framework_TestCase {
 
         $res = $this->CI->supermercado->get_supermercado_productos($idSupermercado);
         $this->assertEquals(1, count($res));
-        $this->assertEqual('Agua',$res[0]->titulo);
+        $this->assertEquals('Agua',$res[0]->titulo);
     }
 }
