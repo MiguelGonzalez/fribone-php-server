@@ -16,7 +16,7 @@ class My_PHPMailerTest extends PHPUnit_Framework_TestCase {
 
     public static function setUpBeforeClass() {
         try {
-            self::$dataBase_inflater = new DataBase_inflater();
+            self::$dataBase_inflater = DataBase_inflater::get_instance();
         } catch(Exception $ex) {
             self::fail($ex->getMessage());
         }
