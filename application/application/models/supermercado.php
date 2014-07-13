@@ -40,6 +40,28 @@ class Supermercado extends CI_Model {
 		return NULL;
 	}
 
+	public function get_supermercado_productos($idSupermercado) {
+		$this->db->select('supermercado_producto.id');
+		$this->db->select('supermercado_producto.titulo');
+		$this->db->select('supermercado_producto.codigo_barras');
+		$this->db->select('supermercado_producto.codigo_rfid');
+		$this->db->select('supermercado_producto.descripcion');
+		$this->db->select('supermercado_producto.precio');
+		$this->db->select('supermercado_producto.unidades');
+		$this->db->select('supermercado_producto.fecha_alta');
+		$this->db->select('supermercado_producto.fecha_modificacion');
+		$this->db->from('supermercado_producto');
+		$this->db->where('state','A');
+		$this->db->where('id', $idSupermercado);
+
+		$query = $this->db->get();
+
+		if ($query->num_rows() > 0) {
+        	return $query->result();
+		}
+		return NULL;
+	}
+
 	public function add_supermercado_producto($idSupermercado, $datosProducto) {
 		$data = array(
 			'id_supermercado' => $idSupermercado
