@@ -1,49 +1,13 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-require_once dirname(__FILE__) . '/../database_inflater.php';
+require_once dirname(__FILE__) . '/../PHPTest_Unit.php';
 
-class SupermercadoTest extends PHPUnit_Framework_TestCase {
-	private $CI;
-
-	private static $dataBase_inflater;
-
-    public static function setUpBeforeClass() {
-    	try {
-	        self::$dataBase_inflater = DataBase_inflater::get_instance();
-    	} catch(Exception $ex) {
-    		self::fail($ex->getMessage());
-    	}
-    }
-
-    public static function tearDownAfterClass() {
-    	try {
-        	self::$dataBase_inflater = NULL;
-    	} catch(Exception $ex) {
-    		self::fail($ex->getMessage());
-    	}
-    }
+class SupermercadoTest extends PHPTest_Unit {
 
     public function __construct() {
-    	parent::__construct();
+        parent::__construct();
 
-    	$this->CI = &get_instance();
-    	$this->CI->load->model('supermercado');
-    }
-
-	public function setUp() {
-		try {
-			self::$dataBase_inflater->create();
-		} catch(Exception $ex) {
-			self::fail($ex);
-		}
-    }
-
-    public function tearDown() {
-    	try {
-    		self::$dataBase_inflater->destroy();
-    	} catch(Exception $ex) {
-			self::fail($ex);
-		}
+        $this->CI->load->model('supermercado');
     }
 
 	public function testSupermercados() {

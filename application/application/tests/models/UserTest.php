@@ -1,56 +1,24 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-require_once dirname(__FILE__) . '/../database_inflater.php';
+require_once dirname(__FILE__) . '/../PHPTest_Unit.php';
 
-class UserTest extends PHPUnit_Framework_TestCase {
-	private $CI;
-
-	private static $dataBase_inflater;
-
-    public static function setUpBeforeClass() {
-    	try {
-	        self::$dataBase_inflater = DataBase_inflater::get_instance();
-    	} catch(Exception $ex) {
-    		self::fail($ex->getMessage());
-    	}
-    }
-
-    public static function tearDownAfterClass() {
-    	try {
-        	self::$dataBase_inflater = NULL;
-    	} catch(Exception $ex) {
-    		self::fail($ex->getMessage());
-    	}
-    }
+class UserTest extends PHPTest_Unit {
 
     public function __construct() {
-    	parent::__construct();
+        parent::__construct();
 
-    	$this->CI = &get_instance();
-    	$this->CI->load->model('user');
-    }
-
-	public function setUp() {
-		try {
-			self::$dataBase_inflater->create();
-		} catch(Exception $ex) {
-			self::fail($ex);
-		}
-    }
-
-    public function tearDown() {
-    	try {
-    		self::$dataBase_inflater->destroy();
-    	} catch(Exception $ex) {
-			self::fail($ex);
-		}
+        $this->CI->load->model('user');
+        $this->CI->load->library('login_auth');
     }
 
 	public function testGetUser() {
 		$user = $this->CI->User->get_user('test@test.com');
 		$this->assertNull($user);
 
-        self::$dataBase_inflater->create_user('test@test.com', 'TestName', '123456');
+        $resUser = $this->CI->User->create_user(
+            'test@test.com',
+            'TestName',
+            $this->get_password_hash('123456'));
         $user = $this->CI->User->get_user('test@test.com');
         $this->assertTrue($user !== NULL);
         $this->assertEquals('test@test.com', $user->email);
@@ -80,7 +48,10 @@ class UserTest extends PHPUnit_Framework_TestCase {
     }
 
     public function testUpdateLoginInfo() {
-        self::$dataBase_inflater->create_user('test@test.com', 'TestName', '123456');
+        $resUser = $this->CI->User->create_user(
+            'test@test.com',
+            'TestName',
+            $this->get_password_hash('123456'));
 
         $user = $this->CI->User->get_user('test@test.com');
         $last_access = $user->last_access;
@@ -93,7 +64,10 @@ class UserTest extends PHPUnit_Framework_TestCase {
     }
 
     public function testIncreseClearLoginAttempts() {
-        self::$dataBase_inflater->create_user('test@test.com', 'TestName', '123456');
+        $resUser = $this->CI->User->create_user(
+            'test@test.com',
+            'TestName',
+            $this->get_password_hash('123456'));
 
         $this->CI->User->increase_login_attempt('test@test.com');
         $numAttempts = $this->CI->User->get_login_attempts('test@test.com');
@@ -115,7 +89,7 @@ class UserTest extends PHPUnit_Framework_TestCase {
     public function testIsEmailAvailable() {
         $this->assertTrue($this->CI->User->is_email_available('test@test.com'));
 
-        self::$dataBase_inflater->create_user('test@test.com', 'TestName', '123456');
+        $resUser = $this->CI->login_auth->create_user('test@test.com', 'TestName', '123456');
 
         $this->assertFalse($this->CI->User->is_email_available('test@test.com'));
         $this->assertFalse($this->CI->User->is_email_available('teSt@test.com'));
@@ -124,7 +98,7 @@ class UserTest extends PHPUnit_Framework_TestCase {
     }
 
     public function testChangePassword() {
-        self::$dataBase_inflater->create_user('test@test.com', 'TestName', '123456');
+        $resUser = $this->CI->login_auth->create_user('test@test.com', 'TestName', '123456');
 
         $user = $this->CI->User->get_user('test@test.com');
 
@@ -139,7 +113,7 @@ class UserTest extends PHPUnit_Framework_TestCase {
         $token = uniqid('', true);
         $hashed_token = $this->get_password_hash($token);
 
-        self::$dataBase_inflater->create_user('test@test.com', 'TestName', '123456');
+        $resUser = $this->CI->login_auth->create_user('test@test.com', 'TestName', '123456');
 
         $token = $this->CI->User->get_token_remember('test@test.com');
         $this->assertNull($token);
@@ -168,25 +142,5 @@ class UserTest extends PHPUnit_Framework_TestCase {
 
         $token = $this->CI->User->get_token_remember('test@test.com');
         $this->assertNull($token);
-    }
-
-
-    private function get_password_hash($password) {
-        $password_hashed = NULL;
-
-        if (strnatcmp(phpversion(),'5.5.0') >= 0) {
-            $password_hashed = password_hash($password, PASSWORD_BCRYPT);
-        } else {
-            // Original PHP code by Chirp Internet: www.chirp.com.au
-            // Please acknowledge use of this code by including this header.
-            $salt = "";
-            $salt_chars = array_merge(range('A','Z'), range('a','z'), range(0,9));
-            for($i=0; $i < 22; $i++) {
-                $salt .= $salt_chars[array_rand($salt_chars)];
-            }
-            $password_hashed = crypt($password, sprintf('$2a$%02d$', 7) . $salt);
-        }
-
-        return $password_hashed;
     }
 }
