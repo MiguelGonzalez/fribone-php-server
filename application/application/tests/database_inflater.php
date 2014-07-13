@@ -7,36 +7,15 @@ class DataBase_inflater {
 	public function __construct() {
 		self::$pdo = new PDO("mysql:dbname=fribone_test;host=localhost","root", "");
 		self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		self::$pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, 1);
 	}
 
 	public function create() {
 		try {
-	        self::$pdo->query(
-				"CREATE TABLE IF NOT EXISTS `my_user` (" .
-				"  `id` int(11) NOT NULL AUTO_INCREMENT," .
-				"  `email` varchar(128) NOT NULL," .
-				"  `username` varchar(128) NOT NULL," .
-				"  `password` char(60) NOT NULL," .
-				"  `permission` tinyint(4) NOT NULL," .
-				"  `state` char(1) NOT NULL," .
-				"  `last_ip` char(15) NOT NULL," .
-				"  `last_access` datetime NOT NULL," .
-				"  `login_attempts` int(11) NOT NULL," .
-				"  PRIMARY KEY (`id`)," .
-				"  UNIQUE KEY `email` (`email`)" .
-				") ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1"
-	    	);
+			$queries = file_get_contents('database_inflater.sql');
 
-	    	self::$pdo->query(
-				" CREATE TABLE IF NOT EXISTS `my_user_remember_token` ( " .
-				  " `email` varchar(128) NOT NULL, " .
-				  " `token` varchar(60) NOT NULL, " .
-				  " `creation_date` datetime NOT NULL, " .
-				  " `attempts` tinyint(3) unsigned NOT NULL DEFAULT '0', " .
-				  " `state` char(1) NOT NULL DEFAULT 'A', " .
-				  " PRIMARY KEY (`email`,`creation_date`) " .
-				" ) ENGINE=InnoDB DEFAULT CHARSET=utf8 "
-	    	);
+			$stmt = self::$pdo->prepare($queries);
+	        $stmt->execute();
     	} catch(Exception $ex) {
     		throw new Exception($ex->getMessage());
     	}
@@ -44,8 +23,6 @@ class DataBase_inflater {
 
 	public function destroy() {
 		try {
-        	self::$pdo->query("DROP TABLE my_user");
-        	self::$pdo->query("DROP TABLE my_user_remember_token");
     	} catch(Exception $ex) {
     		throw new Exception($ex->getMessage());
     	}
