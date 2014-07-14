@@ -20,4 +20,16 @@ class FrigorificoTest extends PHPTest_Unit {
         $frigorificos = $this->CI->frigorifico->get_frigorificos_user($idUser);
         $this->assertEquals(0, count($frigorificos));
 	}
+
+    public function testAddFrigorifico() {
+        $resUser = $this->CI->login_auth->create_user('test@test.com', 'TestName', '123456');
+        $idUser = $resUser['user_id'];
+
+        $res = $this->CI->frigorifico->add_frigorifico_user($idUser, 'Mi primer frigo');
+        $this->assertTrue($res !== NULL);
+
+        $frigorificos = $this->CI->frigorifico->get_frigorificos_user($idUser);
+        $this->assertEquals(1, count($frigorificos));
+        $this->assertEquals('Mi primer frigo', $frigorificos[0]->titulo);
+    }
 }
