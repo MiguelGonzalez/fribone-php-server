@@ -2,14 +2,21 @@
 
 class DataBase_inflater {
 
-	protected $pdo = NULL;
-
 	private static $instance = NULL;
 
+	protected $pdo = NULL;
 	private $is_create = FALSE;
 
 	private function __construct() {
-		$this->pdo = new PDO("mysql:dbname=fribone_test;host=localhost","root", "");
+		$CI = &get_instance();
+		$CI->load->database();
+
+		$this->pdo = new PDO('mysql:host=' .
+				$CI->db->hostname .
+				';dbname=' . $CI->db->database,
+				$CI->db->username,
+				$CI->db->password
+		);
 		$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$this->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, 1);
 	}
