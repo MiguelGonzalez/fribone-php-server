@@ -21,7 +21,6 @@ CREATE TABLE IF NOT EXISTS `my_compra_producto` (
   `unidades` int(11) NOT NULL,
   `id_compra` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
-  `id_supermercado` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_compra` (`id_compra`),
   KEY `id_producto` (`id_producto`),
@@ -146,5 +145,9 @@ ALTER TABLE `my_supermercado_producto`
 
 ALTER TABLE `my_user_frigorifico`
   ADD CONSTRAINT `my_user_frigorifico_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `my_user` (`id`);
+
+ALTER TABLE `my_user_remember_token`
+  ADD CONSTRAINT `my_user_remember_token_ibfk_1` FOREIGN KEY (`email`) REFERENCES `my_user` (`email`);
+
 
 SET FOREIGN_KEY_CHECKS = 1;
