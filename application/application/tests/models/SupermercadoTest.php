@@ -59,4 +59,26 @@ class SupermercadoTest extends PHPTest_Unit {
         $this->assertEquals(1, count($res));
         $this->assertEquals('Agua',$res[0]->titulo);
     }
+
+    public function testGetProductoSupermercado() {
+        $res = $this->CI->supermercado->add_supermercado('mercadona');
+        $idSupermercado = $res['supermercado_id'];
+
+        $res = $this->CI->supermercado->get_supermercado_productos($idSupermercado);
+
+        $datosProducto = array(
+            'titulo' => 'Agua',
+            'codigo_barras' => '123006456046',
+            'descripcion' => 'Botella de agua de 1L del mercadona',
+            'precio' => 0.87,
+            'unidades' => 1
+        );
+        $res = $this->CI->supermercado->add_supermercado_producto($idSupermercado, $datosProducto);
+        $idProducto = $res['id_producto'];
+
+        $producto = $this->CI->supermercado->get_producto($idProducto);
+        $this->assertEquals('Agua', $producto->titulo);
+        $this->assertEquals('123006456046', $producto->codigo_barras);
+        $this->assertEquals(0.87, $producto->precio);
+    }
 }
