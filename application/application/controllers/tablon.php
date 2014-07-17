@@ -9,11 +9,11 @@ class Tablon extends MY_Controller_User {
 		$this->template = 'tablon';
 	}
 
-	public function index() {
+	public function index_get() {
 		$this->_render('tablon');
 	}
 
-	public function logout() {
+	public function logout_get() {
 		$this->login_auth->logout();
 
 		redirect(

@@ -40,7 +40,7 @@ class Login_auth {
 						}
 
 						$this->ci->session->set_userdata(array(
-							'id'	=> $user->id,
+							'user_id'	=> $user->id,
 							'email'	=> $user->email,
 							'username'	=> $user->username,
 							'permission'	=> $user->permission,
@@ -147,7 +147,7 @@ class Login_auth {
 	}
 
 	public function is_logged_in() {
-		return $this->ci->session->userdata('id') !== FALSE;
+		return $this->ci->session->userdata('user_id') !== FALSE;
 	}
 
 	public function get_user_id() {

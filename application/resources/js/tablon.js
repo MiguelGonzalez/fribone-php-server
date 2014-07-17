@@ -1,22 +1,69 @@
-App = Ember.Application.createWithMixins(Bootstrap);
+window.App = Ember.Application.createWithMixins(Bootstrap);
+
+App.ApplicationAdapter = DS.RESTAdapter.extend({
+  namespace: 'api_v1'
+});
 
 /*
- * Frigorífico
+ * Rutas
 */
 
 App.Router.map(function() {
-  this.route("fridge", { path: "/fridge" });
-  this.route("statistics", { path: "/estadisticas" });
+	this.route('index', {path : "/"});
+	this.route('home', {path : "home"});
+	this.route("fridge", { path: "/fridge/:fridge_id" });
+	this.route("statistics", { path: "/estadisticas" });
 });
 
-App.FridgeRoute = Ember.Route.extend({
+App.IndexRoute = Ember.Route.extend({
+  redirect: function() {
+   this.transitionTo('home'); 
+  }
+});
+
+App.ApplicationRoute = Ember.Route.extend({
+	model: function() {
+		return this.store.find('fridge');
+	},
+	setupControllers: function(controller, model) {
+    	this.set('controller.fridges', model);
+	}
+});
+
+App.HomeRoute = Ember.Route.extend({
+	model: function() {
+		return {};
+	},
 	renderTemplate: function() {
-		this.render('fridge');
+		this.render('home');
+	},
+});
+
+
+App.FridgeRoute = Ember.Route.extend({
+	model: function(params) {
+		console.log("Fridge route start");
+		console.log(this.store.find('fridge', params.fridge_id));
+		console.log("Fridge route end");
+		return this.store.find('fridge', params.fridge_id);
+	}
+});
+
+App.StatisticsRoute = Ember.Route.extend({
+	renderTemplate: function() {
+		this.render(
+			'statistics');
 	},
 	model: function() {
-		return Ember.$.getJSON('/fridge/productos');
+		return {};
 	}
-})
+});
+
+
+/*
+ * Controladores
+*/
+
 
 App.FridgeController = Ember.ObjectController.extend({
 	myModalButtons: [
@@ -37,15 +84,22 @@ App.FridgeController = Ember.ObjectController.extend({
 	}
 });
 
+
+
 /*
- * Estadísticas
+ * Modelos
 */
-App.StatisticsRoute = Ember.Route.extend({
-	renderTemplate: function() {
-		this.render(
-			'statistics');
-	},
-	model: function() {
-		return {};
-	}
-})
+var attr = DS.attr;
+
+App.Fridge = DS.Model.extend({
+	titulo: attr('string'),
+	fecha_alta: attr('date'),
+	fecha_modificacion: attr('date'),
+	productos: DS.hasMany('producto',  {
+	  async: true
+	})
+});
+
+App.Producto = DS.Model.extend({
+	title: attr('string')
+});
