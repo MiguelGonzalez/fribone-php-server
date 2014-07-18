@@ -34,7 +34,8 @@
                         <div class="col-md-2" role="main">
                             <div id="menu-left">
                                 <div class="list-group">
-                                    {{partial "menu"}}
+                                    {{#link-to 'fridge' class="list-group-item"}}Mi frigorífico{{/link-to}}
+                                    {{#link-to 'statistics' class="list-group-item"}}Estadísticas{{/link-to}}
                                 </div>
                             </div>
                         </div>
@@ -55,21 +56,27 @@
                     </div>
                 </div>
             </footer>
+            {{outlet modal}}
 
+            <div class="modal fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+
+                        </div>
+                        <div class="modal-body">
+
+                        </div>
+                        <div class="modal-footer">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
             {{bs-growl-notifications}}
         </script>
 
-        <script type="text/x-handlebars" data-template-name="_fridges-menu">
-            {{#each fridge in fridges}}
-                {{#link-to 'fridge' id class="list-group-item"}}{{title}}{{/link-to}}
-            {{/each}}
-            {{#link-to 'statistics' class="list-group-item"}}Estadísticas{{/link-to}}
-
-            asdf
-        </script>
-
         <?php echo $body;?>
-
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="<?php echo base_url('resources/js/jquery-2.1.1.min.js');?>"><\/script>')</script>

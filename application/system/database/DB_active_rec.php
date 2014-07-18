@@ -128,7 +128,7 @@ class CI_DB_active_record extends CI_DB_driver {
 	 */
 	public function select_min($select = '', $alias = '')
 	{
-		return $this->_max_min_avg_sum_count($select, $alias, 'MIN');
+		return $this->_max_min_avg_sum($select, $alias, 'MIN');
 	}
 
 	// --------------------------------------------------------------------
