@@ -54,19 +54,18 @@ class Home extends MY_Controller {
 
 	public function login() {
 		$login_ok = FALSE;
-		if (!$this->login_auth->is_logged_in()) {
-			$email = $this->input->post('email');
-			$password = $this->input->post('password');
-			$remember_me = $this->input->post('remember-me');
+		
+		$email = $this->input->post('email');
+		$password = $this->input->post('password');
+		$remember_me = $this->input->post('remember-me');
 
-			if($remember_me === "on") {
-				$remember_me = TRUE; 
-			} else {
-				$remember_me = FALSE;
-			}
-
-			$login_ok = $this->login_auth->login($email, $password, $remember_me);
+		if($remember_me === "on") {
+			$remember_me = TRUE; 
+		} else {
+			$remember_me = FALSE;
 		}
+
+		$login_ok = $this->login_auth->login($email, $password, $remember_me);
 
 		if($login_ok) {
 			$this->login_ok();

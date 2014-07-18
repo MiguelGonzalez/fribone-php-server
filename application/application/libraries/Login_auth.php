@@ -15,7 +15,6 @@ class Login_auth {
 	public function __construct() {
 		$this->ci =& get_instance();
 
-		$this->ci->load->library('session');
 		$this->ci->load->model('User');
 		$this->ci->load->helper('email');
 	}
@@ -36,8 +35,10 @@ class Login_auth {
 						$this->error = LOGIN_STATUS_BANNED;
 					} else {
 						if($remember) {
-							$config['sess_expiration'] = 0;
+							$this->ci->config->set_item('sess_expiration', 0);
+							$this->ci->config->set_item('sess_expire_on_close', FALSE);
 						}
+						$this->ci->load->library('session');
 
 						$this->ci->session->set_userdata(array(
 							'user_id'	=> $user->id,
@@ -133,6 +134,7 @@ class Login_auth {
 	}
 
 	public function logout() {
+		$this->ci->load->library('session');
 		$this->ci->session->set_userdata(
 			array(
 				'user_id' => '',
@@ -147,23 +149,44 @@ class Login_auth {
 	}
 
 	public function is_logged_in() {
+		$this->ci->load->library('session');
 		return $this->ci->session->userdata('user_id') !== FALSE;
 	}
 
 	public function get_user_id() {
+		$this->ci->load->library('session');
 		return $this->ci->session->userdata('user_id');
 	}
 
 	public function get_email() {
+		$this->ci->load->library('session');
 		return $this->ci->session->userdata('email');
 	}
 
 	public function get_username() {
+		$this->ci->load->library('session');
 		return $this->ci->session->userdata('username');
 	}
 
 	public function is_email_available($email) {
 		return ((strlen($email) > 0) AND $this->ci->User->is_email_available($email));
+	}
+
+	public function is_still_active($email, $system_time = NULL) {
+		$date_token = $this->ci->User->get_token_date_remember(
+			$email
+		);
+
+		if(!is_null($date_token)) {
+			if(is_null($system_time)) {
+				$system_time = strtotime(date('Y-m-d H:i:s'));
+			}
+			if($system_time <= $this->get_date_hours_active($date_token, 1)) {
+				return TRUE;
+			}
+			$this->ci->User->invalidate_token_remember($email);
+		}
+		return FALSE;
 	}
 
 	private function check_attempts($email) {
@@ -195,23 +218,6 @@ class Login_auth {
 			}
 		}
 
-		return FALSE;
-	}
-
-	public function is_still_active($email, $system_time = NULL) {
-		$date_token = $this->ci->User->get_token_date_remember(
-			$email
-		);
-
-		if(!is_null($date_token)) {
-			if(is_null($system_time)) {
-				$system_time = strtotime(date('Y-m-d H:i:s'));
-			}
-			if($system_time <= $this->get_date_hours_active($date_token, 1)) {
-				return TRUE;
-			}
-			$this->ci->User->invalidate_token_remember($email);
-		}
 		return FALSE;
 	}
 
