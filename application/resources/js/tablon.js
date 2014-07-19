@@ -271,7 +271,6 @@ var supermercado = {
             var html_template = template(data);
 
             $('#main').html(html_template);
-            console.log('Dibujado template');
 
             supermercado.initEvents();
         }).fail(function(jqXHR) {
@@ -279,7 +278,9 @@ var supermercado = {
         });
     },
     initEvents: function() {
-
+        $('#supermercado').on('click', '.volver', function() {
+            router.setRoute($(this).attr('data-to'));
+        });
     },
     anadir_producto: function() {
         var form = $('#anadir-producto-supermercado-modal form');

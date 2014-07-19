@@ -88,30 +88,37 @@ header .nav > li.open > a:focus {
  * Supermercados
 */
 
-#listado-supermercados > div {
+.caja-item  {
     padding: 20px 1%;
 }
 
-#listado-supermercados > div > .supermercado {
+.caja-item .item {
     border: 1px solid #eee;
     border-radius: 5px;
-    background: url(/resources/img/tablon/supermercado.png) no-repeat center 20px;
     padding-top: 65px;
     cursor: pointer;
     text-align: center;
     position: relative
 }
 
-#listado-supermercados > .supermercado:hover {
-    background-color: #eee;
+.caja-item .item:hover {
+    background-color: #eee !important;
 }
 
-#listado-supermercados .titulo {
+.caja-item .titulo {
     font-size: 16px;
 }
 
-#listado-supermercados .num-productos {
+.caja-item .num-productos {
     position: absolute;
     top: 8px;
     right: 8px
+}
+
+.caja-item .item.supermercado {
+    background: url(/resources/img/tablon/supermercado.png) no-repeat center 20px;
+}
+
+.caja-item .item.producto {
+    background: url(/resources/img/tablon/producto.png) no-repeat center 20px;
 }

@@ -64,8 +64,8 @@
         </div>
         <div id="listado-supermercados" class="clearfix">
             {{#each supermercado}}
-                <div class="col-md-3">
-                    <div id="supermercado-{{id}}" class="supermercado wrapper" data-to="/supermercados/{{id}}">
+                <div class="col-md-3 caja-item">
+                    <div id="supermercado-{{id}}" class="item supermercado wrapper" data-to="/supermercados/{{id}}">
                         <span class="titulo">
                             {{titulo}}
                         </span>
@@ -87,17 +87,17 @@
 </script>
 
 <script type="text/x-handlebars" id="supermercado-template">
-    <div id="supermercados">
-
+    <div id="supermercado">
         <div class="page-header">
             <h1>
                 {{titulo}}
+                <button type="button" class="volver btn btn-default pull-right"  data-to="/supermercados">Volver</button>
             </h1>
         </div>
         <div id="productos" class="clearfix">
             {{#each producto}}
-                <div class="col-md-3">
-                    <div id="producto-{{id}}" class="producto wrapper" data-to="/supermercados/{{id_supermercado}}/producto/{{id}}">
+                <div class="col-md-3 caja-item">
+                    <div id="producto-{{id}}" class="item producto wrapper" data-to="/supermercados/{{id_supermercado}}/producto/{{id}}">
                         <span class="titulo">
                             {{titulo}}
                         </span>
