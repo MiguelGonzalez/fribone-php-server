@@ -10,7 +10,7 @@ class Home extends MY_Controller {
 
 	public function index($logged_error = FALSE) {
 		if (defined('ENVIRONMENT') && ENVIRONMENT == 'testing') {
-		} else if ($this->login_auth->is_logged_in()) {
+		} else if ($this->login_auth_library->is_logged_in()) {
 			$this->login_ok();
 		} else {
 			$this->data['error_login'] = $logged_error;
@@ -20,7 +20,7 @@ class Home extends MY_Controller {
 	}
 
 	public function remember_token($token = NULL) {
-		if ($this->login_auth->is_logged_in()) {
+		if ($this->login_auth_library->is_logged_in()) {
 			$this->login_ok();
 		} else if(is_null($token)) {
 			$this->index(FALSE);
@@ -29,21 +29,21 @@ class Home extends MY_Controller {
 			$this->data['reset'] = true;
 			$this->data['token'] = $token;
 			$this->_render('home');
-		}	
+		}
 	}
 
 	public function reset_password() {
-		if ($this->login_auth->is_logged_in()) {
+		if ($this->login_auth_library->is_logged_in()) {
 			$this->login_ok();
 			return;
 		}
 		$reset_ok = FALSE;
-		if (!$this->login_auth->is_logged_in()) {
+		if (!$this->login_auth_library->is_logged_in()) {
 			$token = $this->input->post('token');
 			$email = $this->input->post('email');
 			$password = $this->input->post('password');
-			
-			$reset_ok = $this->login_auth->password_remember_change($email, $token, $password);
+
+			$reset_ok = $this->login_auth_library->password_remember_change($email, $token, $password);
 		}
 		if($reset_ok) {
 			$this->_renderJson(array('result' => true));
@@ -54,18 +54,18 @@ class Home extends MY_Controller {
 
 	public function login() {
 		$login_ok = FALSE;
-		
+
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');
 		$remember_me = $this->input->post('remember-me');
 
 		if($remember_me === "on") {
-			$remember_me = TRUE; 
+			$remember_me = TRUE;
 		} else {
 			$remember_me = FALSE;
 		}
 
-		$login_ok = $this->login_auth->login($email, $password, $remember_me);
+		$login_ok = $this->login_auth_library->login($email, $password, $remember_me);
 
 		if($login_ok) {
 			$this->login_ok();
@@ -82,21 +82,21 @@ class Home extends MY_Controller {
 	}
 
 	private function login_error() {
-		$this->index(TRUE);	
+		$this->index(TRUE);
 	}
 
 	public function register() {
-		if ($this->login_auth->is_logged_in()) {
+		if ($this->login_auth_library->is_logged_in()) {
 			$this->login_ok();
 			return;
 		}
 		$register_ok = FALSE;
-		if (!$this->login_auth->is_logged_in()) {
+		if (!$this->login_auth_library->is_logged_in()) {
 			$email = $this->input->post('email');
 			$username = $this->input->post('username');
 			$password = $this->input->post('password');
 
-			$idUser = $this->login_auth->create_user($email, $username, $password);
+			$idUser = $this->login_auth_library->create_user($email, $username, $password);
 			$register_ok = !is_null($idUser);
 		}
 		if($register_ok) {
@@ -107,15 +107,15 @@ class Home extends MY_Controller {
 	}
 
 	public function remember() {
-		if ($this->login_auth->is_logged_in()) {
+		if ($this->login_auth_library->is_logged_in()) {
 			$this->login_ok();
 			return;
 		}
 		$remember_ok = FALSE;
-		if (!$this->login_auth->is_logged_in()) {
+		if (!$this->login_auth_library->is_logged_in()) {
 			$email = $this->input->post('email');
-			
-			$token = $this->login_auth->password_remember($email);
+
+			$token = $this->login_auth_library->password_remember($email);
 
 			if(!is_null($token)) {
 				$data_token['remember_token'] = $token;
@@ -136,7 +136,7 @@ class Home extends MY_Controller {
 	public function validation_email() {
 		$email = $this->input->post('email');
 
-		if($this->login_auth->is_email_available($email, $password)) {
+		if($this->login_auth_library->is_email_available($email, $password)) {
 			$this->_renderJson(array('value' => $email,'valid' => true, 'message' => ''));
 		} else {
 			$this->_renderJson(array('value' => $email,'valid' => false, 'message' => 'Correo electrónico en uso'));

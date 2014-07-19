@@ -8,7 +8,7 @@ class UserTest extends PHPTest_Unit {
         parent::__construct();
 
         $this->CI->load->model('user');
-        $this->CI->load->library('login_auth');
+        $this->CI->load->library('login_auth_library');
     }
 
 	public function testGetUser() {
@@ -89,7 +89,7 @@ class UserTest extends PHPTest_Unit {
     public function testIsEmailAvailable() {
         $this->assertTrue($this->CI->User->is_email_available('test@test.com'));
 
-        $resUser = $this->CI->login_auth->create_user('test@test.com', 'TestName', '123456');
+        $resUser = $this->CI->login_auth_library->create_user('test@test.com', 'TestName', '123456');
 
         $this->assertFalse($this->CI->User->is_email_available('test@test.com'));
         $this->assertFalse($this->CI->User->is_email_available('teSt@test.com'));
@@ -98,7 +98,7 @@ class UserTest extends PHPTest_Unit {
     }
 
     public function testChangePassword() {
-        $resUser = $this->CI->login_auth->create_user('test@test.com', 'TestName', '123456');
+        $resUser = $this->CI->login_auth_library->create_user('test@test.com', 'TestName', '123456');
 
         $user = $this->CI->User->get_user('test@test.com');
 
@@ -113,7 +113,7 @@ class UserTest extends PHPTest_Unit {
         $token = uniqid('', true);
         $hashed_token = $this->get_password_hash($token);
 
-        $resUser = $this->CI->login_auth->create_user('test@test.com', 'TestName', '123456');
+        $resUser = $this->CI->login_auth_library->create_user('test@test.com', 'TestName', '123456');
 
         $token = $this->CI->User->get_token_remember('test@test.com');
         $this->assertNull($token);

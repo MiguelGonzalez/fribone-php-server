@@ -10,11 +10,11 @@ class FrigorificoTest extends PHPTest_Unit {
         $this->CI->load->model('user');
         $this->CI->load->model('frigorifico');
 
-        $this->CI->load->library('login_auth');
+        $this->CI->load->library('login_auth_library');
     }
 
 	public function testFrigorifico() {
-		$resUser = $this->CI->login_auth->create_user('test@test.com', 'TestName', '123456');
+		$resUser = $this->CI->login_auth_library->create_user('test@test.com', 'TestName', '123456');
         $idUser = $resUser['user_id'];
 
         $frigorificos = $this->CI->frigorifico->get_frigorificos_user($idUser);
@@ -22,7 +22,7 @@ class FrigorificoTest extends PHPTest_Unit {
 	}
 
     public function testAddFrigorifico() {
-        $resUser = $this->CI->login_auth->create_user('test@test.com', 'TestName', '123456');
+        $resUser = $this->CI->login_auth_library->create_user('test@test.com', 'TestName', '123456');
         $idUser = $resUser['user_id'];
 
         $res = $this->CI->frigorifico->add_frigorifico_user($idUser, 'Mi primer frigo');

@@ -14,7 +14,7 @@ class MY_Controller extends CI_Controller {
         if (defined('ENVIRONMENT') && ENVIRONMENT == 'testing') {
             $this->load->add_package_path(APPPATH.'tests/mockups');
         } else {
-            $this->load->library('login_auth');
+            $this->load->library('login_auth_library');
         }
     }
 

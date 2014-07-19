@@ -45,6 +45,10 @@ class PHPTest_Unit extends PHPUnit_Framework_TestCase {
 		}
     }
 
+    public function testTrue() {
+        $this->assertTrue(true);
+    }
+
     protected function get_password_hash($password) {
         $password_hashed = NULL;
 

@@ -7,7 +7,7 @@ class Tablon extends MY_Controller_User {
 
         $this->load->library('fridge_library');
 
-		$this->data['username'] = $this->login_auth->get_username();
+		$this->data['username'] = $this->login_auth_library->get_username();
 		$this->template = 'tablon';
 	}
 
@@ -17,7 +17,7 @@ class Tablon extends MY_Controller_User {
 
     public function menus() {
         $frigorificos_usuario = $this->fridge_library->get_fridges(
-                $this->login_auth->get_user_id()
+                $this->login_auth_library->get_user_id()
         );
 
         $menus = array();
@@ -40,7 +40,7 @@ class Tablon extends MY_Controller_User {
     }
 
 	public function logout() {
-		$this->login_auth->logout();
+		$this->login_auth_library->logout();
 
 		redirect(
 			site_url(),

@@ -7,7 +7,7 @@ define('LOGIN_INCORRECT_LOGIN', 'login_1');
 define('LOGIN_EMAIL_IN_USE', 'login_2');
 define('CREATE_NOT_SET_ALL_PARAMETERS', 'create_1');
 
-class Login_auth {
+class Login_auth_library {
 
 	private $ci = NULL;
 	private $error = NULL;
