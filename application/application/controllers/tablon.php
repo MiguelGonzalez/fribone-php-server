@@ -32,8 +32,8 @@ class Tablon extends MY_Controller_User {
 
         array_push($menus, array(
             'id' => NULL,
-            'title' => 'Estadísticas',
-            'to' => '/estadisticas'
+            'title' => 'Supermercados',
+            'to' => '/supermercados'
         ));
 
         $this->_renderJson(array('menu' => $menus));

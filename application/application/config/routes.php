@@ -48,7 +48,7 @@ $route['404_override'] = '';
 $route['fridge/(\d+)'] = 'tablon/index';
 $route['fridge/(\d+)/compras'] = 'tablon/index';
 $route['fridge/(\d+)/productos'] = 'tablon/index';
-$route['estadisticas'] = 'tablon/index';
+$route['supermercados'] = 'tablon/index';
 
 
 /* End of file routes.php */

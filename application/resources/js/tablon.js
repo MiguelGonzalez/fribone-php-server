@@ -11,7 +11,10 @@ $(function(){
                 before: fridge.reset,
                 on: fridge.draw
             },
-            '/estadisticas' : estadisticas.draw
+            '/supermercados' : {
+                before: supermercados.reset,
+                on: supermercados.draw
+            }
         };
         router = new Router(routes).configure({
             html5history: true,
@@ -149,12 +152,32 @@ var fridge = {
     }
 }
 
-var estadisticas = {
-    draw: function() {
-        var source   = $('#estadisticas').html();
-        var template = Handlebars.compile(source)();
+var supermercados = {
+    isPainted: false,
+    reset: function() {
+        supermercados.isPainted = false;
+    },
+    draw: function(id) {
+        if(supermercados.isPainted) {
+            return;
+        } else {
+            supermercados.isPainted = true;
+            $.ajax({
+                url: '/supermercado/get_supermercados/',
+                async:false,
+                dataType: 'json'
+            }).done(function(data) {
+                var source   = $('#supermercados-template').html();
+                var template = Handlebars.compile(source);
+                var html_template = template(data);
 
-        $('#main').html(template);
+                $('#main').html(html_template);
+
+                fridge.initEvents();
+            }).fail(function(jqXHR) {
+                alert('Error obtener supermercados');
+            });
+        }
     }
 }
 

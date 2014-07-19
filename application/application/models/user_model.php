@@ -1,6 +1,6 @@
 <?php
 
-class User extends CI_Model {
+class User_model extends CI_Model {
 
 	public function __construct() {
 		parent::__construct();
@@ -32,7 +32,7 @@ class User extends CI_Model {
 			'password' => $password,
 			'permission' => 1,
 			'last_ip' => $this->input->ip_address()
-		);		
+		);
 
 		$this->db->insert('user', $data);
 
@@ -104,7 +104,7 @@ class User extends CI_Model {
 		$this->db->where('id', $id_user);
 		$this->db->where('state','A');
 		$this->db->update('user');
-		
+
 		return $this->db->affected_rows() === 1;
 	}
 
@@ -125,7 +125,7 @@ class User extends CI_Model {
 		$data = array(
 			'email' => trim($email),
 			'token' => $token
-		);		
+		);
 
 		$this->db->insert('user_remember_token', $data);
 

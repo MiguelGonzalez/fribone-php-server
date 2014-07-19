@@ -15,13 +15,13 @@ class Login_auth_library {
 	public function __construct() {
 		$this->ci =& get_instance();
 
-		$this->ci->load->model('user');
+		$this->ci->load->model('user_model');
 		$this->ci->load->helper('email');
 	}
 
 	public function login($email, $password, $remember = FALSE) {
 		if (valid_email($email) AND strlen($password) > 0) {
-			$user = $this->ci->user->get_user(
+			$user = $this->ci->user_model->get_user(
 				$email
 			);
 
@@ -48,9 +48,9 @@ class Login_auth_library {
 							'remember' => $remember
 						));
 
-						$this->ci->user->clear_login_attempts($user->id);
+						$this->ci->user_model->clear_login_attempts($user->id);
 
-						$this->ci->user->update_login_info(
+						$this->ci->user_model->update_login_info(
 							$user->id
 						);
 						return TRUE;
@@ -58,12 +58,12 @@ class Login_auth_library {
 				} else {
 					$this->check_attempts($email);
 					$this->error = LOGIN_INCORRECT_LOGIN;
-					$this->ci->user->increase_login_attempt($email);
+					$this->ci->user_model->increase_login_attempt($email);
 				}
 			} else {
 				sleep(1);
 				$this->error = LOGIN_INCORRECT_LOGIN;
-				$this->ci->user->increase_login_attempt($email);
+				$this->ci->user_model->increase_login_attempt($email);
 			}
 		}
 		return FALSE;
@@ -75,7 +75,7 @@ class Login_auth_library {
 		} elseif (!$this->is_email_available($email)) {
 			$this->error = LOGIN_EMAIL_IN_USE;
 		} else {
-			$resCreate = $this->ci->user->create_user(
+			$resCreate = $this->ci->user_model->create_user(
 				$email,
 				$username,
 				$this->get_password_hash($password)
@@ -93,7 +93,7 @@ class Login_auth_library {
 
 	public function password_remember($email) {
 		if (valid_email($email)) {
-			$user = $this->ci->user->get_user(
+			$user = $this->ci->user_model->get_user(
 				$email
 			);
 
@@ -101,7 +101,7 @@ class Login_auth_library {
 				$token = uniqid('', true);
 				$hashed_token = $this->get_password_hash($token);
 
-				$resCreate = $this->ci->user->add_token_remember(
+				$resCreate = $this->ci->user_model->add_token_remember(
 					$email,
 					$hashed_token
 				);
@@ -118,7 +118,7 @@ class Login_auth_library {
 	public function password_remember_change($email, $token, $new_password) {
 		if (valid_email($email)) {
 			if($this->check_password_remember($email, $token)) {
-				$resCreate = $this->ci->user->change_password(
+				$resCreate = $this->ci->user_model->change_password(
 					$email,
 					$this->get_password_hash($new_password)
 				);
@@ -128,7 +128,7 @@ class Login_auth_library {
 				}
 			}
 
-			$this->ci->user->increase_remember_attemps($email);
+			$this->ci->user_model->increase_remember_attemps($email);
 		}
 		return FALSE;
 	}
@@ -169,11 +169,11 @@ class Login_auth_library {
 	}
 
 	public function is_email_available($email) {
-		return ((strlen($email) > 0) AND $this->ci->user->is_email_available($email));
+		return ((strlen($email) > 0) AND $this->ci->user_model->is_email_available($email));
 	}
 
 	public function is_still_active($email, $system_time = NULL) {
-		$date_token = $this->ci->user->get_token_date_remember(
+		$date_token = $this->ci->user_model->get_token_date_remember(
 			$email
 		);
 
@@ -184,13 +184,13 @@ class Login_auth_library {
 			if($system_time <= $this->get_date_hours_active($date_token, 1)) {
 				return TRUE;
 			}
-			$this->ci->user->invalidate_token_remember($email);
+			$this->ci->user_model->invalidate_token_remember($email);
 		}
 		return FALSE;
 	}
 
 	private function check_attempts($email) {
-		$numAttemps = $this->ci->user->get_login_attempts($email);
+		$numAttemps = $this->ci->user_model->get_login_attempts($email);
 
 		if($numAttemps === NULL) {
 			/* Do Nothing */
@@ -204,14 +204,14 @@ class Login_auth_library {
 	}
 
 	private function check_password_remember($email, $token_check) {
-		$token_hashed = $this->ci->user->get_token_remember(
+		$token_hashed = $this->ci->user_model->get_token_remember(
 			$email
 		);
 
 		if (!is_null($token_hashed)) {
 			if($this->is_password_verify($token_check, $token_hashed)) {
 				if($this->is_still_active($email)) {
-					$this->ci->user->invalidate_token_remember($email);
+					$this->ci->user_model->invalidate_token_remember($email);
 
 					return TRUE;
 				}

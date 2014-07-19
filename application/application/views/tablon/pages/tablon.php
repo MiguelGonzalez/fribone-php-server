@@ -54,8 +54,17 @@
     </button>
 </script>
 
-<script type="text/x-handlebars" id="estadisticas">
-    <h1>Estadísticas</h1>
+<script type="text/x-handlebars" id="supermercados-template">
+    <div id="supermercados">
+
+        <div class="page-header">
+            <h1>
+                Supermercados
+            </h1>
+        </div>
+
+
+    </div>
 </script>
 
 <!-- Ventanas modales -->
