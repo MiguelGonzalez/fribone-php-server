@@ -41,6 +41,15 @@
 $route['default_controller'] = "home";
 $route['404_override'] = '';
 
+/*
+ * Own
+*/
+
+$route['fridge/(\d+)'] = 'tablon/index';
+$route['fridge/(\d+)/compras'] = 'tablon/index';
+$route['fridge/(\d+)/productos'] = 'tablon/index';
+$route['estadisticas'] = 'tablon/index';
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

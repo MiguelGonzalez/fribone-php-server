@@ -1,10 +1,6 @@
-.ember-view {
-    height: 100%;
-}
-
-.ember-view.growl-notifications {
-	height: 65px;
-}
+/*
+ * Skeleton
+*/
 
 header.navbar {
 	margin-left: -15px;
@@ -72,4 +68,18 @@ header .nav > li.open > a:focus {
 	background-color: #FFF;
 	min-height: 100%;
 	border-radius: 4px;
+}
+
+/*
+ * Fridge
+*/
+
+#fridge .page-header {
+    margin-top: 25px
+}
+
+#fridge .page-header > h1 {
+    background: url(/resources/img/tablon/fridge.png) no-repeat left center;
+    padding-top: 10px;
+    padding-left: 50px;
 }

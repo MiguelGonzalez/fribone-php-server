@@ -14,7 +14,7 @@ class Supermercado extends CI_Model {
 		$this->db->select_count('supermercado_producto.id');
 		$this->db->from('supermercado');
 		$this->db->join('supermercado_producto', 'supermercado.id = supermercado_producto.id_supermercado', 'left');
-		$this->db->group_by('my_supermercado_producto.id'); 
+		$this->db->group_by('my_supermercado_producto.id');
 
 		$query = $this->db->get();
 
@@ -36,7 +36,7 @@ class Supermercado extends CI_Model {
 
 			return array('supermercado_id' => $supermercado_id);
 		}
-		
+
 		return NULL;
 	}
 
@@ -103,7 +103,7 @@ class Supermercado extends CI_Model {
 
 			return array('id_producto' => $id_producto);
 		}
-		
+
 		return NULL;
 	}
 

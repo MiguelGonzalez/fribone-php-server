@@ -33,7 +33,7 @@
                     <div class="col-md-2" role="main">
                         <div id="menu-left">
                             <div class="list-group">
-                                <?php echo $body;?>
+
                             </div>
                         </div>
                     </div>
@@ -54,6 +54,8 @@
                 </div>
             </div>
         </footer>
+
+        <?php echo $body;?>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="<?php echo base_url('resources/js/jquery-2.1.1.min.js');?>"><\/script>')</script>
