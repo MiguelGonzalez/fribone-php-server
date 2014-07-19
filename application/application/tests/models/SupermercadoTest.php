@@ -12,7 +12,7 @@ class SupermercadoTest extends PHPTest_Unit {
 
 	public function testSupermercados() {
 		$supermercados = $this->CI->supermercado->get_supermercados();
-		$this->assertNull($supermercados);
+		$this->assertEquals(count($supermercados), 0);
 
         $res = $this->CI->supermercado->add_supermercado('mercadona');
         $this->assertTrue($res !== NULL);

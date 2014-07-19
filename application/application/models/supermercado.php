@@ -18,10 +18,7 @@ class Supermercado extends CI_Model {
 
 		$query = $this->db->get();
 
-		if ($query->num_rows() > 0) {
-        	return $query->result();
-		}
-		return NULL;
+    	return $query->result();
 	}
 
 	public function add_supermercado($titulo) {
