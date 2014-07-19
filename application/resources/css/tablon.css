@@ -83,3 +83,35 @@ header .nav > li.open > a:focus {
     padding-top: 10px;
     padding-left: 50px;
 }
+
+/*
+ * Supermercados
+*/
+
+#listado-supermercados > div {
+    padding: 20px 1%;
+}
+
+#listado-supermercados > div > .supermercado {
+    border: 1px solid #eee;
+    border-radius: 5px;
+    background: url(/resources/img/tablon/supermercado.png) no-repeat center 20px;
+    padding-top: 65px;
+    cursor: pointer;
+    text-align: center;
+    position: relative
+}
+
+#listado-supermercados > .supermercado:hover {
+    background-color: #eee;
+}
+
+#listado-supermercados .titulo {
+    font-size: 16px;
+}
+
+#listado-supermercados .num-productos {
+    position: absolute;
+    top: 8px;
+    right: 8px
+}

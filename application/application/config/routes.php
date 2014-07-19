@@ -49,6 +49,7 @@ $route['fridge/(\d+)'] = 'tablon/index';
 $route['fridge/(\d+)/compras'] = 'tablon/index';
 $route['fridge/(\d+)/productos'] = 'tablon/index';
 $route['supermercados'] = 'tablon/index';
+$route['supermercados/(\d+)'] = 'tablon/index';
 
 
 /* End of file routes.php */

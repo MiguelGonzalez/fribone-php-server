@@ -11,28 +11,49 @@ class Supermercado_model extends CI_Model {
 		$this->db->select('supermercado.titulo');
 		$this->db->select('supermercado.fecha_alta');
 		$this->db->select('supermercado.fecha_modificacion');
-		$this->db->select_count('supermercado_producto.id');
+		$this->db->select_count('supermercado_producto.id', 'num_productos');
 		$this->db->from('supermercado');
 		$this->db->join('supermercado_producto', 'supermercado.id = supermercado_producto.id_supermercado', 'left');
-		$this->db->group_by('my_supermercado_producto.id');
+		$this->db->group_by('supermercado.id');
 
 		$query = $this->db->get();
 
     	return $query->result();
 	}
 
-	public function add_supermercado($titulo) {
-		$data = array(
-			'titulo' => trim($titulo)
-		);
+    public function get_supermercado($id_supermercado) {
+        $this->db->select('supermercado.id');
+        $this->db->select('supermercado.titulo');
+        $this->db->select('supermercado.fecha_alta');
+        $this->db->select('supermercado.fecha_modificacion');
+        $this->db->select_count('supermercado_producto.id', 'num_productos');
+        $this->db->from('supermercado');
+        $this->db->join('supermercado_producto', 'supermercado.id = supermercado_producto.id_supermercado', 'left');
+        $this->db->where('supermercado.id', $id_supermercado);
+        $this->db->group_by('supermercado.id');
 
-		$this->db->insert('supermercado', $data);
+        $query = $this->db->get();
 
-		if ($this->db->affected_rows() === 1) {
-			$supermercado_id = $this->db->insert_id();
+        if ($query->num_rows() === 1) {
+            return $query->row();
+        }
+        return NULL;
+    }
 
-			return array('supermercado_id' => $supermercado_id);
-		}
+	public function crear_supermercado($titulo) {
+        if(!$this->exist_supermercado($titulo, 'titulo')) {
+    		$data = array(
+    			'titulo' => trim($titulo)
+    		);
+
+    		$this->db->insert('supermercado', $data);
+
+    		if ($this->db->affected_rows() === 1) {
+    			$supermercado_id = $this->db->insert_id();
+
+    			return array('supermercado_id' => $supermercado_id);
+    		}
+        }
 
 		return NULL;
 	}
@@ -51,8 +72,8 @@ class Supermercado_model extends CI_Model {
 		$this->db->select('supermercado_producto.fecha_alta');
 		$this->db->select('supermercado_producto.fecha_modificacion');
 		$this->db->from('supermercado_producto');
-		$this->db->where('state','A');
-		$this->db->where('id', $id_supermercado);
+		$this->db->where('supermercado_producto.state','A');
+		$this->db->where('supermercado_producto.id_supermercado', $id_supermercado);
 
 		$query = $this->db->get();
 
@@ -88,27 +109,33 @@ class Supermercado_model extends CI_Model {
 	}
 
 	public function add_supermercado_producto($id_supermercado, $datos_producto) {
-		$data = array(
-			'id_supermercado' => $id_supermercado
-		);
-		$data = array_merge($data, $datos_producto);
+        if($this->exist_supermercado($id_supermercado)) {
+    		$data = array(
+    			'id_supermercado' => $id_supermercado
+    		);
+    		$data = array_merge($data, $datos_producto);
 
-		$this->db->insert('supermercado_producto', $data);
+    		$this->db->insert('supermercado_producto', $data);
 
-		if ($this->db->affected_rows() === 1) {
-			$id_producto = $this->db->insert_id();
+    		if ($this->db->affected_rows() === 1) {
+    			$id_producto = $this->db->insert_id();
 
-			return array('id_producto' => $id_producto);
-		}
+    			return array('id_producto' => $id_producto);
+    		}
+        }
 
 		return NULL;
 	}
 
-	private function exist_supermercado($id_supermercado) {
+	private function exist_supermercado($search, $by = 'id') {
 		$this->db->select('1', FALSE);
 		$this->db->from('supermercado');
 		$this->db->where('state','A');
-		$this->db->where('id', $id_supermercado);
+        if($by === 'id') {
+            $this->db->where('id', $search);
+        } else {
+            $this->db->where('titulo', $search);
+        }
 
 		$query = $this->db->get();
 
