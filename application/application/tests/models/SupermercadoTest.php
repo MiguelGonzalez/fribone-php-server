@@ -17,9 +17,6 @@ class SupermercadoTest extends PHPTest_Unit {
         $res = $this->CI->supermercado_model->crear_supermercado('mercadona');
         $this->assertTrue($res !== NULL);
 
-        echo var_dump($res);
-        echo $res['supermercado_id'];
-
         $supermercados = $this->CI->supermercado_model->get_supermercados();
         $this->assertEquals(count($supermercados), 1);
 	}
@@ -27,8 +24,6 @@ class SupermercadoTest extends PHPTest_Unit {
     public function testProductoSupermercado() {
         $res = $this->CI->supermercado_model->crear_supermercado('mercadona_dos');
         $idSupermercado = $res['supermercado_id'];
-
-        echo " Id $idSupermercado ";
 
         $datosProducto = array(
             'titulo' => 'Agua',
@@ -68,6 +63,8 @@ class SupermercadoTest extends PHPTest_Unit {
     public function testGetProductoSupermercado() {
         $res = $this->CI->supermercado_model->crear_supermercado('mercadona_cuatro');
         $idSupermercado = $res['supermercado_id'];
+
+        echo " Id $idSupermercado ";
 
         $res = $this->CI->supermercado_model->get_supermercado_productos($idSupermercado);
 
