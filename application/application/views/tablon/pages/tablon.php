@@ -151,7 +151,72 @@
     </div>
 </script>
 
+<script type="text/x-handlebars" id="anadir-producto-search-template">
+    {{#each producto}}
+        <table data-id="{{id}}" class="busqueda table table-condensed">
+            <tr>
+                <td class="left">
+                    <img src="<?php echo IMAGES.'tablon/producto.png'?>" alt="Producto">
+                </td>
+                <td>
+                    <p>
+                        <strong>{{titulo}}</strong>
+                    </p>
+                    <p>
+                        Supermercado:
+                        <strong>{{titulo_supermercado}}</strong>
+                    </p>
+                    <p>
+                        Precio:
+                        {{#compare precio '==' '1'}}
+                            <strong>{{precio}} euro</strong>
+                        {{else}}
+                            <strong>{{precio}} euros</strong>
+                        {{/compare}}
+                    </p>
+                    <p>
+                        Unidades:
+                        {{#compare unidades '==' '1'}}
+                            <strong>{{unidades}} unidad</strong>
+                        {{else}}
+                            <strong>{{unidades}} unidades</strong>
+                        {{/compare}}
+                    </p>
+                </td>
+            </tr>
+        </table>
+    {{/each}}
+    {{#unless producto}}
+        <p class="well">
+            No se han encontrado productos
+        </p>
+    {{/unless}}
+</script>
+
 <!-- Ventanas modales -->
+
+<div class="modal fade" id="crear-frigorifico-modal" tabindex="-1" role="dialog" aria-labelledby="crear-frigorifico" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span>
+                </button>
+                <h4 class="modal-title" id="crear-frigorifico">Crear frigorífico</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="text" class="form-control nombre" placeholder="Nombre del frigorífico" >
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="aceptar btn btn-primary">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="modal fade" id="anadir-producto-modal" tabindex="-1" role="dialog" aria-labelledby="anadir-producto" aria-hidden="true">
     <div class="modal-dialog">
@@ -166,11 +231,11 @@
                 <div class="form-group">
                     <input type="text" class="form-control codigo-barras" placeholder="Código de barras" >
                 </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="aceptar btn btn-primary">Aceptar</button>
+                <div id="anadir-producto-search">
+                    <p class="well">
+                        Introduce el código de barras del producto
+                    </p>
+                </div>
             </div>
         </div>
     </div>

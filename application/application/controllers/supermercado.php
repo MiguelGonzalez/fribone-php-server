@@ -54,4 +54,10 @@ class Supermercado extends MY_Controller_User {
             $this->_renderJson(array('ok' => false));
         }
     }
+
+    public function search_productos_codigo_barras($codigo_barras) {
+        $productos = $this->supermercado_library->search_productos_codigo_barras($codigo_barras);
+
+        $this->_renderJson(array('producto' => $productos));
+    }
 }

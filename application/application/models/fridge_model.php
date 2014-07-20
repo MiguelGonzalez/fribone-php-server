@@ -20,9 +20,12 @@ class Fridge_model extends CI_Model {
 		return $query->result();
 	}
 
-	public function add_frigorifico_user($idUser, $titulo) {
+	public function add_frigorifico_user($id_user, $titulo) {
+        if($this->exist_user_fridge($id_user, $titulo, 'titulo')) {
+            return NULL;
+        }
 		$data = array(
-			'id_user' => $idUser,
+			'id_user' => $id_user,
 			'titulo' => trim($titulo)
 		);
 
@@ -57,28 +60,91 @@ class Fridge_model extends CI_Model {
 		if(!$this->exist_fridge($id_fridge)) {
 			return NULL;
 		}
-		$this->db->select('compra_producto.id');
+
+        $this->db->select('compra_producto.id');
+        $this->db->select('compra_producto.titulo');
+        $this->db->select('compra_producto.descripcion');
+        $this->db->select('compra_producto.precio');
+        $this->db->select('user_frigorifico_producto.unidades');
+        $this->db->select('compra_producto.fecha_entrada');
+        $this->db->select('compra_producto.codigo_barras');
+        $this->db->select('compra_producto.codigo_rfid');
 
 		$this->db->from('compra_producto');
-		$this->db->join('compra', 'compra.id = compra_producto.id_compra');
-		$this->db->join('user_frigorifico', 'user_frigorifico.id = compra.id_frigorifico');
-
-		$this->db->where('compra_producto.unidades >', 0);
-		$this->db->where('user_frigorifico.id', $id_fridge);
+		$this->db->join('user_frigorifico_producto', 'user_frigorifico_producto.id_producto_compra = compra_producto.id');
+		$this->db->where('user_frigorifico_producto.unidades >', 0);
+		$this->db->where('user_frigorifico_producto.id_frigorifico', $id_fridge);
 
 		$query = $this->db->get();
 
     	return $query->result();
 	}
 
-	private function exist_fridge($id_fridge) {
+    public function get_item_fridge($id_fridge, $id_producto_compra) {
+        if(!$this->exist_fridge($id_fridge)) {
+            return NULL;
+        }
+        $this->db->select('compra_producto.id');
+
+        $this->db->from('compra_producto');
+        $this->db->where('compra_producto.unidades >', 0);
+        $this->db->where('compra_producto.id', $id_producto_compra);
+
+        $query = $this->db->get();
+
+        if ($this->db->affected_rows() === 1) {
+            return $query->row();
+        }
+
+        return NULL;
+    }
+
+    public function anadir_producto_compra($id_user, $id_fridge, $id_producto_compra, $unidades) {
+        if(!$this->exist_fridge($id_fridge)) {
+            return NULL;
+        }
+
+        $data = array(
+            'id_frigorifico' => $id_fridge,
+            'id_producto_compra' => $id_producto_compra,
+            'unidades' => $unidades
+        );
+
+        $this->db->insert('user_frigorifico_producto', $data);
+
+        if ($this->db->affected_rows() === 1) {
+            return $data;
+        }
+
+        return NULL;
+    }
+
+	private function exist_fridge($search, $by = 'id') {
 		$this->db->select('1', FALSE);
 		$this->db->from('my_user_frigorifico');
 		$this->db->where('state','A');
-		$this->db->where('id', $id_fridge);
+        if($by === 'id') {
+            $this->db->where('id', $search);
+        } else if ($by === 'titulo') {
+            $this->db->where('titulo', $search);
+        }
 
 		$query = $this->db->get();
-
 		return $query->num_rows() === 1;
 	}
+
+    private function exist_user_fridge($id_user, $search, $by = 'id') {
+        $this->db->select('1', FALSE);
+        $this->db->from('my_user_frigorifico');
+        $this->db->where('state','A');
+        $this->db->where('id_user',$id_user);
+        if($by === 'id') {
+            $this->db->where('id', $search);
+        } else if ($by === 'titulo') {
+            $this->db->where('titulo', $search);
+        }
+
+        $query = $this->db->get();
+        return $query->num_rows() === 1;
+    }
 }

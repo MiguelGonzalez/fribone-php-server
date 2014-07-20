@@ -46,14 +46,22 @@ var page = {
         });
     },
     initEvents: function() {
-        $('#menu-left .list-group').on('click', 'a', function(event) {
+        $('#menu-left .list-group').on('click', 'a:not(#crear_frigorifico)', function(event) {
             event.preventDefault();
             router.setRoute($(this).attr('data-to'));
         });
+        $('#menu-left .list-group').on('click', 'a#crear_frigorifico', function(event) {
+            event.preventDefault();
+            $('#crear-frigorifico-modal').modal('show');
+        });
     },
     initActionModals: function() {
-        $('#anadir-producto-modal').on('click', 'button.aceptar', function() {
-            fridge.anadir_producto();
+        $('#anadir-producto-modal').on('input', '.codigo-barras', function() {
+            fridge.anadir_producto_change();
+        });
+        $('#anadir-producto-modal').on('click', '.busqueda', fridge.anadir_producto);
+        $('#crear-frigorifico-modal').on('click', 'button.aceptar', function() {
+            fridge.crear_frigorifico();
         });
         $('#crear-supermercado-modal').on('click', 'button.aceptar', function() {
             supermercados.crear_supermercado();
@@ -117,6 +125,7 @@ var tablon = {
 
 var fridge = {
     fridgeActive: null,
+    ajaxProductoChange: null,
     draw: function(id) {
         var tab = router.getRoute(2);
         if(fridge.fridgeActive === id) {
@@ -183,27 +192,76 @@ var fridge = {
         fridge.draw(id);
 
     },
-    anadir_producto: function() {
-        var codigo_barras = $('#anadir-producto-modal .codigo-barras').val();
+    crear_frigorifico: function() {
+        var nombre = $('#crear-frigorifico-modal .nombre').val();
 
-        if(isInteger(codigo_barras)) {
+        if(nombre.length !== 0) {
             $.ajax({
-                url: '/item/get_item/' + codigo_barras,
+                url: '/fridge/create_fridge',
+                type: 'POST',
+                data: {'titulo' : nombre},
                 dataType: 'json'
             }).done(function(data) {
                 if(data.ok) {
-                    alert('Producto agregado');
-                    $('#anadir-producto-modal .form-group').removeClass('has-error');
-                    $('#anadir-producto-modal').modal('hide');
+                    page.draw_menu();
+
+                    $('#crear-frigorifico-modal .form-group').removeClass('has-error');
+                    $('#crear-frigorifico-modal').modal('hide');
                 } else {
-                    alert('No existe el producto');
+                    alert('No se pudo crear el frigorifico');
                 }
             }).fail(function(jqXHR) {
+                alert('Error crear frigorifico');
+            });
+        } else {
+            $('#crear-frigorifico-modal .form-group').addClass('has-error');
+        }
+    },
+    anadir_producto_change: function() {
+        var codigo_barras = $('#anadir-producto-modal .codigo-barras').val();
+
+        if(isInteger(codigo_barras)) {
+            if(fridge.ajaxProductoChange !== null) {
+                fridge.ajaxProductoChange.abort();
+            }
+
+            fridge.ajaxProductoChange = $.ajax({
+                url: '/supermercado/search_productos_codigo_barras/' + codigo_barras,
+                dataType: 'json'
+            }).done(function(data) {
+                fridge.ajaxProductoChange = null;
+
+                var source   = $('#anadir-producto-search-template').html();
+                var template = Handlebars.compile(source);
+                var html_template = template(data);
+
+                $('#anadir-producto-search').html(html_template);
+            }).fail(function(jqXHR, text_status) {
+                if(text_status === 'abort') {
+                    return;
+                }
                 alert('Error obtener productos del frigorífico');
             });
         } else {
             $('#anadir-producto-modal .form-group').addClass('has-error');
         }
+    },
+    anadir_producto: function() {
+        var id_producto = $(this).attr('data-id');
+
+        fridge.ajaxProductoChange = $.ajax({
+            url: '/fridge/anadir_producto/' + fridge.fridgeActive + '/' + id_producto,
+            dataType: 'json'
+        }).done(function(data) {
+            if(data.ok) {
+                $('#anadir-producto-modal').modal('hide');
+                fridge.draw_productos(fridge.fridgeActive);
+            } else {
+                alert('No se pudo agregar el producto al frigorífico');
+            }
+        }).fail(function(jqXHR, text_status) {
+            alert('Error al agregar el producto al frigorífico');
+        });
     }
 }
 

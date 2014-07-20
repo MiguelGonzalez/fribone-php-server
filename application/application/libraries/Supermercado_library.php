@@ -56,8 +56,17 @@ class Supermercado_library {
     }
 
     public function get_producto_supermercado($id_producto) {
-        $producto = $this->ci->supermercado_model->get_producto($id_producto);
+        $producto = $this->ci->supermercado_model->get_producto_supermercado($id_producto);
 
         return $producto;
+    }
+
+    public function search_productos_codigo_barras($codigo_barras) {
+        if(strlen($codigo_barras) > 0 && is_numeric($codigo_barras)) {
+            $productos = $this->ci->supermercado_model->search_productos_codigo_barras($codigo_barras);
+
+            return $productos;
+        }
+        return NULL;
     }
 }

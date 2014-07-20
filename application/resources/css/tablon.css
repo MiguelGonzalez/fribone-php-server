@@ -85,7 +85,7 @@ header .nav > li.open > a:focus {
 }
 
 /*
- * Supermercados
+ * Supermercados y productos del frigorífico
 */
 
 .caja-item  {
@@ -145,4 +145,30 @@ header .nav > li.open > a:focus {
 
 .caja-item .item .info strong {
     margin-left: 10px
+}
+
+/*
+ * Busqueda de productos
+*/
+
+.busqueda {
+    cursor: pointer;
+}
+
+.busqueda:hover {
+    background-color: #eee;
+}
+
+.busqueda td.left {
+    width: 100px;
+    vertical-align: middle;
+    text-align: center
+}
+
+.busqueda img {
+    margin: 0 25px
+}
+
+.busqueda p {
+    margin: 0;
 }

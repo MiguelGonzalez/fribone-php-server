@@ -80,7 +80,7 @@ class Supermercado_model extends CI_Model {
     	return $query->result();
 	}
 
-	public function get_producto($id_producto) {
+	public function get_producto_supermercado($id_producto) {
 		if(!$this->exist_producto($id_producto)) {
 			return NULL;
 		}
@@ -95,6 +95,7 @@ class Supermercado_model extends CI_Model {
 		$this->db->select('supermercado_producto.fecha_alta');
 		$this->db->select('supermercado_producto.fecha_modificacion');
 		$this->db->select('supermercado.titulo as titulo_supermercado');
+        $this->db->select('supermercado.id as id_supermercado');
 		$this->db->from('supermercado_producto');
 		$this->db->join('supermercado', 'supermercado_producto.id_supermercado = supermercado.id');
 		$this->db->where('supermercado_producto.state','A');
@@ -133,6 +134,28 @@ class Supermercado_model extends CI_Model {
 
 		return NULL;
 	}
+
+    public function search_productos_codigo_barras($codigo_barras) {
+        $this->db->select('supermercado_producto.id');
+        $this->db->select('supermercado_producto.titulo');
+        $this->db->select('supermercado_producto.codigo_barras');
+        $this->db->select('supermercado_producto.codigo_rfid');
+        $this->db->select('supermercado_producto.descripcion');
+        $this->db->select('supermercado_producto.precio');
+        $this->db->select('supermercado_producto.unidades');
+        $this->db->select('supermercado_producto.fecha_alta');
+        $this->db->select('supermercado_producto.fecha_modificacion');
+        $this->db->select('supermercado.titulo as titulo_supermercado');
+        $this->db->from('supermercado_producto');
+        $this->db->join('supermercado', 'supermercado.id = supermercado_producto.id_supermercado');
+        $this->db->where('supermercado_producto.state','A');
+        $this->db->like('supermercado_producto.codigo_barras', $codigo_barras, 'after');
+        $this->db->limit(10);
+
+        $query = $this->db->get();
+
+        return $query->result();
+    }
 
 	private function exist_supermercado($search, $by = 'id') {
 		$this->db->select('1', FALSE);

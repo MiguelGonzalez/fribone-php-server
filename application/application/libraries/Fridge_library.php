@@ -8,7 +8,17 @@ class Fridge_library {
 		$this->ci =& get_instance();
 
 		$this->ci->load->model('fridge_model');
+        $this->ci->load->library('compra_library');
 	}
+
+    public function create_fridge($id_user, $titulo) {
+        if(strlen($titulo) !== 0) {
+            $res = $this->ci->fridge_model->add_frigorifico_user($id_user, $titulo);
+
+            return $res;
+        }
+        return NULL;
+    }
 
 	public function get_fridges($id_user) {
 		$fridges = $this->ci->fridge_model->get_frigorificos_user($id_user);
@@ -26,5 +36,21 @@ class Fridge_library {
         $items = $this->ci->fridge_model->get_items_fridge($id_fridge);
 
         return $items;
+    }
+
+    public function get_item_fridge($id_fridge, $id_producto_compra) {
+        $item = $this->ci->fridge_model->get_item_fridge($id_fridge, $id_producto_compra);
+
+        return $item;
+    }
+
+    public function anadir_producto_compra($id_user, $id_fridge, $id_producto_compra, $unidades) {
+        $res = $this->ci->fridge_model->anadir_producto_compra(
+            $id_user,
+            $id_fridge,
+            $id_producto_compra,
+            $unidades);
+
+        return $res;
     }
 }

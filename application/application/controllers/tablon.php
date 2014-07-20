@@ -22,6 +22,12 @@ class Tablon extends MY_Controller_User {
 
         $menus = array();
 
+        array_push($menus, array(
+            'id' => 'crear_frigorifico',
+            'title' => 'Crear frigorífico',
+            'to' => '/'
+        ));
+
         foreach($frigorificos_usuario as $frigorifico_usuario) {
             array_push($menus, array(
                 'id' => $frigorifico_usuario->id,

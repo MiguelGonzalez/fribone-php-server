@@ -76,7 +76,7 @@ class SupermercadoTest extends PHPTest_Unit {
         $res = $this->CI->supermercado_model->add_supermercado_producto($idSupermercado, $datosProducto);
         $idProducto = $res['id_producto'];
 
-        $producto = $this->CI->supermercado_model->get_producto($idProducto);
+        $producto = $this->CI->supermercado_model->get_producto_supermercado($idProducto);
         $this->assertEquals('Agua', $producto->titulo);
         $this->assertEquals('123006456046', $producto->codigo_barras);
         $this->assertEquals(0.87, $producto->precio);

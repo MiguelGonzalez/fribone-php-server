@@ -16,15 +16,17 @@ CREATE TRIGGER my_compra_OnInsert BEFORE INSERT ON `my_compra`
 DROP TABLE IF EXISTS `my_compra_producto`;
 CREATE TABLE IF NOT EXISTS `my_compra_producto` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `fecha_entrada` datetime NOT NULL,
-  `fecha_ultima_salida` datetime NULL,
-  `codigo_barras` varchar(128) NULL,
-  `codigo_rfid` varchar(128) NULL,
+  `titulo` varchar(128) NOT NULL,
   `descripcion` text NOT NULL,
   `unidades` int(11) NOT NULL,
   `precio` float NOT NULL,
+  `codigo_barras` varchar(128) NULL,
+  `codigo_rfid` varchar(128) NULL,
+  `fecha_entrada` datetime NOT NULL,
+  `fecha_ultima_salida` datetime NULL,
   `id_compra` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
+  `id_supermercado` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_compra` (`id_compra`),
   KEY `id_producto` (`id_producto`),
@@ -141,7 +143,8 @@ ALTER TABLE `my_compra`
 
 ALTER TABLE `my_compra_producto`
   ADD CONSTRAINT `my_compra_producto_ibfk_1` FOREIGN KEY (`id_compra`) REFERENCES `my_compra` (`id`),
-  ADD CONSTRAINT `my_compra_producto_ibfk_2` FOREIGN KEY (`id_producto`) REFERENCES `my_supermercado_producto` (`id`);
+  ADD CONSTRAINT `my_compra_producto_ibfk_2` FOREIGN KEY (`id_producto`) REFERENCES `my_supermercado_producto` (`id`),
+  ADD CONSTRAINT `my_compra_producto_ibfk_3` FOREIGN KEY (`id_supermercado`) REFERENCES `my_supermercado` (`id`);
 
 ALTER TABLE `my_supermercado_producto`
   ADD CONSTRAINT `my_supermercado_producto_ibfk_1` FOREIGN KEY (`id_supermercado`) REFERENCES `my_supermercado` (`id`);
