@@ -48,7 +48,7 @@ class SupermercadoTest extends PHPTest_Unit {
 
         $datosProducto = array(
             'titulo' => 'Agua',
-            'codigo_barras' => '123006456046',
+            'codigo_barras' => '123006456045',
             'descripcion' => 'Botella de agua de 1L del mercadona',
             'precio' => 0.87,
             'unidades' => 1
@@ -64,13 +64,11 @@ class SupermercadoTest extends PHPTest_Unit {
         $res = $this->CI->supermercado_model->crear_supermercado('mercadona_cuatro');
         $idSupermercado = $res['supermercado_id'];
 
-        echo " Id $idSupermercado ";
-
         $res = $this->CI->supermercado_model->get_supermercado_productos($idSupermercado);
 
         $datosProducto = array(
             'titulo' => 'Agua',
-            'codigo_barras' => '123006456046',
+            'codigo_barras' => '123006456044',
             'descripcion' => 'Botella de agua de 1L del mercadona',
             'precio' => 0.87,
             'unidades' => 1
