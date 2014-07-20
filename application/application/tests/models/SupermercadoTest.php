@@ -18,11 +18,13 @@ class SupermercadoTest extends PHPTest_Unit {
         $this->assertTrue($res !== NULL);
 
         $supermercados = $this->CI->supermercado_model->get_supermercados();
-        $this->assertEquals(count($supermercados), 1);
+        $this->assertTrue($supermercados !== NULL);
 	}
 
     public function testProductoSupermercado() {
-        $res = $this->CI->supermercado_model->crear_supermercado('mercadona_dos');
+        $supermercados = $this->CI->supermercado_model->get_supermercados();
+
+        $res = $this->CI->supermercado_model->crear_supermercado('mercadona');
         $idSupermercado = $res['supermercado_id'];
 
         $datosProducto = array(
@@ -40,7 +42,7 @@ class SupermercadoTest extends PHPTest_Unit {
         $res = $this->CI->supermercado_model->get_supermercado_productos(-1);
         $this->assertNull($res);
 
-        $res = $this->CI->supermercado_model->crear_supermercado('mercadona_tres');
+        $res = $this->CI->supermercado_model->crear_supermercado('mercadona');
         $idSupermercado = $res['supermercado_id'];
 
         $res = $this->CI->supermercado_model->get_supermercado_productos($idSupermercado);
@@ -48,7 +50,7 @@ class SupermercadoTest extends PHPTest_Unit {
 
         $datosProducto = array(
             'titulo' => 'Agua',
-            'codigo_barras' => '123006456045',
+            'codigo_barras' => '123006456046',
             'descripcion' => 'Botella de agua de 1L del mercadona',
             'precio' => 0.87,
             'unidades' => 1
@@ -61,14 +63,14 @@ class SupermercadoTest extends PHPTest_Unit {
     }
 
     public function testGetProductoSupermercado() {
-        $res = $this->CI->supermercado_model->crear_supermercado('mercadona_cuatro');
+        $res = $this->CI->supermercado_model->crear_supermercado('mercadona');
         $idSupermercado = $res['supermercado_id'];
 
         $res = $this->CI->supermercado_model->get_supermercado_productos($idSupermercado);
 
         $datosProducto = array(
             'titulo' => 'Agua',
-            'codigo_barras' => '123006456044',
+            'codigo_barras' => '123006456046',
             'descripcion' => 'Botella de agua de 1L del mercadona',
             'precio' => 0.87,
             'unidades' => 1
