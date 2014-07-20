@@ -18,27 +18,33 @@ CREATE TABLE IF NOT EXISTS `my_compra_producto` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `fecha_entrada` datetime NOT NULL,
   `fecha_ultima_salida` datetime NULL,
+  `codigo_barras` varchar(128) NULL,
+  `codigo_rfid` varchar(128) NULL,
+  `descripcion` text NOT NULL,
   `unidades` int(11) NOT NULL,
+  `precio` float NOT NULL,
   `id_compra` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_compra` (`id_compra`),
   KEY `id_producto` (`id_producto`),
-  KEY `unidades` (`unidades`)
+  KEY `unidades` (`unidades`),
+  KEY `codigo_barras` (`codigo_barras`),
+  KEY `codigo_rfid` (`codigo_rfid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 CREATE TRIGGER my_compra_producto_OnInsert BEFORE INSERT ON `my_compra_producto`
     FOR EACH ROW SET NEW.fecha_entrada = IFNULL(NOW(), NEW.fecha_entrada);
 
-DROP TABLE IF EXISTS `my_compra_retirada`;
-CREATE TABLE IF NOT EXISTS `my_compra_retirada` (
-  `id_producto` int(11) NOT NULL AUTO_INCREMENT,
-  `fecha_retirada` datetime NOT NULL,
-  PRIMARY KEY (`id_producto`,`fecha_retirada`)
+DROP TABLE IF EXISTS `my_user_frigorifico_producto`;
+CREATE TABLE IF NOT EXISTS `my_user_frigorifico_producto` (
+  `id_frigorifico` int(11) NOT NULL,
+  `id_producto_compra` int(11) NOT NULL,
+  `unidades` int(11) NOT NULL,
+  PRIMARY KEY (`id_frigorifico`,`id_producto_compra`),
+  KEY (`unidades`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-CREATE TRIGGER my_compra_retirada_OnInsert BEFORE INSERT ON `my_compra_retirada`
-    FOR EACH ROW SET NEW.fecha_retirada = IFNULL(NOW(), NEW.fecha_retirada);
 
 DROP TABLE IF EXISTS `my_supermercado`;
 CREATE TABLE IF NOT EXISTS `my_supermercado` (
@@ -137,9 +143,6 @@ ALTER TABLE `my_compra_producto`
   ADD CONSTRAINT `my_compra_producto_ibfk_1` FOREIGN KEY (`id_compra`) REFERENCES `my_compra` (`id`),
   ADD CONSTRAINT `my_compra_producto_ibfk_2` FOREIGN KEY (`id_producto`) REFERENCES `my_supermercado_producto` (`id`);
 
-ALTER TABLE `my_compra_retirada`
-  ADD CONSTRAINT `my_compra_retirada_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `my_compra_producto` (`id`);
-
 ALTER TABLE `my_supermercado_producto`
   ADD CONSTRAINT `my_supermercado_producto_ibfk_1` FOREIGN KEY (`id_supermercado`) REFERENCES `my_supermercado` (`id`);
 
@@ -148,6 +151,13 @@ ALTER TABLE `my_user_frigorifico`
 
 ALTER TABLE `my_user_remember_token`
   ADD CONSTRAINT `my_user_remember_token_ibfk_1` FOREIGN KEY (`email`) REFERENCES `my_user` (`email`);
+
+ALTER TABLE `my_user_frigorifico_producto`
+  ADD CONSTRAINT `my_user_frigorifico_producto_ibfk_1` FOREIGN KEY (`id_frigorifico`) REFERENCES `my_user_frigorifico` (`id`);
+
+ALTER TABLE `my_user_frigorifico_producto`
+  ADD CONSTRAINT `my_user_frigorifico_producto_ibfk_2` FOREIGN KEY (`id_producto_compra`) REFERENCES `my_compra_producto` (`id`);
+
 
 
 SET FOREIGN_KEY_CHECKS = 1;
