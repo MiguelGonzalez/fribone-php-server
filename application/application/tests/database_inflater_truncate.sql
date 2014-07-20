@@ -6,7 +6,7 @@ TRUNCATE my_user_frigorifico;
 TRUNCATE my_user_frigorifico_producto;
 TRUNCATE my_compra;
 TRUNCATE my_compra_producto;
-TRUNCATE my_compra_retirada;
+TRUCANTE my_user_frigorifico_producto;
 TRUNCATE my_supermercado_producto;
 TRUNCATE my_supermercado;
 
