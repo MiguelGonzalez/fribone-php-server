@@ -17,13 +17,18 @@ class SupermercadoTest extends PHPTest_Unit {
         $res = $this->CI->supermercado_model->crear_supermercado('mercadona');
         $this->assertTrue($res !== NULL);
 
+        echo var_dump($res);
+        echo $res['supermercado_id'];
+
         $supermercados = $this->CI->supermercado_model->get_supermercados();
-        $this->assertTrue($supermercados !== NULL);
+        $this->assertEquals(count($supermercados), 1);
 	}
 
     public function testProductoSupermercado() {
         $res = $this->CI->supermercado_model->crear_supermercado('mercadona');
         $idSupermercado = $res['supermercado_id'];
+
+        echo $idSupermercado;
 
         $datosProducto = array(
             'titulo' => 'Agua',
