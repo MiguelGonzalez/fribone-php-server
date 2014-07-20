@@ -22,17 +22,18 @@ class My_PHPMailer {
     		$mail->SMTPDebug = 4;
     	}
 
-		$mail->isSMTP();
+		//$mail->isSMTP();
+        $mail->isSendMail(); //Work in 1and1
 		$mail->Host = $this->ci->config->item('email-host');
 		$mail->Port = $this->ci->config->item('email-port');
 		$mail->SMTPAuth = $this->ci->config->item('email-SMTPAuth');
 		if($this->ci->config->item('email-SMTPAuth')) {
 			$mail->SMTPSecure = $this->ci->config->item('email-SMTPSecure');
 		}
-		
+
 		$mail->Username = $this->ci->config->item('email-username');
 		$mail->Password = $this->ci->config->item('email-password');
-		
+
 		$mail->isHTML($this->ci->config->item('email-userHTML'));
 		$mail->CharSet = $this->ci->config->item('email-charSet');
 
