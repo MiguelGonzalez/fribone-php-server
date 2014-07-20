@@ -101,7 +101,8 @@ header .nav > li.open > a:focus {
     position: relative
 }
 
-.caja-item .item:hover {
+.caja-item .item:hover,
+.caja-item .item.active {
     background-color: #eee !important;
 }
 
@@ -121,4 +122,27 @@ header .nav > li.open > a:focus {
 
 .caja-item .item.producto {
     background: url(/resources/img/tablon/producto.png) no-repeat center 20px;
+}
+
+.caja-item .item .info {
+    border: 1px solid #eee;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    font-size: 12px;
+    left: 3%;
+    position: absolute;
+    text-align: left;
+    width: 94%;
+    background-color: #FFF;
+    z-index: 1;
+    display: none
+}
+
+.caja-item .item .info p {
+    margin: 0;
+    margin: 3px 0 0 10px;
+}
+
+.caja-item .item .info strong {
+    margin-left: 10px
 }

@@ -115,13 +115,20 @@ class Supermercado_model extends CI_Model {
     		);
     		$data = array_merge($data, $datos_producto);
 
-    		$this->db->insert('supermercado_producto', $data);
+            if(strlen($data['codigo_rfid']) === 0) {
+                $data['codigo_rfid'] = NULL;
+            }
 
-    		if ($this->db->affected_rows() === 1) {
-    			$id_producto = $this->db->insert_id();
+            if(!$this->exist_producto($data['codigo_barras'],'codigo_barras') &&
+                ( $data['codigo_rfid'] === NULL || !$this->exist_producto($data['codigo_rfid'],'codigo_rfid') )) {
+                $this->db->insert('supermercado_producto', $data);
 
-    			return array('id_producto' => $id_producto);
-    		}
+                if ($this->db->affected_rows() === 1) {
+                    $id_producto = $this->db->insert_id();
+
+                    return array('id_producto' => $id_producto);
+                }
+            }
         }
 
 		return NULL;
@@ -133,7 +140,7 @@ class Supermercado_model extends CI_Model {
 		$this->db->where('state','A');
         if($by === 'id') {
             $this->db->where('id', $search);
-        } else {
+        } elseif($by === 'titulo') {
             $this->db->where('titulo', $search);
         }
 
@@ -142,11 +149,17 @@ class Supermercado_model extends CI_Model {
 		return $query->num_rows() === 1;
 	}
 
-	private function exist_producto($id_producto) {
+	private function exist_producto($search, $by = 'id') {
 		$this->db->select('1', FALSE);
 		$this->db->from('supermercado_producto');
 		$this->db->where('state','A');
-		$this->db->where('id', $id_producto);
+        if($by === 'id') {
+            $this->db->where('id', $search);
+        } else if($by === 'codigo_barras') {
+            $this->db->where('codigo_barras', $search);
+        } else if($by === 'codigo_rfid') {
+            $this->db->where('codigo_rfid', $search);
+        }
 
 		$query = $this->db->get();
 

@@ -101,6 +101,40 @@
                         <span class="titulo">
                             {{titulo}}
                         </span>
+                        <div class="info">
+                            <p>
+                                Precio:
+                                <br>
+                                {{#compare precio '==' '1'}}
+                                    <strong>{{precio}} euro</strong>
+                                {{else}}
+                                    <strong>{{precio}} euros</strong>
+                                {{/compare}}
+                            </p>
+                            <p>
+                                Unidades:
+                                <br>
+                                {{#compare unidades '==' '1'}}
+                                    <strong>{{unidades}} unidad</strong>
+                                {{else}}
+                                    <strong>{{unidades}} unidades</strong>
+                                {{/compare}}
+                            </p>
+                            <p>
+                                Código de barras:
+                                <br>
+                                <strong>{{codigo_barras}}</strong>
+                            </p>
+                            <p>
+                                Código rfid:
+                                <br>
+                                {{#if codigo_rfid}}
+                                    <strong>{{codigo_rfid}}</strong>
+                                {{else}}
+                                    <strong>No tiene</strong>
+                                {{/if}}
+                            </p>
+                        </div>
                     </div>
                 </div>
             {{/each}}

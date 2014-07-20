@@ -281,6 +281,12 @@ var supermercado = {
         $('#supermercado').on('click', '.volver', function() {
             router.setRoute($(this).attr('data-to'));
         });
+        $('#supermercado').on('click', '.caja-item .item:not(.active)', function() {
+            $(this).addClass('active').find('.info').slideDown();
+        });
+        $('#supermercado').on('click', '.caja-item .item.active', function() {
+            $(this).removeClass('active').find('.info').slideUp();
+        });
     },
     anadir_producto: function() {
         var form = $('#anadir-producto-supermercado-modal form');
