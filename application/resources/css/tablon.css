@@ -110,7 +110,7 @@ header .nav > li.open > a:focus {
     font-size: 16px;
 }
 
-.caja-item .num-productos {
+.caja-item .top-right-badge {
     position: absolute;
     top: 8px;
     right: 8px
@@ -122,6 +122,10 @@ header .nav > li.open > a:focus {
 
 .caja-item .item.producto {
     background: url(/resources/img/tablon/producto.png) no-repeat center 20px;
+}
+
+.caja-item .item.compra {
+    background: url(/resources/img/tablon/compra.png) no-repeat center 20px;
 }
 
 .caja-item .item .info {
@@ -171,4 +175,12 @@ header .nav > li.open > a:focus {
 
 .busqueda p {
     margin: 0;
+}
+
+/*
+ * Compra
+*/
+
+#compra .total {
+    text-align: right;
 }

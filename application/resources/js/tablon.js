@@ -7,7 +7,10 @@ $(function(){
             '/tablon': tablon.draw,
             '/fridge/:id': {
                 '/productos': fridge.draw_productos,
-                '/compras': fridge.draw_compras,
+                '/compras': {
+                    '/:id': fridge.draw_compra,
+                    on: fridge.draw_compras
+                },
                 on: fridge.draw
             },
             '/supermercados' : {
@@ -48,6 +51,7 @@ var page = {
     initEvents: function() {
         $('#menu-left .list-group').on('click', 'a:not(#crear_frigorifico)', function(event) {
             event.preventDefault();
+            page.resetObjects();
             router.setRoute($(this).attr('data-to'));
         });
         $('#menu-left .list-group').on('click', 'a#crear_frigorifico', function(event) {
@@ -115,6 +119,11 @@ var page = {
                 event.returnValue = false;
             }
         });
+    },
+    resetObjects: function() {
+        fridge.fridgeActive = null;
+        supermercado.id_supermercado = null;
+        fridge.comprasDrawed = false;
     }
 }
 
@@ -125,72 +134,108 @@ var tablon = {
 
 var fridge = {
     fridgeActive: null,
+    comprasDrawed: false,
     ajaxProductoChange: null,
     draw: function(id) {
         var tab = router.getRoute(2);
-        if(fridge.fridgeActive === id) {
-            return;
-        } else if(tab === undefined) {
-            router.setRoute(
-                '/' + router.getRoute(0) +
-                '/' + router.getRoute(1) +
-                '/' + 'productos'
-            );
+        if(fridge.fridgeActive !== id) {
+            fridge.fridgeActive = id;
+            $.ajax({
+                url: '/fridge/get_fridge/' + id,
+                async:false,
+                dataType: 'json'
+            }).done(function(data) {
+                var source   = $('#fridge-template').html();
+                var template = Handlebars.compile(source);
+                var html_template = template($.extend({}, data, {'tab':tab}));
 
-            return;
+                $('#main').html(html_template);
+
+                fridge.initEvents();
+            }).fail(function(jqXHR) {
+                alert('Error obtener frigorífico');
+            });
         }
-
-        fridge.fridgeActive = id;
-        $.ajax({
-            url: '/fridge/get_fridge/' + id,
-            async:false,
-            dataType: 'json'
-        }).done(function(data) {
-            var source   = $('#fridge-template').html();
-            var template = Handlebars.compile(source);
-            var html_template = template($.extend({}, data, {'tab':tab}));
-
-            $('#main').html(html_template);
-
-            fridge.initEvents();
-        }).fail(function(jqXHR) {
-            alert('Error obtener frigorífico');
-        });
     },
     initEvents: function() {
         $('#fridge .nav-tabs').on('click', 'a', function(event) {
             event.preventDefault();
             router.setRoute($(this).attr('data-to'));
         });
-        $('#anadir-producto').on('click', function() {
-
+        $('#productos').on('click', '.caja-item .item:not(.active)', function() {
+            $(this).addClass('active').find('.info').slideDown();
+        });
+        $('#productos').on('click', '.caja-item .item.active', function() {
+            $(this).removeClass('active').find('.info').slideUp();
+        });
+        $('#compras').on('click', '.compra:not(.active)', function() {
+            router.setRoute($(this).attr('data-to'));
+        });
+        $('#compras').on('click', '.compra.active', function() {
+            router.setRoute($(this).attr('data-back'));
         });
     },
     draw_productos: function(id) {
         fridge.draw(id);
+        fridge.comprasDrawed = false;
 
         $.ajax({
-            url: '/fridge/get_items_fridge/' + id,
-            async: false,
+            url: '/fridge/get_productos_fridge/' + id,
             dataType: 'json'
         }).done(function(data) {
-            var source   = $('#fridge-item-template').html();
+            var source   = $('#fridge-productos-template').html();
             var template = Handlebars.compile(source);
             var html_template = template(data);
 
             $('#productos').html(html_template);
-
-            fridge.initEventsProductos();
         }).fail(function(jqXHR) {
             alert('Error obtener productos del frigorífico');
         });
     },
-    initEventsProductos: function() {
-
-    },
     draw_compras: function(id) {
         fridge.draw(id);
 
+        $('.item.compra').removeClass('active');
+        $('.item.compra').parent().fadeIn();
+        $('#compra').empty();
+
+        if(!fridge.comprasDrawed) {
+            fridge.comprasDrawed = true;
+
+            $.ajax({
+                url: '/fridge/get_compras/' + id,
+                async: false,
+                dataType: 'json'
+            }).done(function(data) {
+                var source   = $('#fridge-compras-template').html();
+                var template = Handlebars.compile(source);
+                var html_template = template(data);
+
+                $('#compras').html(html_template);
+            }).fail(function(jqXHR) {
+                alert('Error obtener productos del frigorífico');
+            });
+        }
+    },
+    draw_compra: function(id_fridge, id_compra) {
+        fridge.draw(id_fridge);
+        fridge.draw_compras(id_fridge);
+
+        $('#compra-' + id_compra).addClass('active');
+        $('.item.compra:not(.active)').parent().fadeOut();
+
+        $.ajax({
+            url: '/fridge/get_compra/' + id_compra,
+            dataType: 'json'
+        }).done(function(data) {
+            var source   = $('#fridge-compra-template').html();
+            var template = Handlebars.compile(source);
+            var html_template = template(data);
+
+            $('#compra').html(html_template);
+        }).fail(function(jqXHR) {
+            alert('Error obtener productos del frigorífico');
+        });
     },
     crear_frigorifico: function() {
         var nombre = $('#crear-frigorifico-modal .nombre').val();

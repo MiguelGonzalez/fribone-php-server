@@ -32,8 +32,8 @@ class Fridge_library {
         return $fridge;
     }
 
-    public function get_items_fridge($id_fridge) {
-        $items = $this->ci->fridge_model->get_items_fridge($id_fridge);
+    public function get_productos_fridge($id_fridge) {
+        $items = $this->ci->fridge_model->get_productos_fridge($id_fridge);
 
         return $items;
     }
@@ -52,5 +52,25 @@ class Fridge_library {
             $unidades);
 
         return $res;
+    }
+
+    public function get_compras($id_fridge) {
+        $compras = $this->ci->fridge_model->get_compras_fridge($id_fridge);
+
+        return $compras;
+    }
+
+    public function get_compra($id_compra) {
+        $compra = $this->ci->fridge_model->get_compra($id_compra);
+
+        if(!is_null($compra)) {
+            $compra->producto = $this->ci->fridge_model->get_compra_productos($id_compra);
+
+            foreach($compra->producto as &$producto) {
+                $producto->precio_total = $producto->num_productos * $producto->precio;
+            }
+        }
+
+        return $compra;
     }
 }

@@ -33,12 +33,12 @@ class Fridge extends MY_Controller_User {
         $this->_renderJson($fridge);
 	}
 
-    public function get_items_fridge($id_fridge) {
-        $items = $this->fridge_library->get_items_fridge(
+    public function get_productos_fridge($id_fridge) {
+        $items = $this->fridge_library->get_productos_fridge(
             $id_fridge
         );
 
-        $this->_renderJson(array('item' => $items));
+        $this->_renderJson(array('producto' => $items));
     }
 
     public function anadir_producto($id_fridge, $id_producto) {
@@ -65,5 +65,17 @@ class Fridge extends MY_Controller_User {
         } else {
             $this->_renderJson(array('ok' => false));
         }
+    }
+
+    public function get_compras($id_fridge) {
+        $compras = $this->fridge_library->get_compras($id_fridge);
+
+        $this->_renderJson(array('compra' => $compras));
+    }
+
+    public function get_compra($id_compra) {
+        $compra = $this->fridge_library->get_compra($id_compra);
+
+        $this->_renderJson($compra);
     }
 }

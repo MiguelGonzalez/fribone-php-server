@@ -38,25 +38,142 @@
     </div>
 </script>
 
-<script type="text/x-handlebars" id="fridge-item-template">
-    {{#if item}}
-        {{#each item}}
-            {{titulo}}
+<script type="text/x-handlebars" id="fridge-productos-template">
+    <div class="clearfix">
+        {{#each producto}}
+            <div class="col-md-3 caja-item">
+                <div id="producto-{{id}}" class="item producto wrapper" data-to="/supermercados/{{id_supermercado}}/producto/{{id}}">
+                    <span class="titulo">
+                        {{titulo}}
+                        <span class="badge top-right-badge">{{unidades}}</span>
+                    </span>
+                    <div class="info">
+                        <p>
+                            Precio:
+                            <br>
+                            {{#compare precio '==' '1'}}
+                                <strong>{{precio}} euro</strong>
+                            {{else}}
+                                <strong>{{precio}} euros</strong>
+                            {{/compare}}
+                        </p>
+                        <p>
+                            Unidades:
+                            <br>
+                            {{#compare unidades '==' '1'}}
+                                <strong>{{unidades}} unidad</strong>
+                            {{else}}
+                                <strong>{{unidades}} unidades</strong>
+                            {{/compare}}
+                        </p>
+                        <p>
+                            Código de barras:
+                            <br>
+                            <strong>{{codigo_barras}}</strong>
+                        </p>
+                        <p>
+                            Código rfid:
+                            <br>
+                            {{#if codigo_rfid}}
+                                <strong>{{codigo_rfid}}</strong>
+                            {{else}}
+                                <strong>No tiene</strong>
+                            {{/if}}
+                        </p>
+                    </div>
+                </div>
+            </div>
         {{/each}}
-    {{else}}
-        <p class="well">
-            El frigorífico está vacío
-        </p>
-    {{/if}}
+        {{#unless producto}}
+            <p class="well">
+                El supermercado <strong>{{titulo}}</strong> no dispone de productos
+            </p>
+        {{/unless}}
+    </div>
 
     <button id="anadir-producto" type="button" class="btn btn-default pull-right" data-toggle="modal" data-target="#anadir-producto-modal">
         Añadir producto
     </button>
 </script>
 
+<script type="text/x-handlebars" id="fridge-compras-template">
+    <div class="clearfix">
+        {{#each compra}}
+            <div class="col-md-3 caja-item">
+                <div id="compra-{{id}}" class="item compra wrapper" data-to="/fridge/{{id_frigorifico}}/compras/{{id}}" data-back="/fridge/{{id_frigorifico}}/compras">
+                    <span class="titulo">
+                        {{fecha_compra}} <br>
+                        Gastado: <strong>{{total}}€</strong>
+                        <span class="badge top-right-badge">{{num_productos}}</span>
+                    </span>
+                </div>
+            </div>
+        {{/each}}
+
+    </div>
+    <div id="compra"></div>
+    {{#unless compra}}
+        <p class="well">
+            No has realizado ninguna compra
+        </p>
+    {{/unless}}
+</script>
+
+<script type="text/x-handlebars" id="fridge-compra-template">
+    <h2>
+        {{fecha_compra}}
+    </h2>
+
+    <div class="clearfix">
+        {{#if producto}}
+            <table class="table table-hover">
+                <tr>
+                    <td>
+                        Producto
+                    </td>
+                    <td>
+                        Unidades
+                    </td>
+                    <td>
+                        Precio
+                    </td>
+                    <td>
+                        Total
+                    </td>
+                </tr>
+                {{#each producto}}
+                    <tr>
+                        <td>
+                            {{titulo}}
+                        </td>
+                        <td>
+                            {{num_productos}}
+                        </td>
+                        <td>
+                            {{precio}}€
+                        </td>
+                        <td>
+                            {{precio_total}}
+                        </td>
+                    </tr>
+                {{/each}}
+                <tr class="total">
+                    <td colspan="4">
+                        Total: <strong>{{total}}€</strong>
+                    </td>
+                </tr>
+            </table>
+        {{/if}}
+        {{#unless producto}}
+            <p class="well">
+                El supermercado <strong>{{titulo}}</strong> no dispone de productos
+            </p>
+        {{/unless}}
+    </div>
+</script>
+
 <script type="text/x-handlebars" id="supermercados-template">
     <div id="supermercados">
-
         <div class="page-header">
             <h1>
                 Supermercados
@@ -69,7 +186,7 @@
                         <span class="titulo">
                             {{titulo}}
                         </span>
-                        <span class="badge num-productos">{{num_productos}}</span>
+                        <span class="badge top-right-badge">{{num_productos}}</span>
                     </div>
                 </div>
             {{/each}}

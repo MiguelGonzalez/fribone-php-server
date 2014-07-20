@@ -32,7 +32,7 @@ class Tablon extends MY_Controller_User {
             array_push($menus, array(
                 'id' => $frigorifico_usuario->id,
                 'title' => $frigorifico_usuario->titulo,
-                'to' => '/fridge/' . $frigorifico_usuario->id
+                'to' => '/fridge/' . $frigorifico_usuario->id . '/productos'
             ));
         }
 
