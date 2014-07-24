@@ -18,7 +18,7 @@ before_script:
   - sudo cp fakesendmail.sh /usr/sbin/sendmail
   - echo 'sendmail_path = "/usr/sbin/sendmail -t -i "' | sudo tee "/home/travis/.phpenv/versions/`php -r 'echo PHP_VERSION;'`/etc/conf.d/sendmail.ini"
   - cd ../../..
-  - ls -al
+  - ls -l
 
 script:
   - phpunit
