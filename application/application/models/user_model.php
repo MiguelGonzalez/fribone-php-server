@@ -2,10 +2,6 @@
 
 class User_model extends CI_Model {
 
-	public function __construct() {
-		parent::__construct();
-	}
-
 	public function get_user($email) {
 		$this->db->select('id');
 		$this->db->select('password');

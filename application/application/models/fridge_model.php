@@ -2,10 +2,6 @@
 
 class Fridge_model extends CI_Model {
 
-	public function __construct() {
-		parent::__construct();
-	}
-
 	public function get_frigorificos_user($idUser) {
 		$this->db->select('user_frigorifico.id');
 		$this->db->select('user_frigorifico.titulo');

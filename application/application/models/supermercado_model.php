@@ -2,10 +2,6 @@
 
 class Supermercado_model extends CI_Model {
 
-	public function __construct() {
-		parent::__construct();
-	}
-
 	public function get_supermercados() {
 		$this->db->select('supermercado.id');
 		$this->db->select('supermercado.titulo');

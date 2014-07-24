@@ -2,10 +2,6 @@
 
 class Compra_model extends CI_Model {
 
-    public function __construct() {
-        parent::__construct();
-    }
-
     public function create_nueva_compra($id_user, $id_fridge) {
         $data = array(
             'id_frigorifico' => $id_fridge
