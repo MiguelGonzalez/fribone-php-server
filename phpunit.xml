@@ -25,9 +25,26 @@
             <file>application/application/tests/libraries/My_PHPMailerTest.php</file>
         </testsuite>
 	</testsuites>
+     <filter>
+        <blacklist>
+            <directory suffix=".php">application/application/config</directory>
+            <directory suffix=".php">application/application/controllers</directory>
+            <directory suffix=".php">application/application/core</directory>
+            <directory suffix=".php">application/application/libraries/PHPMailer</directory>
+            <directory suffix=".php">application/application/tests/mockups</directory>
+            <directory suffix=".php">application/system</directory>
+            <file>application/application/tests/bootstrap.php</file>
+            <file>application/application/tests/database_inflater.php</file>
+            <file>application/application/tests/PHPTest_Unit.php</file>
+        </blacklist>
+    </filter>
 	<php>
 		<const name="PHPUNIT_TEST" value="1" />
 		<const name="PHPUNIT_CHARSET" value="UTF-8" />
 		<const name="REMOTE_ADDR" value="217.0.0.1" />
 	</php>
+    <logging>
+        <log type="coverage-text" target="php://stdout" showUncoveredFiles="true"/>
+        <log type="coverage-clover" target="coverage/clover.xml"/>
+    </logging>
 </phpunit>
