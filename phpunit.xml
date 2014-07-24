@@ -9,18 +9,25 @@
 	syntaxCheck="false"
 	verbose="true">
 	<testsuites>
-		<testsuite name="TestSuite">
-			<directory>application/tests</directory>
+        <testsuite name="TestFridgeModel">
+            <file>application/application/tests/models/FridgeTest.php</file>
+        </testsuite>
+        <testsuite name="TestSupermercadoModel">
+            <file>application/application/tests/models/SupermercadoTest.php</file>
+        </testsuite>
+        <testsuite name="TestUserModel">
+            <file>application/application/tests/models/UserTest.php</file>
+        </testsuite>
+		<testsuite name="TestLogin_auth">
+            <file>application/application/tests/libraries/Login_authTest.php</file>
 		</testsuite>
+        <testsuite name="TestMy_PHPMailer">
+            <file>application/application/tests/libraries/My_PHPMailerTest.php</file>
+        </testsuite>
 	</testsuites>
 	<php>
 		<const name="PHPUNIT_TEST" value="1" />
 		<const name="PHPUNIT_CHARSET" value="UTF-8" />
 		<const name="REMOTE_ADDR" value="217.0.0.1" />
 	</php>
-	<filter>
-		<blacklist>
-			<directory suffix=".php">system</directory>
-		</blacklist>
-	</filter>
 </phpunit>
