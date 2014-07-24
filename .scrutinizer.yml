@@ -1,0 +1,208 @@
+before_commands:
+    - "composer install --prefer-source"
+
+tools:
+    # Code Coverage
+    external_code_coverage:
+        enabled: true
+        timeout: 300
+        filter:
+            excluded_paths:
+                - 'application/resources/*'
+                - 'application/system/*'
+                - 'application/cache/*'
+                - 'application/config/*'
+                - 'application/controllers/*'
+                - 'application/core/*'
+                - 'application/errors/*'
+                - 'application/hooks/*'
+                - 'application/language/*'
+                - 'application/libraries/PHPMailer/*'
+                - 'application/tests/mockups/*'
+                - 'application/third_party/*'
+                - 'application/views/*'
+                - 'application/logs/*'
+
+
+
+    php_code_coverage:
+        enabled:              false
+        test_command:         phpunit
+        filter:
+            excluded_paths:
+                - 'application/resources/*'
+                - 'application/system/*'
+                - 'application/cache/*'
+                - 'application/config/*'
+                - 'application/controllers/*'
+                - 'application/core/*'
+                - 'application/errors/*'
+                - 'application/hooks/*'
+                - 'application/language/*'
+                - 'application/libraries/PHPMailer/*'
+                - 'application/tests/mockups/*'
+                - 'application/third_party/*'
+                - 'application/views/*'
+                - 'application/logs/*'
+
+
+    # Code Sniffer
+    php_code_sniffer:
+        enabled:              true
+        command:              phpcs
+        config:
+            standard:         PSR2
+        filter:
+            excluded_paths:
+                - 'application/resources/*'
+                - 'application/system/*'
+                - 'application/cache/*'
+                - 'application/config/*'
+                - 'application/controllers/*'
+                - 'application/core/*'
+                - 'application/errors/*'
+                - 'application/hooks/*'
+                - 'application/language/*'
+                - 'application/libraries/PHPMailer/*'
+                - 'application/tests/mockups/*'
+                - 'application/third_party/*'
+                - 'application/views/*'
+                - 'application/logs/*'
+
+
+    # Copy/Paste Detector
+    php_cpd:
+        enabled:              true
+        command:              phpcpd
+        excluded_dirs:
+            - 'application/resources/'
+            - 'application/system/'
+            - 'application/cache/'
+            - 'application/config/'
+            - 'application/controllers/'
+            - 'application/core/'
+            - 'application/errors/'
+            - 'application/hooks/'
+            - 'application/language/'
+            - 'application/libraries/PHPMailer/'
+            - 'application/tests/mockups/'
+            - 'application/third_party/'
+            - 'application/views/'
+            - 'application/logs/'
+
+
+    # PHP CS Fixer (http://http://cs.sensiolabs.org/).
+    php_cs_fixer:
+        enabled:              true
+        command:              php-cs-fixer
+        config:
+            level:            psr2
+        filter:
+            excluded_paths:
+                - 'application/resources/*'
+                - 'application/system/*'
+                - 'application/cache/*'
+                - 'application/config/*'
+                - 'application/controllers/*'
+                - 'application/core/*'
+                - 'application/errors/*'
+                - 'application/hooks/*'
+                - 'application/language/*'
+                - 'application/libraries/PHPMailer/*'
+                - 'application/tests/mockups/*'
+                - 'application/third_party/*'
+                - 'application/views/*'
+                - 'application/logs/*'
+
+
+    # Analyzes the size and structure of a PHP project.
+    php_loc:
+        enabled:              true
+        command:              phploc
+        excluded_dirs:
+            - 'application/resources/'
+            - 'application/system/'
+            - 'application/cache/'
+            - 'application/config/'
+            - 'application/controllers/'
+            - 'application/core/'
+            - 'application/errors/'
+            - 'application/hooks/'
+            - 'application/language/'
+            - 'application/libraries/PHPMailer/'
+            - 'application/tests/mockups/'
+            - 'application/third_party/'
+            - 'application/views/'
+            - 'application/logs/'
+
+
+    # PHP Mess Detector (http://phpmd.org).
+    php_mess_detector:
+        enabled:              true
+        command:              phpmd
+        config:
+            rulesets:
+                - codesize
+                - unusedcode
+                - naming
+                - design
+        filter:
+            excluded_paths:
+                - 'application/resources/*'
+                - 'application/system/*'
+                - 'application/cache/*'
+                - 'application/config/*'
+                - 'application/controllers/*'
+                - 'application/core/*'
+                - 'application/errors/*'
+                - 'application/hooks/*'
+                - 'application/language/*'
+                - 'application/libraries/PHPMailer/*'
+                - 'application/tests/mockups/*'
+                - 'application/third_party/*'
+                - 'application/views/*'
+                - 'application/logs/*'
+
+
+    # Analyzes the size and structure of a PHP project.
+    php_pdepend:
+        enabled:              true
+        command:              pdepend
+        excluded_dirs:
+            - 'application/resources/'
+            - 'application/system/'
+            - 'application/cache/'
+            - 'application/config/'
+            - 'application/controllers/'
+            - 'application/core/'
+            - 'application/errors/'
+            - 'application/hooks/'
+            - 'application/language/'
+            - 'application/libraries/PHPMailer/'
+            - 'application/tests/mockups/'
+            - 'application/third_party/'
+            - 'application/views/'
+            - 'application/logs/'
+
+    # Runs Scrutinizer's PHP Analyzer Tool
+    php_analyzer:
+        enabled:              true
+        filter:
+            excluded_paths:
+                - 'application/resources/*'
+                - 'application/system/*'
+                - 'application/cache/*'
+                - 'application/config/*'
+                - 'application/controllers/*'
+                - 'application/core/*'
+                - 'application/errors/*'
+                - 'application/hooks/*'
+                - 'application/language/*'
+                - 'application/libraries/PHPMailer/*'
+                - 'application/tests/mockups/*'
+                - 'application/third_party/*'
+                - 'application/views/*'
+                - 'application/logs/*'
+
+    # Security Advisory Checker
+    sensiolabs_security_checker: true
