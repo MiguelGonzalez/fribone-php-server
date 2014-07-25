@@ -21,8 +21,6 @@ class Fridge_libraryTest extends PHPTest_Unit {
 
         $res = $this->CI->fridge_library->create_fridge($idUser, 'Mi frigorífico');
         $this->assertTrue($res !== NULL);
-
-        $idFridge = $res['frigorifico_id'];
     }
 
     public function testGetFridges() {
