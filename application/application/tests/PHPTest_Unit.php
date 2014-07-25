@@ -67,4 +67,12 @@ class PHPTest_Unit extends PHPUnit_Framework_TestCase {
 
         return $password_hashed;
     }
+
+    protected function arrayToObject($array) {
+        $object = new stdClass();
+        foreach ($array as $key => $value) {
+            $object->$key = $value;
+        }
+        return $object;
+    }
 }

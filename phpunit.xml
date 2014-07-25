@@ -18,6 +18,9 @@
         <testsuite name="TestUserModel">
             <file>application/application/tests/models/UserTest.php</file>
         </testsuite>
+        <testsuite name="TestCompraModel">
+            <file>application/application/tests/models/CompraTest.php</file>
+        </testsuite>
 		<testsuite name="TestLogin_auth">
             <file>application/application/tests/libraries/Login_authTest.php</file>
 		</testsuite>
