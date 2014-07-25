@@ -83,6 +83,15 @@ class Fridge_model extends CI_Model {
             return NULL;
         }
         $this->db->select('compra_producto.id');
+        $this->db->select('compra_producto.titulo');
+        $this->db->select('compra_producto.descripcion');
+        $this->db->select('compra_producto.unidades');
+        $this->db->select('compra_producto.precio');
+        $this->db->select('compra_producto.codigo_barras');
+        $this->db->select('compra_producto.codigo_rfid');
+        $this->db->select('compra_producto.fecha_entrada');
+        $this->db->select('supermercado.titulo as titulo_supermercado');
+        $this->db->join('supermercado', 'supermercado.id = compra_producto.id_supermercado');
 
         $this->db->from('compra_producto');
         $this->db->where('compra_producto.unidades >', 0);
