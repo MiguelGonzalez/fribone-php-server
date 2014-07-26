@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS `my_compra` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `fecha_compra` datetime NOT NULL,
   `total` float NOT NULL,
+  `id_user` int(11) NOT NULL,
   `id_frigorifico` int(11) NOT NULL,
   PRIMARY KEY (`id`,`fecha_compra`),
   KEY `id_frigorifico` (`id_frigorifico`)
@@ -140,6 +141,9 @@ CREATE TRIGGER my_user_remember_token_OnInsert BEFORE INSERT ON `my_user_remembe
 
 ALTER TABLE `my_compra`
   ADD CONSTRAINT `my_compra_ibfk_1` FOREIGN KEY (`id_frigorifico`) REFERENCES `my_user_frigorifico` (`id`);
+
+ALTER TABLE `my_compra`
+  ADD CONSTRAINT `my_compra_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `my_user` (`id`);
 
 ALTER TABLE `my_compra_producto`
   ADD CONSTRAINT `my_compra_producto_ibfk_1` FOREIGN KEY (`id_compra`) REFERENCES `my_compra` (`id`),
