@@ -22,6 +22,7 @@ tools:
                 - 'application/third_party/*'
                 - 'application/views/*'
                 - 'application/logs/*'
+                - 'application/tests/*'
 
 
 
@@ -44,6 +45,7 @@ tools:
                 - 'application/third_party/*'
                 - 'application/views/*'
                 - 'application/logs/*'
+                - 'application/tests/*'
 
 
     # Code Sniffer
@@ -68,6 +70,7 @@ tools:
                 - 'application/third_party/*'
                 - 'application/views/*'
                 - 'application/logs/*'
+                - 'application/tests/*'
 
 
     # Copy/Paste Detector
@@ -89,6 +92,7 @@ tools:
             - 'application/third_party/'
             - 'application/views/'
             - 'application/logs/'
+            - 'appliaction/tests/'
 
 
     # PHP CS Fixer (http://http://cs.sensiolabs.org/).
@@ -113,6 +117,7 @@ tools:
                 - 'application/third_party/*'
                 - 'application/views/*'
                 - 'application/logs/*'
+                - 'application/tests/*'
 
 
     # Analyzes the size and structure of a PHP project.
@@ -134,6 +139,7 @@ tools:
             - 'application/third_party/'
             - 'application/views/'
             - 'application/logs/'
+            - 'appliaction/tests/'
 
 
     # PHP Mess Detector (http://phpmd.org).
@@ -162,6 +168,7 @@ tools:
                 - 'application/third_party/*'
                 - 'application/views/*'
                 - 'application/logs/*'
+                - 'application/tests/*'
 
 
     # Analyzes the size and structure of a PHP project.
@@ -183,6 +190,7 @@ tools:
             - 'application/third_party/'
             - 'application/views/'
             - 'application/logs/'
+            - 'appliaction/tests/'
 
     # Runs Scrutinizer's PHP Analyzer Tool
     php_analyzer:
@@ -203,6 +211,7 @@ tools:
                 - 'application/third_party/*'
                 - 'application/views/*'
                 - 'application/logs/*'
+                - 'application/tests/*'
 
     # Security Advisory Checker
     sensiolabs_security_checker: true
