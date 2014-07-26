@@ -43,6 +43,7 @@ DROP TABLE IF EXISTS `my_user_frigorifico_producto`;
 CREATE TABLE IF NOT EXISTS `my_user_frigorifico_producto` (
   `id_frigorifico` int(11) NOT NULL,
   `id_producto_compra` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
   `unidades` int(11) NOT NULL,
   PRIMARY KEY (`id_frigorifico`,`id_producto_compra`),
   KEY (`unidades`)
@@ -165,6 +166,7 @@ ALTER TABLE `my_user_frigorifico_producto`
 ALTER TABLE `my_user_frigorifico_producto`
   ADD CONSTRAINT `my_user_frigorifico_producto_ibfk_2` FOREIGN KEY (`id_producto_compra`) REFERENCES `my_compra_producto` (`id`);
 
-
+ALTER TABLE `my_user_frigorifico_producto`
+  ADD CONSTRAINT `my_user_frigorifico_producto_ibfk_3` FOREIGN KEY (`id_user`) REFERENCES `my_user` (`id`);
 
 SET FOREIGN_KEY_CHECKS = 1;
