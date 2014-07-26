@@ -26,20 +26,20 @@ class Fridge_library {
 		return $fridges;
 	}
 
-    public function get_fridge($id_fridge) {
-        $fridge = $this->ci->fridge_model->get_fridge_user($id_fridge);
+    public function get_fridge($id_user, $id_fridge) {
+        $fridge = $this->ci->fridge_model->get_fridge_user($id_user, $id_fridge);
 
         return $fridge;
     }
 
-    public function get_productos_fridge($id_fridge) {
-        $items = $this->ci->fridge_model->get_productos_fridge($id_fridge);
+    public function get_productos_fridge($id_user, $id_fridge) {
+        $items = $this->ci->fridge_model->get_productos_fridge($id_user, $id_fridge);
 
         return $items;
     }
 
-    public function get_item_fridge($id_fridge, $id_producto_compra) {
-        $item = $this->ci->fridge_model->get_item_fridge($id_fridge, $id_producto_compra);
+    public function get_item_fridge($id_user, $id_fridge, $id_producto_compra) {
+        $item = $this->ci->fridge_model->get_item_fridge($id_user, $id_fridge, $id_producto_compra);
 
         return $item;
     }
@@ -54,17 +54,17 @@ class Fridge_library {
         return $res;
     }
 
-    public function get_compras($id_fridge) {
-        $compras = $this->ci->fridge_model->get_compras_fridge($id_fridge);
+    public function get_compras($id_user, $id_fridge) {
+        $compras = $this->ci->fridge_model->get_compras_fridge($id_user, $id_fridge);
 
         return $compras;
     }
 
-    public function get_compra($id_compra) {
-        $compra = $this->ci->fridge_model->get_compra($id_compra);
+    public function get_compra($id_user, $id_compra) {
+        $compra = $this->ci->fridge_model->get_compra($id_user, $id_compra);
 
         if(!is_null($compra)) {
-            $compra->producto = $this->ci->fridge_model->get_compra_productos($id_compra);
+            $compra->producto = $this->ci->fridge_model->get_compra_productos($id_user, $id_compra);
 
             foreach($compra->producto as &$producto) {
                 $producto->precio_total = $producto->num_productos * $producto->precio;

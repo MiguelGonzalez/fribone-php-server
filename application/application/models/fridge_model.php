@@ -2,13 +2,13 @@
 
 class Fridge_model extends CI_Model {
 
-	public function get_frigorificos_user($idUser) {
+	public function get_frigorificos_user($id_user) {
 		$this->db->select('user_frigorifico.id');
 		$this->db->select('user_frigorifico.titulo');
 		$this->db->select('user_frigorifico.fecha_alta');
 		$this->db->select('user_frigorifico.fecha_modificacion');
 		$this->db->from('user_frigorifico');
-		$this->db->where('user_frigorifico.id_user', $idUser);
+		$this->db->where('user_frigorifico.id_user', $id_user);
 		$this->db->group_by('user_frigorifico.id');
 
 		$query = $this->db->get();
@@ -36,12 +36,13 @@ class Fridge_model extends CI_Model {
 		return NULL;
 	}
 
-    public function get_fridge_user($id_fridge) {
+    public function get_fridge_user($id_user, $id_fridge) {
         $this->db->select('user_frigorifico.id');
         $this->db->select('user_frigorifico.titulo');
         $this->db->select('user_frigorifico.fecha_alta');
         $this->db->select('user_frigorifico.fecha_modificacion');
         $this->db->from('user_frigorifico');
+        $this->db->where('user_frigorifico.id_user', $id_user);
         $this->db->where('user_frigorifico.id', $id_fridge);
 
         $query = $this->db->get();
@@ -52,7 +53,7 @@ class Fridge_model extends CI_Model {
         return NULL;
     }
 
-	public function get_productos_fridge($id_fridge) {
+	public function get_productos_fridge($id_user, $id_fridge) {
 		if(!$this->exist_fridge($id_fridge)) {
 			return NULL;
 		}
@@ -68,6 +69,7 @@ class Fridge_model extends CI_Model {
 
 		$this->db->from('compra_producto');
 		$this->db->join('user_frigorifico_producto', 'user_frigorifico_producto.id_producto_compra = compra_producto.id');
+        $this->db->where('user_frigorifico_producto.id_user', $id_user);
 		$this->db->where('user_frigorifico_producto.unidades >', 0);
 		$this->db->where('user_frigorifico_producto.id_frigorifico', $id_fridge);
 
@@ -78,7 +80,7 @@ class Fridge_model extends CI_Model {
     	return $query->result();
 	}
 
-    public function get_item_fridge($id_fridge, $id_producto_compra) {
+    public function get_item_fridge($id_user, $id_fridge, $id_producto_compra) {
         if(!$this->exist_fridge($id_fridge)) {
             return NULL;
         }
@@ -94,6 +96,8 @@ class Fridge_model extends CI_Model {
         $this->db->join('supermercado', 'supermercado.id = compra_producto.id_supermercado');
 
         $this->db->from('compra_producto');
+        $this->db->join('compra', 'compra.id = compra_producto.id_compra');
+        $this->db->where('compra.id_user', $id_user);
         $this->db->where('compra_producto.unidades >', 0);
         $this->db->where('compra_producto.id', $id_producto_compra);
 
@@ -112,6 +116,7 @@ class Fridge_model extends CI_Model {
         }
 
         $data = array(
+            'id_user' => $id_user,
             'id_frigorifico' => $id_fridge,
             'id_producto_compra' => $id_producto_compra,
             'unidades' => $unidades
@@ -126,7 +131,7 @@ class Fridge_model extends CI_Model {
         return NULL;
     }
 
-    public function get_compras_fridge($id_fridge) {
+    public function get_compras_fridge($id_user, $id_fridge) {
         $this->db->select('compra.id');
         $this->db->select('compra.fecha_compra');
         $this->db->select('compra.total');
@@ -134,6 +139,7 @@ class Fridge_model extends CI_Model {
         $this->db->select_count('compra_producto.id', 'num_productos');
         $this->db->from('compra');
         $this->db->join('compra_producto', 'compra_producto.id_compra = compra.id', 'left');
+        $this->db->where('compra.id_user', $id_user);
         $this->db->where('compra.id_frigorifico', $id_fridge);
         $this->db->group_by('compra.id');
 
@@ -142,7 +148,7 @@ class Fridge_model extends CI_Model {
         return $query->result();
     }
 
-    public function get_compra($id_compra) {
+    public function get_compra($id_user, $id_compra) {
         $this->db->select('compra.id');
         $this->db->select('compra.fecha_compra');
         $this->db->select('compra.total');
@@ -151,6 +157,7 @@ class Fridge_model extends CI_Model {
         $this->db->from('compra');
         $this->db->join('compra_producto', 'compra_producto.id_compra = compra.id', 'left');
         $this->db->where('compra.id', $id_compra);
+        $this->db->where('compra.id_user', $id_user);
         $this->db->group_by('compra.id');
 
         $query = $this->db->get();
@@ -162,7 +169,7 @@ class Fridge_model extends CI_Model {
         return NULL;
     }
 
-    public function get_compra_productos($id_compra) {
+    public function get_compra_productos($id_user, $id_compra) {
         $this->db->select('compra_producto.titulo');
         $this->db->select('compra_producto.descripcion');
         $this->db->select_count('compra_producto.id', 'num_productos');
@@ -173,8 +180,10 @@ class Fridge_model extends CI_Model {
         $this->db->select('compra_producto.fecha_entrada');
         $this->db->select('supermercado.titulo as titulo_supermercado');
         $this->db->from('compra_producto');
-        $this->db->where('compra_producto.id_compra', $id_compra);
+        $this->db->join('compra', 'compra.id = compra_producto.id_compra');
         $this->db->join('supermercado', 'supermercado.id = compra_producto.id_supermercado');
+        $this->db->where('compra.id_user', $id_user);
+        $this->db->where('compra_producto.id_compra', $id_compra);
         $this->db->group_by('compra_producto.codigo_barras');
 
         $query = $this->db->get();

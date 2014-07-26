@@ -16,9 +16,15 @@ class SupermercadoTest extends PHPTest_Unit {
 
         $res = $this->CI->supermercado_model->crear_supermercado('mercadona');
         $this->assertTrue($res !== NULL);
+        $idSupermercado = $res['supermercado_id'];
 
         $supermercados = $this->CI->supermercado_model->get_supermercados();
         $this->assertTrue($supermercados !== NULL);
+        $this->assertEquals(count($supermercados), 1);
+
+        $res = $this->CI->supermercado_model->get_supermercado($idSupermercado);
+        $this->assertTrue($res !== NULL);
+        $this->assertEquals($res->titulo, 'mercadona');
 	}
 
     public function testProductoSupermercado() {
@@ -82,5 +88,23 @@ class SupermercadoTest extends PHPTest_Unit {
         $this->assertEquals('Agua', $producto->titulo);
         $this->assertEquals('123006456046', $producto->codigo_barras);
         $this->assertEquals(0.87, $producto->precio);
+
+        $productos = $this->CI->supermercado_model->search_productos_codigo_barras('76342523');
+        $this->assertEquals(count($productos), 0);
+
+        $productos = $this->CI->supermercado_model->search_productos_codigo_barras('123006456046');
+        $this->assertEquals(count($productos), 1);
+
+        $datosProducto = array(
+            'titulo' => 'Agua',
+            'codigo_barras' => '1230064',
+            'descripcion' => 'Botella de agua de 1L del mercadona',
+            'precio' => 0.87,
+            'unidades' => 1
+        );
+        $res = $this->CI->supermercado_model->add_supermercado_producto($idSupermercado, $datosProducto);
+
+        $productos = $this->CI->supermercado_model->search_productos_codigo_barras('1230');
+        $this->assertEquals(count($productos), 2);
     }
 }

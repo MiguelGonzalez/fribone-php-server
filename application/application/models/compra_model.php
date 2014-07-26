@@ -4,7 +4,8 @@ class Compra_model extends CI_Model {
 
     public function create_nueva_compra($id_user, $id_fridge) {
         $data = array(
-            'id_frigorifico' => $id_fridge
+            'id_frigorifico' => $id_fridge,
+            'id_user' => $id_user
         );
 
         $this->db->insert('compra', $data);
@@ -23,6 +24,7 @@ class Compra_model extends CI_Model {
         $this->db->select('compra.fecha_compra');
         $this->db->select('compra.total');
         $this->db->from('compra');
+        $this->db->where('compra.id_user', $id_user);
         $this->db->where('compra.id_frigorifico', $id_fridge);
         $this->db->order_by('compra.fecha_compra', 'desc');
         $this->db->limit(1);
@@ -69,14 +71,17 @@ class Compra_model extends CI_Model {
             'total' => $total_compra
         );
 
-        $this->db->where('compra.id', $id_compra);
+        $this->db->where('id', $id_compra);
+        $this->db->where('id_user', $id_user);
 
         $this->db->update('compra', $data);
     }
 
     private function get_total_compra($id_user, $id_compra) {
         $this->db->select_sum('compra_producto.precio', 'total_compra');
+        $this->db->join('compra', 'compra.id = compra_producto.id_compra');
         $this->db->from('compra_producto');
+        $this->db->where('compra.id_user', $id_user);
         $this->db->where('compra_producto.id_compra', $id_compra);
 
         $query = $this->db->get();

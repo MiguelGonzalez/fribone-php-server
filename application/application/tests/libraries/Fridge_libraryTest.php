@@ -36,7 +36,7 @@ class Fridge_libraryTest extends PHPTest_Unit {
         $this->assertEquals(count($res), 1);
         $this->assertEquals($res[0]->id, $idFridge);
 
-        $res = $this->CI->fridge_library->get_fridge($idFridge);
+        $res = $this->CI->fridge_library->get_fridge($idUser, $idFridge);
         $this->assertTrue($res !== NULL);
         $this->assertEquals($res->titulo, 'Mi frigorífico');
     }
@@ -48,16 +48,16 @@ class Fridge_libraryTest extends PHPTest_Unit {
         $res = $this->CI->fridge_library->create_fridge($idUser, 'Mi frigorífico');
         $idFridge = $res['frigorifico_id'];
 
-        $res = $this->CI->fridge_library->get_productos_fridge($idFridge);
+        $res = $this->CI->fridge_library->get_productos_fridge($idUser, $idFridge);
         $this->assertEquals(count($res), 0);
 
-        $res = $this->CI->fridge_library->get_item_fridge($idFridge, 1);
+        $res = $this->CI->fridge_library->get_item_fridge($idUser, $idFridge, 1);
         $this->assertNull($res);
 
-        $res = $this->CI->fridge_library->get_compras($idFridge);
+        $res = $this->CI->fridge_library->get_compras($idUser, $idFridge);
         $this->assertEquals(count($res), 0);
 
-        $res = $this->CI->fridge_library->get_compra($idFridge, 1);
+        $res = $this->CI->fridge_library->get_compra($idUser, $idFridge, 1);
         $this->assertNull($res);
     }
 
@@ -91,11 +91,11 @@ class Fridge_libraryTest extends PHPTest_Unit {
         $res = $this->CI->fridge_library->anadir_producto_compra($idUser, $idFridge, $idProducto, 2);
         $this->assertTrue($res !== NULL);
 
-        $res = $this->CI->fridge_library->get_item_fridge($idFridge, $idProducto);
+        $res = $this->CI->fridge_library->get_item_fridge($idUser, $idFridge, $idProducto);
         $this->assertTrue($res !== NULL);
         $this->assertEquals($res->titulo, 'Mi producto');
 
-        $res = $this->CI->fridge_library->get_compras($idFridge);
+        $res = $this->CI->fridge_library->get_compras($idUser, $idFridge);
         $this->assertEquals(count($res), 1);
         $this->assertEquals($res[0]->total, $datosProducto['precio'] * 2);
     }

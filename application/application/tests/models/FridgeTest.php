@@ -35,6 +35,7 @@ class FrigorificoTest extends PHPTest_Unit {
     public function testDuplicateFridges() {
         $resUser = $this->CI->login_auth_library->create_user('test@test.com', 'TestName', '123456');
         $idUser = $resUser['user_id'];
+
         $this->CI->fridge_model->add_frigorifico_user($idUser, 'Mi primer frigo');
         $res = $this->CI->fridge_model->add_frigorifico_user($idUser, 'Mi primer frigo');
         $this->assertNull($res);
@@ -46,7 +47,8 @@ class FrigorificoTest extends PHPTest_Unit {
 
         $res = $this->CI->fridge_model->add_frigorifico_user($idUser, 'Mi primer frigo');
         $idFridge = $res['frigorifico_id'];
-        $fridge = $this->CI->fridge_model->get_fridge_user($idFridge);
+
+        $fridge = $this->CI->fridge_model->get_fridge_user($idUser, $idFridge);
         $this->assertEquals($fridge->titulo, 'Mi primer frigo');
     }
 
@@ -57,7 +59,7 @@ class FrigorificoTest extends PHPTest_Unit {
         $res = $this->CI->fridge_model->add_frigorifico_user($idUser, 'Mi primer frigo');
         $idFridge = $res['frigorifico_id'];
 
-        $prods = $this->CI->fridge_model->get_productos_fridge($idFridge);
+        $prods = $this->CI->fridge_model->get_productos_fridge($idUser, $idFridge);
         $this->assertEquals(count($prods), 0);
     }
 
@@ -68,7 +70,7 @@ class FrigorificoTest extends PHPTest_Unit {
         $res = $this->CI->fridge_model->add_frigorifico_user($idUser, 'Mi primer frigo');
         $idFridge = $res['frigorifico_id'];
 
-        $prods = $this->CI->fridge_model->get_compras_fridge($idFridge);
+        $prods = $this->CI->fridge_model->get_compras_fridge($idUser, $idFridge);
         $this->assertEquals(count($prods), 0);
     }
 }
