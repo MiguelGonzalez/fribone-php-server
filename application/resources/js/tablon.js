@@ -446,7 +446,7 @@ var lector = {
 
                 $('#main').html(html_template);
 
-                page.draw_menu();
+                lector.initEvents();
             }).fail(function(jqXHR) {
                 alert('Error al obtener los datos del lector');
             });
@@ -466,7 +466,7 @@ var lector = {
                 dataType: 'json'
             }).done(function(data) {
                 if(data.ok) {
-                    lector.draw();
+                    page.draw_menu();
 
                     $('#crear-lector-modal .form-group').removeClass('has-error');
                     $('#crear-lector-modal').modal('hide');
