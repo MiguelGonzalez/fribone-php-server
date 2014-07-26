@@ -27,6 +27,9 @@
         <testsuite name="TestMy_PHPMailer">
             <file>application/application/tests/libraries/My_PHPMailerTest.php</file>
         </testsuite>
+        <testsuite name="TestSupermercado_library">
+            <file>application/application/tests/libraries/Supermercado_libraryTest.php</file>
+        </testsuite>
         <testsuite name="TestFridge_library">
             <file>application/application/tests/libraries/Fridge_libraryTest.php</file>
         </testsuite>

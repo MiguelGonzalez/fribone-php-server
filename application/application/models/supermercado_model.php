@@ -142,6 +142,7 @@ class Supermercado_model extends CI_Model {
         $this->db->select('supermercado_producto.fecha_alta');
         $this->db->select('supermercado_producto.fecha_modificacion');
         $this->db->select('supermercado.titulo as titulo_supermercado');
+        $this->db->select('supermercado.id as id_supermercado');
         $this->db->from('supermercado_producto');
         $this->db->join('supermercado', 'supermercado.id = supermercado_producto.id_supermercado');
         $this->db->where('supermercado_producto.state','A');
