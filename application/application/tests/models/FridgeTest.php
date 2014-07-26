@@ -116,8 +116,6 @@ class FrigorificoTest extends PHPTest_Unit {
 
         $idCompra = $res[0]->id;
 
-        $this->CI->compra_model->recalcular_total_compra($idUser, $idCompra);
-
         $res = $this->CI->fridge_model->get_compra($idUser, $idCompra);
         $this->assertTrue($res !== NULL);
         $this->assertEquals($res->total, 1.23);

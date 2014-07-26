@@ -30,8 +30,6 @@ class Compra_library {
                     $compra_activa->id,
                     $producto);
 
-            $this->ci->compra_model->recalcular_total_compra($id_user, $compra_activa->id);
-
             return $res;
         }
 

@@ -54,6 +54,8 @@ class Compra_model extends CI_Model {
         $this->db->insert('compra_producto', $data);
 
         if ($this->db->affected_rows() === 1) {
+            $this->recalcular_total_compra($id_user, $id_compra);
+
             $producto_compra_id = $this->db->insert_id();
 
             return array(
@@ -64,7 +66,7 @@ class Compra_model extends CI_Model {
         return NULL;
     }
 
-    public function recalcular_total_compra($id_user, $id_compra) {
+    private function recalcular_total_compra($id_user, $id_compra) {
         $total_compra = $this->get_total_compra($id_user, $id_compra);
 
         $data = array(
