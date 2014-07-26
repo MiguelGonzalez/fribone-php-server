@@ -9,14 +9,17 @@
 	syntaxCheck="false"
 	verbose="true">
 	<testsuites>
+        <testsuite name="TestUserModel">
+            <file>application/application/tests/models/UserTest.php</file>
+        </testsuite>
+        <testsuite name="TestLectorModel">
+            <file>application/application/tests/models/LectorTest.php</file>
+        </testsuite>
         <testsuite name="TestFridgeModel">
             <file>application/application/tests/models/FridgeTest.php</file>
         </testsuite>
         <testsuite name="TestSupermercadoModel">
             <file>application/application/tests/models/SupermercadoTest.php</file>
-        </testsuite>
-        <testsuite name="TestUserModel">
-            <file>application/application/tests/models/UserTest.php</file>
         </testsuite>
         <testsuite name="TestCompraModel">
             <file>application/application/tests/models/CompraTest.php</file>
@@ -26,6 +29,9 @@
 		</testsuite>
         <testsuite name="TestMy_PHPMailer">
             <file>application/application/tests/libraries/My_PHPMailerTest.php</file>
+        </testsuite>
+        <testsuite name="TestLector_library">
+            <file>application/application/tests/libraries/Lector_libraryTest.php</file>
         </testsuite>
         <testsuite name="TestSupermercado_library">
             <file>application/application/tests/libraries/Supermercado_libraryTest.php</file>

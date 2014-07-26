@@ -191,7 +191,7 @@ class Fridge_model extends CI_Model {
 
 	private function exist_fridge($search, $by = 'id') {
 		$this->db->select('1', FALSE);
-		$this->db->from('my_user_frigorifico');
+		$this->db->from('user_frigorifico');
 		$this->db->where('state','A');
         if($by === 'id') {
             $this->db->where('id', $search);
@@ -205,7 +205,7 @@ class Fridge_model extends CI_Model {
 
     private function exist_user_fridge($id_user, $search, $by = 'id') {
         $this->db->select('1', FALSE);
-        $this->db->from('my_user_frigorifico');
+        $this->db->from('user_frigorifico');
         $this->db->where('state','A');
         $this->db->where('id_user',$id_user);
         if($by === 'id') {

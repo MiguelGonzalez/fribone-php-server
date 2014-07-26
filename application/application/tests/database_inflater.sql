@@ -123,6 +123,39 @@ CREATE TABLE IF NOT EXISTS `my_user_frigorifico` (
 CREATE TRIGGER my_user_frigorifico_OnInsert BEFORE INSERT ON `my_user_frigorifico`
     FOR EACH ROW SET NEW.fecha_alta = IFNULL(NOW(), NEW.fecha_alta), NEW.fecha_modificacion = IFNULL(NOW(), NEW.fecha_modificacion);
 
+DROP TABLE IF EXISTS `my_user_lector`;
+CREATE TABLE IF NOT EXISTS `my_user_lector` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(128) NOT NULL,
+  `public_key` char(60) NULL,
+  `fecha_alta` datetime NOT NULL,
+  `fecha_modificacion` datetime NOT NULL,
+  `fecha_baja` datetime,
+  `state` char(1) NOT NULL DEFAULT 'A',
+  `id_user` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_user` (`id_user`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+CREATE TRIGGER my_user_lector_OnInsert BEFORE INSERT ON `my_user_lector`
+    FOR EACH ROW SET NEW.fecha_alta = IFNULL(NOW(), NEW.fecha_alta), NEW.fecha_modificacion = IFNULL(NOW(), NEW.fecha_modificacion);
+
+DROP TABLE IF EXISTS `my_user_lector_token`;
+CREATE TABLE IF NOT EXISTS `my_user_lector_token` (
+  `access_key_1` char(12) NOT NULL,
+  `access_key_2` char(12) NOT NULL,
+  `fecha_alta` datetime NOT NULL,
+  `fecha_baja` datetime,
+  `state` char(1) NOT NULL DEFAULT 'A',
+  `id_lector` int(11) NOT NULL,
+  PRIMARY KEY (`access_key_1`, `access_key_2`, `id_lector`),
+  KEY `access_key_1` (`access_key_1`),
+  KEY `access_key_1_2` (`access_key_1`, `access_key_2`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+CREATE TRIGGER my_user_lector_token_OnInsert BEFORE INSERT ON `my_user_lector_token`
+    FOR EACH ROW SET NEW.fecha_alta = IFNULL(NOW(), NEW.fecha_alta);
+
 DROP TABLE IF EXISTS `my_user_remember_token`;
 CREATE TABLE IF NOT EXISTS `my_user_remember_token` (
   `email` varchar(128) NOT NULL,
@@ -166,5 +199,11 @@ ALTER TABLE `my_user_frigorifico_producto`
 
 ALTER TABLE `my_user_frigorifico_producto`
   ADD CONSTRAINT `my_user_frigorifico_producto_ibfk_3` FOREIGN KEY (`id_user`) REFERENCES `my_user` (`id`);
+
+ALTER TABLE `my_user_lector`
+  ADD CONSTRAINT `my_user_lector_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `my_user` (`id`);
+
+ALTER TABLE `my_user_lector_token`
+  ADD CONSTRAINT `my_user_lector_token_ibfk_1` FOREIGN KEY (`id_lector`) REFERENCES `my_user_lector` (`id`);
 
 SET FOREIGN_KEY_CHECKS = 1;
