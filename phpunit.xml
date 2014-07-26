@@ -33,6 +33,9 @@
         <testsuite name="TestFridge_library">
             <file>application/application/tests/libraries/Fridge_libraryTest.php</file>
         </testsuite>
+        <testsuite name="TestCompra_library">
+            <file>application/application/tests/libraries/Compra_libraryTest.php</file>
+        </testsuite>
 	</testsuites>
      <filter>
         <blacklist>
