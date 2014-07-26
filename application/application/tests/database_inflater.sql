@@ -44,9 +44,7 @@ CREATE TABLE IF NOT EXISTS `my_user_frigorifico_producto` (
   `id_frigorifico` int(11) NOT NULL,
   `id_producto_compra` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `unidades` int(11) NOT NULL,
-  PRIMARY KEY (`id_frigorifico`,`id_producto_compra`),
-  KEY (`unidades`)
+  PRIMARY KEY (`id_frigorifico`,`id_producto_compra`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 

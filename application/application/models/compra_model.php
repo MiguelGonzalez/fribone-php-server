@@ -38,7 +38,6 @@ class Compra_model extends CI_Model {
     }
 
     public function anadir_producto_compra($id_user, $id_compra, $producto) {
-
         $data = array(
             'titulo' => $producto->titulo,
             'descripcion' => $producto->descripcion,
@@ -54,13 +53,12 @@ class Compra_model extends CI_Model {
         $this->db->insert('compra_producto', $data);
 
         if ($this->db->affected_rows() === 1) {
-            $this->recalcular_total_compra($id_user, $id_compra);
-
             $producto_compra_id = $this->db->insert_id();
 
+            $this->recalcular_total_compra($id_user, $id_compra);
+
             return array(
-                'producto_compra_id' => $producto_compra_id,
-                'unidades' => $producto->unidades);
+                'producto_compra_id' => $producto_compra_id);
         }
 
         return NULL;

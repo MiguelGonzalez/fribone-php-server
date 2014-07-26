@@ -39,9 +39,13 @@ class Compra_libraryTest extends PHPTest_Unit {
 
         // Dos compras
         $res = $this->CI->compra_library->anadir_producto($idUser, $idFridge, $idProducto);
-        $this->assertEquals($res['unidades'], 1);
+        $this->assertTrue($res !== NULL);
 
         $res = $this->CI->compra_library->anadir_producto($idUser, $idFridge, $idProducto);
-        $this->assertEquals($res['unidades'], 1);
+        $this->assertTrue($res !== NULL);
+
+        $res = $this->CI->fridge_library->get_compras($idUser, $idFridge);
+        $this->assertEquals(count($res), 1);
+        $this->assertEquals($res[0]->total, $datosProducto['precio'] * 2);
     }
 }

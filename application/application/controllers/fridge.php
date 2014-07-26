@@ -44,27 +44,17 @@ class Fridge extends MY_Controller_User {
     }
 
     public function anadir_producto($id_fridge, $id_producto) {
-        $res_compra = $this->compra_library->anadir_producto(
+        $res = $this->fridge_library->anadir_producto_compra(
             $this->id_user,
             $id_fridge,
             $id_producto
         );
 
-        $res = NULL;
-        if(!is_null($res_compra)) {
-            $res = $this->fridge_library->anadir_producto_compra(
-                $this->id_user,
-                $id_fridge,
-                $res_compra['producto_compra_id'],
-                $res_compra['unidades']
-            );
-        }
-
         if(!is_null($res)) {
             $producto = $this->fridge_library->get_item_fridge(
                 $this->id_user,
                 $id_fridge,
-                $res['id_producto_compra']
+                $id_producto
             );
 
             $this->_renderJson(array('ok' => true, 'producto' => $producto));

@@ -65,7 +65,6 @@ class CompraTest extends PHPTest_Unit {
 
         $addProduto = $this->CI->compra_model->anadir_producto_compra($idUser, $idCompra, $objectDatosProducto);
         $this->assertTrue($addProduto !== NULL);
-        $this->assertEquals($addProduto['unidades'], $objectDatosProducto->unidades);
 
         $ultimaCompra = $this->CI->compra_model->get_ultima_compra($idUser, $idCompra);
         $this->assertEquals($ultimaCompra->total, $objectDatosProducto->precio);

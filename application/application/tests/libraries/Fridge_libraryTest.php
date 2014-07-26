@@ -84,19 +84,17 @@ class Fridge_libraryTest extends PHPTest_Unit {
         $res = $this->CI->supermercado_model->add_supermercado_producto($idSupermercado, $datosProducto);
         $idProducto = $res['id_producto'];
 
-        // Dos compras
-        $this->CI->compra_library->anadir_producto($idUser, $idFridge, $idProducto);
-        $this->CI->compra_library->anadir_producto($idUser, $idFridge, $idProducto);
-
-        $res = $this->CI->fridge_library->anadir_producto_compra($idUser, $idFridge, $idProducto, 2);
+        $res = $this->CI->fridge_library->anadir_producto_compra($idUser, $idFridge, $idProducto);
         $this->assertTrue($res !== NULL);
 
-        $res = $this->CI->fridge_library->get_item_fridge($idUser, $idFridge, $idProducto);
+        $idProductoCompra = $res['id_producto_compra'];
+
+        $res = $this->CI->fridge_library->get_item_fridge($idUser, $idFridge, $idProductoCompra);
         $this->assertTrue($res !== NULL);
         $this->assertEquals($res->titulo, 'Mi producto');
 
         $res = $this->CI->fridge_library->get_compras($idUser, $idFridge);
         $this->assertEquals(count($res), 1);
-        $this->assertEquals($res[0]->total, $datosProducto['precio'] * 2);
+        $this->assertEquals($res[0]->total, $datosProducto['precio']);
     }
 }

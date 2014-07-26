@@ -108,7 +108,7 @@ class FrigorificoTest extends PHPTest_Unit {
         $objectDatosProducto->id = $idProducto;
         $this->CI->compra_model->anadir_producto_compra($idUser, $idCompra, $objectDatosProducto);
 
-        $res = $this->CI->fridge_model->anadir_producto_compra($idUser, $idFridge, $idProducto, 1);
+        $res = $this->CI->fridge_model->anadir_producto_compra($idUser, $idFridge, $idProducto);
         $this->assertTrue($res !== NULL);
 
         $res = $this->CI->fridge_model->get_compras_fridge($idUser, $idFridge);

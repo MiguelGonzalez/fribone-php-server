@@ -44,14 +44,26 @@ class Fridge_library {
         return $item;
     }
 
-    public function anadir_producto_compra($id_user, $id_fridge, $id_producto_compra, $unidades) {
-        $res = $this->ci->fridge_model->anadir_producto_compra(
+    public function anadir_producto_compra($id_user, $id_fridge, $id_producto) {
+        $res = $this->ci->compra_library->anadir_producto(
             $id_user,
             $id_fridge,
-            $id_producto_compra,
-            $unidades);
+            $id_producto
+        );
 
-        return $res;
+        if(!is_null($res)) {
+            $id_producto_compra = $res['producto_compra_id'];
+
+            $res = $this->ci->fridge_model->anadir_producto_compra(
+                $id_user,
+                $id_fridge,
+                $id_producto_compra
+            );
+
+            return $res;
+        }
+
+        return NULL;
     }
 
     public function get_compras($id_user, $id_fridge) {
