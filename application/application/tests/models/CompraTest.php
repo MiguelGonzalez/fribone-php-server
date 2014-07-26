@@ -40,7 +40,6 @@ class CompraTest extends PHPTest_Unit {
         $res = $this->CI->fridge_model->add_frigorifico_user($idUser, 'Mi primer frigo');
         $idFridge = $res['frigorifico_id'];
 
-
         $resCompra = $this->CI->compra_model->create_nueva_compra($idUser,$idFridge);
         $this->assertTrue($resCompra !== NULL);
 
