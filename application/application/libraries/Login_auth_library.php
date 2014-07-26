@@ -17,6 +17,9 @@ class Login_auth_library {
 
 		$this->ci->load->model('user_model');
 		$this->ci->load->helper('email');
+        $this->ci->load->library('session');
+
+        $this->check_remember_session();
 	}
 
 	public function login($email, $password, $remember = FALSE) {
@@ -35,10 +38,11 @@ class Login_auth_library {
 						$this->error = LOGIN_STATUS_BANNED;
 					} else {
 						if($remember) {
-							$this->ci->config->set_item('sess_expiration', 0);
-							$this->ci->config->set_item('sess_expire_on_close', FALSE);
-						}
-						$this->ci->load->library('session');
+							$this->ci->session->set_sess_expiration(63072000);
+							$this->ci->session->set_sess_expire_on_close(FALSE);
+						} else {
+                            $this->ci->session->set_sess_expire_on_close(TRUE);
+                        }
 
 						$this->ci->session->set_userdata(array(
 							'user_id'	=> $user->id,
@@ -134,7 +138,6 @@ class Login_auth_library {
 	}
 
 	public function logout() {
-		$this->ci->load->library('session');
 		$this->ci->session->set_userdata(
 			array(
 				'user_id' => '',
@@ -149,28 +152,37 @@ class Login_auth_library {
 	}
 
 	public function is_logged_in() {
-		$this->ci->load->library('session');
 		return $this->ci->session->userdata('user_id') !== FALSE;
 	}
 
 	public function get_user_id() {
-		$this->ci->load->library('session');
 		return $this->ci->session->userdata('user_id');
 	}
 
 	public function get_email() {
-		$this->ci->load->library('session');
 		return $this->ci->session->userdata('email');
 	}
 
 	public function get_username() {
-		$this->ci->load->library('session');
 		return $this->ci->session->userdata('username');
 	}
 
 	public function is_email_available($email) {
 		return ((strlen($email) > 0) AND $this->ci->user_model->is_email_available($email));
 	}
+
+    private function check_remember_session() {
+        if($this->is_logged_in()) {
+            if($this->ci->session->userdata('remember')) {
+                $this->ci->session->set_sess_expiration(63072000);
+                $this->ci->session->set_sess_expire_on_close(FALSE);
+            } else {
+                $this->ci->session->set_sess_expire_on_close(TRUE);
+            }
+        } else {
+            $this->ci->session->set_sess_expire_on_close(TRUE);
+        }
+    }
 
 	public function is_still_active($email, $system_time = NULL) {
 		$date_token = $this->ci->user_model->get_token_date_remember(
