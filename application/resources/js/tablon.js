@@ -13,6 +13,9 @@ $(function(){
                 },
                 on: fridge.draw
             },
+            '/lector/:id': {
+                on: lector.draw
+            },
             '/supermercados' : {
                 '/:id': supermercado.draw,
                 on: supermercados.draw
@@ -49,7 +52,7 @@ var page = {
         });
     },
     initEvents: function() {
-        $('#menu-left .list-group').on('click', 'a:not(#crear_frigorifico)', function(event) {
+        $('#menu-left .list-group').on('click', 'a.router', function(event) {
             event.preventDefault();
             page.resetObjects();
             router.setRoute($(this).attr('data-to'));
@@ -57,6 +60,11 @@ var page = {
         $('#menu-left .list-group').on('click', 'a#crear_frigorifico', function(event) {
             event.preventDefault();
             $('#crear-frigorifico-modal').modal('show');
+        });
+
+        $('#menu-left .list-group').on('click', 'a#crear_lector', function(event) {
+            event.preventDefault();
+            $('#crear-lector-modal').modal('show');
         });
     },
     initActionModals: function() {
@@ -72,6 +80,9 @@ var page = {
         });
         $('#anadir-producto-supermercado-modal').on('click', 'button.aceptar', function() {
             supermercado.anadir_producto();
+        });
+        $('#crear-lector-modal').on('click', 'button.aceptar', function() {
+            lector.crear_lector();
         });
     },
     initValidators: function() {
@@ -124,6 +135,7 @@ var page = {
         fridge.fridgeActive = null;
         supermercado.id_supermercado = null;
         fridge.comprasDrawed = false;
+        lector.lectorActivo = null;
     }
 }
 
@@ -322,7 +334,6 @@ var supermercados = {
             var html_template = template(data);
 
             $('#main').html(html_template);
-            console.log('Dibujado template');
 
             supermercados.initEvents();
         }).fail(function(jqXHR) {
@@ -415,6 +426,58 @@ var supermercado = {
             }).fail(function(jqXHR) {
                 alert('Error al añadir el producto al supermercado');
             });
+        }
+    }
+}
+
+var lector = {
+    lectorActivo : null,
+    draw: function(id) {
+        if(lector.lectorActivo === null) {
+            lector.lectorActivo = id;
+
+            $.ajax({
+                url: '/lector/get_lector/' + id,
+                dataType: 'json'
+            }).done(function(data) {
+                var source   = $('#lector-template').html();
+                var template = Handlebars.compile(source);
+                var html_template = template(data);
+
+                $('#main').html(html_template);
+
+                page.draw_menu();
+            }).fail(function(jqXHR) {
+                alert('Error al obtener los datos del lector');
+            });
+        }
+    },
+    initEvents: function() {
+
+    },
+    crear_lector:function() {
+        var nombre = $('#crear-lector-modal .nombre').val();
+
+        if(nombre.length !== 0) {
+            $.ajax({
+                url: '/lector/crear_lector',
+                type: 'POST',
+                data: {'titulo' : nombre},
+                dataType: 'json'
+            }).done(function(data) {
+                if(data.ok) {
+                    lector.draw();
+
+                    $('#crear-lector-modal .form-group').removeClass('has-error');
+                    $('#crear-lector-modal').modal('hide');
+                } else {
+                    alert('No se pudo crear el lector');
+                }
+            }).fail(function(jqXHR) {
+                alert('Error crear lector');
+            });
+        } else {
+            $('#crear-lector-modal .form-group').addClass('has-error');
         }
     }
 }

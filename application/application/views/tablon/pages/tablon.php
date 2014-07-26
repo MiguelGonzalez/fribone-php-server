@@ -1,9 +1,45 @@
 <script type="text/x-handlebars" id="menu-template">
-    {{#each menu}}
-        <a href="#" data-to="{{to}}" class="list-group-item" {{#if id}}id="{{id}}"{{/if}}>
+    <h2>
+    Frigoríficos
+    </h2>
+    {{#each menu_frigorifico}}
+        <a href="#" data-to="{{to}}" class="list-group-item router" {{#if id}}id="{{id}}"{{/if}}>
             {{title}}
         </a>
     {{/each}}
+    {{#unless menu_frigorifico}}
+    <p>
+        <span class="label label-warning">No tienes frigoríficos</span>
+    </p>
+    {{/unless}}
+    <a href="#" data-to="/" class="list-group-item crear" id="crear_frigorifico">
+        Crear frigorífico
+    </a>
+    <h2>
+        Lectores
+    </h2>
+    {{#each menu_lector}}
+        <a href="#" data-to="{{to}}" class="list-group-item router" {{#if id}}id="{{id}}"{{/if}}>
+            {{title}}
+        </a>
+    {{/each}}
+    {{#unless menu_lector}}
+    <p>
+        <span class="label label-warning">No tienes ningún lector</span>
+    </p>
+    {{/unless}}
+    <a href="#" data-to="/" class="list-group-item crear" id="crear_lector">
+        Crear lector
+    </a>
+    <h2>
+        Comunidad
+    </h2>
+    <a href="#" onclick="return false;" data-to="/recetas" class="list-group-item router">
+        Recetas
+    </a>
+    <a href="#" data-to="/supermercados" class="list-group-item router">
+        Supermercados
+    </a>
 </script>
 
 <script type="text/x-handlebars" id="fridge-template">
@@ -310,6 +346,17 @@
     {{/unless}}
 </script>
 
+<script type="text/x-handlebars" id="lector-template">
+    <div id="lector">
+        <div class="page-header">
+            <h1>
+                {{titulo}}
+            </h1>
+        </div>
+
+    </div>
+</script>
+
 <!-- Ventanas modales -->
 
 <div class="modal fade" id="crear-frigorifico-modal" tabindex="-1" role="dialog" aria-labelledby="crear-frigorifico" aria-hidden="true">
@@ -324,6 +371,29 @@
             <div class="modal-body">
                 <div class="form-group">
                     <input type="text" class="form-control nombre" placeholder="Nombre del frigorífico" >
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="aceptar btn btn-primary">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="crear-lector-modal" tabindex="-1" role="dialog" aria-labelledby="crear-lector" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span>
+                </button>
+                <h4 class="modal-title" id="crear-lector">Crear lector</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="text" class="form-control nombre" placeholder="Nombre del lector" >
                 </div>
 
             </div>

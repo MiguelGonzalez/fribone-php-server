@@ -18,7 +18,7 @@ class Lector_model extends CI_Model {
     }
 
     public function add_lector_user($id_user, $titulo) {
-        if($this->exist_user_lector($id_user, $titulo, 'titulo')) {
+        if($this->exist_user_lector($titulo, 'titulo')) {
             return NULL;
         }
         $data = array(
@@ -60,8 +60,7 @@ class Lector_model extends CI_Model {
     private function exist_user_lector($search, $by) {
         $this->db->select('1', FALSE);
         $this->db->from('user_lector');
-        $this->db->where('state','A');
-        $this->db->or_where('state','I');
+        $this->db->where('(state = \'A\' or state = \'I\')');
         if($by === 'id') {
             $this->db->where('id', $search);
         } else if ($by === 'titulo') {

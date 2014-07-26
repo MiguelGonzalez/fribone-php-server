@@ -57,17 +57,38 @@ header .nav > li.open > a:focus {
 	height: 100%;
 }
 
-#menu-left {
-	overflow: hidden;
+#main {
 	background-color: #FFF;
 	min-height: 100%;
 	border-radius: 4px;
 }
 
-#main {
-	background-color: #FFF;
-	min-height: 100%;
-	border-radius: 4px;
+/*
+ * Menú izq
+*/
+
+#menu-left {
+    overflow: hidden;
+    background-color: #FFF;
+    min-height: 100%;
+    border-radius: 4px
+}
+
+#menu-left p,
+#menu-left h2 {
+    text-align: center
+}
+
+#menu-left h2 {
+    margin-top: 20px;
+    font-size: 24px
+}
+
+#menu-left a.crear {
+    font-size: 12px;
+    font-weight: 600;
+    text-align: right;
+    padding: 2px 15px
 }
 
 /*
