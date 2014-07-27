@@ -75,4 +75,13 @@ class PHPTest_Unit extends PHPUnit_Framework_TestCase {
         }
         return $object;
     }
+
+    protected function generate_token($length = 12) {
+        $token = "";
+        $token_chars = array_merge(range(0,9));
+        for($i=0; $i < $length; $i++) {
+            $token .= $token_chars[array_rand($token_chars)];
+        }
+        return $token;
+    }
 }
