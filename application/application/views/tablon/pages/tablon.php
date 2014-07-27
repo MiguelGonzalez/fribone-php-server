@@ -368,6 +368,21 @@
     </div>
 </script>
 
+<script type="text/x-handlebars" id="generar-token-paso-2-template">
+    <p>
+        Escanea en orden los siguientes códigos de barra en tu lector.
+    </p>
+    <p>
+        Código de barras 1
+        <br>
+        <img src="<?php echo base_url(array('codigobarras','generar'));?>/{{access_key_1}}" alt="Código de barras 1">
+        <br>
+        Código de barras 2
+        <br>
+        <img src="<?php echo base_url(array('codigobarras','generar'));?>/{{access_key_2}}" alt="Código de barras 2">
+    </p>
+</script>
+
 <!-- Ventanas modales -->
 
 <div class="modal fade" id="crear-frigorifico-modal" tabindex="-1" role="dialog" aria-labelledby="crear-frigorifico" aria-hidden="true">
@@ -511,12 +526,15 @@
                 <h4 class="modal-title" id="alta-lector">Alta lector</h4>
             </div>
             <div class="modal-body">
+                <div class="paso_1">
+                    <p>
+                        El primer paso es generar dos códigos de barras para configurar el lector.
+                    </p>
 
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="aceptar btn btn-primary">Aceptar</button>
+                    <button id="generar_codigos_barras" type="button" class="aceptar btn btn-primary">Generar códigos de barras</button>
+                </div>
+                <div class="paso_2">
+                </div>
             </div>
         </div>
     </div>

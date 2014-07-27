@@ -33,4 +33,17 @@ class Lector extends MY_Controller_User {
 
         $this->_renderJson($lector);
     }
+
+    public function generar_lector_token($id_lector) {
+        $res = $this->lector_library->generar_lector_token(
+            $this->id_user,
+            $id_lector
+        );
+
+        if(!is_null($res)) {
+            $this->_renderJson(array('ok' => true, 'token' => $res));
+        } else {
+            $this->_renderJson(array('ok' => false));
+        }
+    }
 }

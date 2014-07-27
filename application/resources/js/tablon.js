@@ -84,6 +84,7 @@ var page = {
         $('#crear-lector-modal').on('click', 'button.aceptar', function() {
             lector.crear_lector();
         });
+        $('#generar_codigos_barras').on('click', lector.generar_codigos_barras);
     },
     initValidators: function() {
         new FormValidator('form-anadir-producto-supermercado', [{
@@ -478,6 +479,29 @@ var lector = {
             });
         } else {
             $('#crear-lector-modal .form-group').addClass('has-error');
+        }
+    },
+    generar_codigos_barras: function() {
+        if(lector.lectorActivo !== null) {
+            $.ajax({
+                url: '/lector/generar_lector_token/' + lector.lectorActivo,
+                dataType: 'json'
+            }).done(function(data) {
+                if(data.ok) {
+                    $('#alta-lector-modal .paso_1').hide();
+
+
+                    var source   = $('#generar-token-paso-2-template').html();
+                    var template = Handlebars.compile(source);
+                    var html_template = template(data.token);
+
+                    $('#alta-lector-modal .paso_2').html(html_template).show();
+                } else {
+                    alert('No se pudieron generar los códigos de barras');
+                }
+            }).fail(function(jqXHR) {
+                alert('Error al generar los códigos de barras');
+            });
         }
     }
 }
