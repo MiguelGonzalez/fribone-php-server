@@ -353,7 +353,18 @@
                 {{titulo}}
             </h1>
         </div>
+        {{#compare state '==' 'I'}}
+            <p class="well">
+                No has dado de alta tu lector.
+                <br>
+                Dalto de alta pulsando el botón inferior y sigue los pasos para activarlo.
+                <br>
+                <br>
+                <button id="alta-lector" type="button" class="btn btn-default" data-toggle="modal" data-target="#alta-lector-modal">Dar de alta</button>
+            </p>
+        {{else}}
 
+        {{/compare}}
     </div>
 </script>
 
@@ -481,6 +492,27 @@
                         <input name="codigo_rfid" type="text" class="form-control codigo-rfid" placeholder="Código rfid" >
                     </div>
                 </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="aceptar btn btn-primary">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="alta-lector-modal" tabindex="-1" role="dialog" aria-labelledby="alta-lector" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span>
+                </button>
+                <h4 class="modal-title" id="alta-lector">Alta lector</h4>
+            </div>
+            <div class="modal-body">
+
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
