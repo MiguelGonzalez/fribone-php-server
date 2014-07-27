@@ -7,6 +7,8 @@ class Lector_libraryTest extends PHPTest_Unit {
     public function __construct() {
         parent::__construct();
 
+        $this->CI->load->model('lector_model');
+
         $this->CI->load->library('login_auth_library');
         $this->CI->load->library('lector_library');
     }
@@ -42,5 +44,22 @@ class Lector_libraryTest extends PHPTest_Unit {
 
         $resNull = $this->CI->lector_library->get_lector($idUser, -1);
         $this->assertNull($resNull);
+    }
+
+    public function testGenerarToken() {
+        $resUser = $this->CI->login_auth_library->create_user('test@test.com', 'TestName', '123456');
+        $idUser = $resUser['user_id'];
+
+        $res = $this->CI->lector_library->create_lector($idUser, 'Mi lector');
+        $idLector = $res['lector_id'];
+
+        $res = $this->CI->lector_library->generar_lector_token($idUser, $idLector);
+        $this->assertTrue($res !== NULL);
+
+        $access_key_1 = $res['access_key_1'];
+        $access_key_2 = $res['access_key_2'];
+
+        $res = $this->CI->lector_model->check_lector_token($access_key_1, $access_key_2);
+        $this->assertTrue($res !== NULL);
     }
 }

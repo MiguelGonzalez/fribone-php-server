@@ -2,7 +2,7 @@
 
 /*
 * CodeIgniter source modified for PhpUnit
-* 
+*
 * If you use MY_Session, change the paraent class.
 */
 
@@ -12,7 +12,12 @@ class CI_Session {
 	var $sess_time_to_update		= 300;
 	var $flashdata_key				= 'flash';
 
-	function __construct() {
+    public function set_sess_expiration($sess_expiration) {
+        $this->sess_expiration = $sess_expiration;
+    }
+
+    public function set_sess_expire_on_close($sess_expire_on_close) {
+        $this->sess_expire_on_close = $sess_expire_on_close;
     }
 
     /**

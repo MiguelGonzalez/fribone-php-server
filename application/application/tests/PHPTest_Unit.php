@@ -11,6 +11,7 @@ class PHPTest_Unit extends PHPUnit_Framework_TestCase {
         parent::__construct();
 
         $this->CI = &get_instance();
+        $this->CI->load->add_package_path(APPPATH.'tests/mockups');
     }
 
     public static function setUpBeforeClass() {

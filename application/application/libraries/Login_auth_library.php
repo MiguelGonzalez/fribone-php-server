@@ -17,6 +17,7 @@ class Login_auth_library {
 
 		$this->ci->load->model('user_model');
 		$this->ci->load->helper('email');
+
         $this->ci->load->library('session');
 
         $this->check_remember_session();
