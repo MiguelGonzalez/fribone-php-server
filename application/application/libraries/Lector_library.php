@@ -57,6 +57,12 @@ class Lector_library {
         return $res;
     }
 
+    public function get_user_public_key($public_key) {
+        $res = $this->ci->lector_model->get_user_public_key($public_key);
+
+        return $res;
+    }
+
     public function generar_lector_token($id_user, $id_lector) {
         $this->ci->lector_model->desactivar_lector($id_user, $id_lector);
 

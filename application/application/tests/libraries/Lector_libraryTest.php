@@ -85,6 +85,9 @@ class Lector_libraryTest extends PHPTest_Unit {
         $res = $this->CI->lector_library->check_lector_public_key($idUser, $public_key);
         $this->assertTrue($res !== NULL);
 
+        $res = $this->CI->lector_library->get_user_public_key($public_key);
+        $this->assertEquals($res, $idUser);
+
         $res = $this->CI->lector_library->check_lector_public_key($idUser, '123213');
         $this->assertNull($res);
     }
