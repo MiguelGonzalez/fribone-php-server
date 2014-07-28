@@ -62,4 +62,30 @@ class Lector_libraryTest extends PHPTest_Unit {
         $res = $this->CI->lector_model->check_lector_token($access_key_1, $access_key_2);
         $this->assertTrue($res !== NULL);
     }
+
+    public function testActivarLector() {
+        $resUser = $this->CI->login_auth_library->create_user('test@test.com', 'TestName', '123456');
+        $idUser = $resUser['user_id'];
+
+        $res = $this->CI->lector_library->create_lector($idUser, 'Mi lector');
+        $idLector = $res['lector_id'];
+
+        $res = $this->CI->lector_library->generar_lector_token($idUser, $idLector);
+        $access_key_1 = $res['access_key_1'];
+        $access_key_2 = $res['access_key_2'];
+
+        $res = $this->CI->lector_library->activar_lector($access_key_1, $access_key_2);
+        $this->assertTrue($res !== NULL);
+
+        $public_key = $res['public_key'];
+
+        $res = $this->CI->lector_library->activar_lector($access_key_1, $access_key_2);
+        $this->assertNull($res);
+
+        $res = $this->CI->lector_library->check_lector_public_key($idUser, $public_key);
+        $this->assertTrue($res !== NULL);
+
+        $res = $this->CI->lector_library->check_lector_public_key($idUser, '123213');
+        $this->assertNull($res);
+    }
 }

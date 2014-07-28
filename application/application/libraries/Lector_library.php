@@ -31,6 +31,32 @@ class Lector_library {
         return $fridge;
     }
 
+    public function activar_lector($access_key_1, $access_key_2) {
+        $res = $this->ci->lector_model->check_lector_token($access_key_1, $access_key_2);
+
+        if(!is_null($res)) {
+            $id_lector = $res['id_lector'];
+            $id_user = $res['id_user'];
+
+            $aleatorio = $this->generate_token(24);
+            $publick_key = $this->get_password_hash($aleatorio);
+
+            $res = $this->ci->lector_model->activar_lector($id_user, $id_lector, $public_key);
+
+            if(!is_null($res)) {
+                return array('public_key' => $public_key);
+            }
+        }
+
+        return NULL;
+    }
+
+    public function check_lector_public_key($id_user, $public_key) {
+        $res = $this->ci->lector_model->check_lector_public_key($id_user, $public_key);
+
+        return $res;
+    }
+
     public function generar_lector_token($id_user, $id_lector) {
         $this->ci->lector_model->desactivar_lector($id_user, $id_lector);
 
@@ -67,5 +93,24 @@ class Lector_library {
             $token .= $token_chars[array_rand($token_chars)];
         }
         return $token;
+    }
+
+    private function get_password_hash($password) {
+        $password_hashed = NULL;
+
+        if (strnatcmp(phpversion(),'5.5.0') >= 0) {
+            $password_hashed = password_hash($password, PASSWORD_BCRYPT);
+        } else {
+            // Original PHP code by Chirp Internet: www.chirp.com.au
+            // Please acknowledge use of this code by including this header.
+            $salt = "";
+            $salt_chars = array_merge(range('A','Z'), range('a','z'), range(0,9));
+            for($i=0; $i < 22; $i++) {
+                $salt .= $salt_chars[array_rand($salt_chars)];
+            }
+            $password_hashed = crypt($password, sprintf('$2a$%02d$', 7) . $salt);
+        }
+
+        return $password_hashed;
     }
 }

@@ -8,7 +8,8 @@ class BarCode_library {
         require_once('BarCode/barcode.php');
     }
 
-    public function generar_barcode($number, $scale = NULL) {
-        return new Barcode('EAN-13', $number, $scale);
+    public function generar_barcode($number) {
+        $barCode = new Barcode($number);
+        $barCode->display();
     }
 }
