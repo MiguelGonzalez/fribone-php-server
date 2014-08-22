@@ -1166,12 +1166,12 @@ class CI_DB_driver {
 
 			$LANG =& load_class('Lang', 'core');
 			$LANG->load('db');
-			
+
 			$message = ( ! is_array($error)) ? array(str_replace('%s', $swap, $LANG->line($error))) : $error;
 			if(is_array($message)) {
 				$message = implode(" || " , $message);
 			}
-			
+
 			throw new Exception($message);
 		} else {
 			$LANG =& load_class('Lang', 'core');

@@ -76,7 +76,7 @@ class Lector_model extends CI_Model {
     public function get_user_public_key($public_key) {
         $this->db->select('id_user');
         $this->db->from('user_lector');
-        $this->db->where('public_key', $public_key);
+        $this->db->where('public_key', '\'' . $public_key . '\'', FALSE);
         $this->db->where('state', 'A');
 
         $query = $this->db->get();

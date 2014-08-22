@@ -38,8 +38,12 @@ class Lector_library {
             $id_lector = $res['id_lector'];
             $id_user = $res['id_user'];
 
-            $aleatorio = $this->generate_token(24);
-            $publick_key = $this->get_password_hash($aleatorio);
+            $public_key = NULL;
+            do {
+                $aleatorio = $this->generate_token(24);
+                $public_key = $this->get_password_hash($aleatorio);
+            } while(strpos($public_key, '/') !== FALSE);
+            $public_key = str_replace('$', '-', $public_key);
 
             $res = $this->ci->lector_model->activar_lector($id_user, $id_lector, $public_key);
 
