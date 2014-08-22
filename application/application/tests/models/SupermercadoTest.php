@@ -98,6 +98,7 @@ class SupermercadoTest extends PHPTest_Unit {
         $datosProducto = array(
             'titulo' => 'Agua',
             'codigo_barras' => '1230064',
+            'codigo_rfid' => '5671344',
             'descripcion' => 'Botella de agua de 1L del mercadona',
             'precio' => 0.87,
             'unidades' => 1
@@ -106,5 +107,8 @@ class SupermercadoTest extends PHPTest_Unit {
 
         $productos = $this->CI->supermercado_model->search_productos_codigo_barras('1230');
         $this->assertEquals(count($productos), 2);
+
+        $productos = $this->CI->supermercado_model->search_productos_rfid('5671');
+        $this->assertEquals(count($productos), 1);
     }
 }

@@ -69,4 +69,13 @@ class Supermercado_library {
         }
         return NULL;
     }
+
+    public function search_productos_rfid($codigo_rfid) {
+        if(strlen($codigo_rfid) > 0 && is_numeric($codigo_rfid)) {
+            $productos = $this->ci->supermercado_model->search_productos_rfid($codigo_rfid);
+
+            return $productos;
+        }
+        return NULL;
+    }
 }

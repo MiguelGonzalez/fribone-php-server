@@ -70,9 +70,6 @@ class Supermercado_libraryTest extends PHPTest_Unit {
         $res = $this->CI->supermercado_library->crear_supermercado('Mi supermercado');
         $idSupermercado = $res['supermercado_id'];
 
-        $res = $this->CI->supermercado_library->search_productos_codigo_barras($datosProducto['codigo_barras']);
-        $this->assertEquals(count($res), 0);
-
         $datosProducto = array(
             'titulo' => 'Mi producto',
             'descripcion' => 'Mi descripción del producto para prueba',
@@ -82,9 +79,44 @@ class Supermercado_libraryTest extends PHPTest_Unit {
             'codigo_rfid' => '123654789',
             'id_supermercado' => $idSupermercado
         );
+
+        $res = $this->CI->supermercado_library->search_productos_codigo_barras($datosProducto['codigo_barras']);
+        $this->assertEquals(count($res), 0);
+
         $this->CI->supermercado_library->anadir_producto_supermercado($idSupermercado, $datosProducto);
 
         $res = $this->CI->supermercado_library->search_productos_codigo_barras($datosProducto['codigo_barras']);
+        $this->assertEquals(count($res), 1);
+        $this->assertEquals($res[0]->titulo, $datosProducto['titulo']);
+        $this->assertEquals($res[0]->descripcion, $datosProducto['descripcion']);
+        $this->assertEquals($res[0]->unidades, $datosProducto['unidades']);
+        $this->assertEquals($res[0]->precio, $datosProducto['precio']);
+        $this->assertEquals($res[0]->codigo_barras, $datosProducto['codigo_barras']);
+        $this->assertEquals($res[0]->codigo_rfid, $datosProducto['codigo_rfid']);
+        $this->assertEquals($res[0]->id_supermercado, $idSupermercado);
+        $this->assertEquals($res[0]->titulo_supermercado, 'Mi supermercado');
+    }
+
+    public function testSearchProductoCodigoRfid() {
+        $res = $this->CI->supermercado_library->crear_supermercado('Mi supermercado');
+        $idSupermercado = $res['supermercado_id'];
+
+        $datosProducto = array(
+            'titulo' => 'Mi producto',
+            'descripcion' => 'Mi descripción del producto para prueba',
+            'unidades' => 1,
+            'precio' => 1.23,
+            'codigo_barras' => '9876431',
+            'codigo_rfid' => '423654789',
+            'id_supermercado' => $idSupermercado
+        );
+
+        $res = $this->CI->supermercado_library->search_productos_rfid($datosProducto['codigo_rfid']);
+        $this->assertEquals(count($res), 0);
+
+        $this->CI->supermercado_library->anadir_producto_supermercado($idSupermercado, $datosProducto);
+
+        $res = $this->CI->supermercado_library->search_productos_rfid($datosProducto['codigo_rfid']);
         $this->assertEquals(count($res), 1);
         $this->assertEquals($res[0]->titulo, $datosProducto['titulo']);
         $this->assertEquals($res[0]->descripcion, $datosProducto['descripcion']);

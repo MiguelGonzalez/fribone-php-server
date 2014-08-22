@@ -132,6 +132,14 @@ class Supermercado_model extends CI_Model {
 	}
 
     public function search_productos_codigo_barras($codigo_barras) {
+        return $this->search_productos_by($codigo_barras, 'codigo_barras');
+    }
+
+    public function search_productos_rfid($codigo_rfid) {
+        return $this->search_productos_by($codigo_rfid, 'codigo_rfid');
+    }
+
+    private function search_productos_by($codigo, $tipo = 'codigo_barras') {
         $this->db->select('supermercado_producto.id');
         $this->db->select('supermercado_producto.titulo');
         $this->db->select('supermercado_producto.codigo_barras');
@@ -146,7 +154,11 @@ class Supermercado_model extends CI_Model {
         $this->db->from('supermercado_producto');
         $this->db->join('supermercado', 'supermercado.id = supermercado_producto.id_supermercado');
         $this->db->where('supermercado_producto.state','A');
-        $this->db->like('supermercado_producto.codigo_barras', $codigo_barras, 'after');
+        if($tipo === 'codigo_barras') {
+            $this->db->like('supermercado_producto.codigo_barras', $codigo, 'after');
+        } else if ($tipo === 'codigo_rfid') {
+            $this->db->like('supermercado_producto.codigo_rfid', $codigo, 'after');
+        }
         $this->db->limit(10);
 
         $query = $this->db->get();
