@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Rest extends MY_Controller_User {
+class Rest extends MY_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -25,13 +25,13 @@ class Rest extends MY_Controller_User {
 
             echo $public_key;
         } else {
-            echo "ERROR";
+            echo 'ERROR';
         }
     }
 
     public function entrar($token_user, $id_fridge, $codigo) {
         $agregado = FALSE;
-        $id_user = $this->lector_library->get_user_public_key($token_user);
+        $id_user = $this->get_id_user_token($token_user);
 
         if($id_user !== NULL) {
             $productos = $this->supermercado_library->search_productos_codigo_barras($codigo);
@@ -58,13 +58,36 @@ class Rest extends MY_Controller_User {
             }
         }
         if($agregado) {
-            echo "OK";
+            echo 'OK';
         } else {
-            echo "ERROR";
+            echo 'ERROR';
         }
     }
 
     public function sacar($token_user, $id_fridge, $codigo) {
-        echo "ERROR";
+        echo 'ERROR';
+    }
+
+    public function desvincular($token_user) {
+        echo 'ERROR';
+    }
+
+    public function fridges($token_user) {
+        $id_user = $this->get_id_user_token($token_user);
+
+        if(!is_null($id_user)) {
+            $fridges = $this->fridge_library->get_fridges($id_user);
+
+            echo count($fridges);
+            foreach($fridges as $fridge) {
+                echo '\n' . $fridge->id . '\n' . $fridge->titulo;
+            }
+        } else {
+            echo 'ERROR';
+        }
+    }
+
+    private function get_id_user_token($token_user) {
+        return $this->lector_library->get_user_public_key($token_user);
     }
 }
