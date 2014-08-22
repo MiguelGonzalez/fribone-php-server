@@ -73,6 +73,9 @@ class Lector_library {
         $fecha_alta_token = date('Y-m-d H:i:s');
         $access_key_1 = (string)(strtotime($fecha_alta_token) + $id_user);
         $access_key_1 =  str_pad($access_key_1, 12, '0',  STR_PAD_LEFT);
+        //Colocamos el primer caracter a 1
+        //Razón: El lector no lee el primer caracter si es 0
+        $access_key_1[0] = '1';
         $access_key_2 = $this->generate_token();
 
         $res = $this->ci->lector_model->anadir_lector_token(

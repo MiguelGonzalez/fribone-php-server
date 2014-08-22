@@ -162,7 +162,10 @@ class Lector_model extends CI_Model {
         $tokens = $query->result();
 
         foreach($tokens as $token) {
-            if(strtotime($token->fecha_alta) === (intval($token->access_key_1) - intval($token->id_user))) {
+            $token_1 = $token->access_key_1;
+            $token_1[0] = '0'; //Volvemos a dejar el primer dígito a 0
+
+            if(strtotime($token->fecha_alta) === (intval($token_1) - intval($token->id_user))) {
                 $this->dar_baja_token_lector($token->id_lector);
 
                 $system_time = strtotime(date('Y-m-d H:i:s'));
