@@ -64,6 +64,28 @@ class Compra_model extends CI_Model {
         return NULL;
     }
 
+    public function obtener_producto_compra($id_user, $id_fridge, $code, $by = 'codigo_barras') {
+        $this->db->select('compra.id');
+        $this->db->from('compra_producto');
+        $this->db->join('compra', 'compra.id = compra_producto.id_compra');
+        $this->db->where('compra.id_user', $id_user);
+        $this->db->where('compra.id_frigorifico', $id_fridge);
+        if($by === 'codigo_barras') {
+            $this->db->where('compra_producto.codigo_barras', $code);
+        } else if($by === 'codigo_rfid') {
+            $this->db->where('compra_producto.codigo_rfid', $code);
+        }
+        $this->db->order_by('compra.fecha_compra', 'desc');
+        $this->db->limit(1);
+
+        $query = $this->db->get();
+
+        if ($query->num_rows() === 1) {
+            return $query->row();
+        }
+        return NULL;
+    }
+
     private function recalcular_total_compra($id_user, $id_compra) {
         $total_compra = $this->get_total_compra($id_user, $id_compra);
 

@@ -69,4 +69,39 @@ class CompraTest extends PHPTest_Unit {
         $ultimaCompra = $this->CI->compra_model->get_ultima_compra($idUser, $idCompra);
         $this->assertEquals($ultimaCompra->total, $objectDatosProducto->precio);
     }
+
+    public function testGetProductoComprado() {
+        $resUser = $this->CI->login_auth_library->create_user('test@test.com', 'TestName', '123456');
+        $idUser = $resUser['user_id'];
+
+        $res = $this->CI->fridge_model->add_frigorifico_user($idUser, 'Mi primer frigo');
+        $idFridge = $res['frigorifico_id'];
+
+        $res = $this->CI->supermercado_model->crear_supermercado('Mi Supermercado');
+        $idSupermercado = $res['supermercado_id'];
+
+        $resCompra = $this->CI->compra_model->create_nueva_compra($idUser,$idFridge);
+        $idCompra = $resCompra['compra_id'];
+
+        $datosProducto = array(
+            'titulo' => 'Mi producto',
+            'descripcion' => 'Mi descripción del producto para prueba',
+            'unidades' => 1,
+            'precio' => 1.23,
+            'codigo_barras' => '9876431',
+            'codigo_rfid' => '123654789',
+            'id_supermercado' => 1
+        );
+
+        $res = $this->CI->supermercado_model->add_supermercado_producto($idSupermercado, $datosProducto);
+        $id_producto = $res['id_producto'];
+
+        $objectDatosProducto = $this->arrayToObject($datosProducto);
+        $objectDatosProducto->id = $res['id_producto'];
+        $this->CI->compra_model->anadir_producto_compra($idUser, $idCompra, $objectDatosProducto);
+
+        $res = $this->CI->compra_model->obtener_producto_compra($idUser, $idFridge, $datosProducto['codigo_barras'], 'codigo_barras');
+        $this->assertTrue($res !== NULL);
+        $this->assertEquals($res->id, $id_producto);
+    }
 }
