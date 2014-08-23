@@ -37,6 +37,12 @@ class Compra_library {
         return NULL;
     }
 
+    public function obtener_producto_compra($id_user, $id_fridge, $code, $by = 'codigo_barras') {
+        $producto = $this->ci->compra_model->obtener_producto_compra($id_user, $id_fridge, $code, $by);
+
+        return $producto;
+    }
+
     private function get_compra_activa($id_user, $id_fridge) {
         $ultima_compra = $this->ci->compra_model->get_ultima_compra($id_user, $id_fridge);
 
