@@ -129,6 +129,20 @@ class Fridge_model extends CI_Model {
         return NULL;
     }
 
+    public function sacar_producto_compra($id_user, $id_fridge, $id_producto_compra) {
+        $this->db->where('id_user', $id_user);
+        $this->db->where('id_frigorifico', $id_fridge);
+        $this->db->where('id_producto_compra', $id_producto_compra);
+
+        $this->db->delete('user_frigorifico_producto');
+
+        if ($this->db->affected_rows() === 1) {
+            return TRUE;
+        }
+
+        return FALSE;
+    }
+
     public function get_compras_fridge($id_user, $id_fridge) {
         $this->db->select('compra.id');
         $this->db->select('compra.fecha_compra');
