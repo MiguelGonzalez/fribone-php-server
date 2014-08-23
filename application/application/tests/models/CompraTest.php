@@ -98,10 +98,13 @@ class CompraTest extends PHPTest_Unit {
 
         $objectDatosProducto = $this->arrayToObject($datosProducto);
         $objectDatosProducto->id = $res['id_producto'];
-        $this->CI->compra_model->anadir_producto_compra($idUser, $idCompra, $objectDatosProducto);
+        $res = $this->CI->compra_model->anadir_producto_compra($idUser, $idCompra, $objectDatosProducto);
+        $id_producto_compra = $res['producto_compra_id'];
+
+        $this->CI->fridge_model->anadir_producto_compra($idUser, $idFridge, $id_producto_compra);
 
         $res = $this->CI->compra_model->obtener_producto_compra($idUser, $idFridge, $datosProducto['codigo_barras'], 'codigo_barras');
         $this->assertTrue($res !== NULL);
-        $this->assertEquals($res->id, $id_producto);
+        $this->assertEquals($res->id, $id_producto_compra);
     }
 }

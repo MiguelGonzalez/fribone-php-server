@@ -72,7 +72,7 @@ class Compra_libraryTest extends PHPTest_Unit {
         $res = $this->CI->supermercado_model->add_supermercado_producto($idSupermercado, $datosProducto);
         $idProducto = $res['id_producto'];
 
-        $res = $this->CI->compra_library->anadir_producto($idUser, $idFridge, $idProducto);
+        $res = $this->CI->fridge_library->anadir_producto_compra($idUser, $idFridge, $idProductoCompra);
         $idProductoCompra = $res['producto_compra_id'];
 
         $res = $this->CI->compra_library->obtener_producto_compra($idUser, $idFridge, $datosProducto['codigo_barras'], 'codigo_barras');

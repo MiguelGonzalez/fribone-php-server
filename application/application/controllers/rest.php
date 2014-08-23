@@ -8,6 +8,7 @@ class Rest extends MY_Controller {
         $this->load->library('lector_library');
         $this->load->library('supermercado_library');
         $this->load->library('fridge_library');
+        $this->load->library('compra_library');
     }
 
     public function index() {
@@ -36,7 +37,7 @@ class Rest extends MY_Controller {
         if($id_user !== NULL) {
             $productos = $this->supermercado_library->search_productos_codigo_barras($codigo);
 
-            if(is_null($producto) || count($productos) > 1) {
+            if(is_null($productos) || count($productos) > 1) {
                 $productos = $this->supermercado_library->search_productos_rfid($codigo);
             }
 
@@ -64,8 +65,32 @@ class Rest extends MY_Controller {
         }
     }
 
-    public function sacar($token_user, $id_fridge, $codigo) {
-        echo 'ERROR';
+    public function sacar($token_user, $id_fridge, $code, $by = 'codigo_barras') {
+        $id_user = $this->get_id_user_token($token_user);
+        $sacado = FALSE;
+
+        if($id_user !== NULL) {
+            $fridge = $this->fridge_library->get_fridge($id_user, $id_fridge);
+
+            if(!is_null($fridge)) {
+                $producto_compra = $this->compra_library->obtener_producto_compra($id_user, $id_fridge, $code, $by);
+                if(!is_null($producto_compra)) {
+                    $id_producto_compra = $producto_compra->id;
+
+                    $res = $this->fridge_library->sacar_producto_compra($id_user, $id_fridge, $id_producto_compra);
+
+                    if($res) {
+                        $sacado = TRUE;
+                    }
+                }
+            }
+        }
+
+        if($sacado) {
+            echo "OK";
+        } else {
+            echo "ERROR";
+        }
     }
 
     public function desvincular($token_user) {
