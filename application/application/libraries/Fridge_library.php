@@ -85,4 +85,10 @@ class Fridge_library {
 
         return $compra;
     }
+
+    public function sacar_producto_compra($id_user, $id_fridge, $id_producto_compra) {
+        $res = $this->ci->fridge_model->sacar_producto_compra($id_user, $id_fridge, $id_producto_compra);
+
+        return $res;
+    }
 }

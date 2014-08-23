@@ -100,4 +100,37 @@ class Fridge_libraryTest extends PHPTest_Unit {
         $this->assertEquals(count($res), 1);
         $this->assertEquals($res[0]->total, $datosProducto['precio']);
     }
+
+    public function testSacarProductoCompra() {
+        $resUser = $this->CI->login_auth_library->create_user('test@test.com', 'TestName', '123456');
+        $idUser = $resUser['user_id'];
+
+        $res = $this->CI->fridge_library->create_fridge($idUser, 'Mi frigorífico');
+        $idFridge = $res['frigorifico_id'];
+
+        $datosProducto = array(
+            'titulo' => 'Mi producto',
+            'descripcion' => 'Mi descripción del producto para prueba',
+            'unidades' => 1,
+            'precio' => 1.23,
+            'codigo_barras' => '9876431',
+            'codigo_rfid' => '123654789',
+            'id_supermercado' => 1
+        );
+
+        $res = $this->CI->supermercado_model->crear_supermercado('Mi Supermercado');
+        $idSupermercado = $res['supermercado_id'];
+
+        $res = $this->CI->supermercado_model->add_supermercado_producto($idSupermercado, $datosProducto);
+        $idProducto = $res['id_producto'];
+
+        $res = $this->CI->fridge_library->anadir_producto_compra($idUser, $idFridge, $idProducto);
+        $idProductoCompra = $res['id_producto_compra'];
+
+        $res = $this->CI->fridge_library->sacar_producto_compra($idUser, $idFridge, $idProductoCompra);
+        $this->assertTrue($res);
+
+        $res = $this->CI->fridge_library->sacar_producto_compra($idUser, $idFridge, $idProductoCompra);
+        $this->assertEquals($res, FALSE);
+    }
 }
