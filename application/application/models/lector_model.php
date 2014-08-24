@@ -87,6 +87,20 @@ class Lector_model extends CI_Model {
         return NULL;
     }
 
+    public function get_id_lector($public_key) {
+        $this->db->select('id');
+        $this->db->from('user_lector');
+        $this->db->where('public_key', '\'' . $public_key . '\'', FALSE);
+        $this->db->where('state', 'A');
+
+        $query = $this->db->get();
+
+        if($query->num_rows() === 1) {
+            return $query->row()->id;
+        }
+        return NULL;
+    }
+
     public function activar_lector($id_user, $id_lector, $public_key) {
         $data = array(
             'state' => 'A',

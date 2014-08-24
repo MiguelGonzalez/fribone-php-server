@@ -126,4 +126,17 @@ class LectorTest extends PHPTest_Unit {
         $res = $this->CI->lector_model->check_lector_token($access_key_1, $access_key_2);
         $this->assertNull($res);
     }
+
+    public function testGetIdLector() {
+        $resUser = $this->CI->login_auth_library->create_user('test@test.com', 'TestName', '123456');
+        $idUser = $resUser['user_id'];
+
+        $res = $this->CI->lector_model->add_lector_user($idUser, 'Mi lector');
+        $idLector = $res['lector_id'];
+
+        $res = $this->CI->lector_model->activar_lector($idUser, $idLector, 'miclavepublica');
+
+        $idLectorGet = $this->CI->lector_model->get_id_lector('miclavepublica');
+        $this->assertEquals($idLector, $idLectorGet);
+    }
 }
