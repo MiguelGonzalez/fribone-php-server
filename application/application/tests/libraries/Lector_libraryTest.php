@@ -91,4 +91,42 @@ class Lector_libraryTest extends PHPTest_Unit {
         $res = $this->CI->lector_library->check_lector_public_key($idUser, '123213');
         $this->assertNull($res);
     }
+
+    public function testGetIdLector() {
+        $resUser = $this->CI->login_auth_library->create_user('test@test.com', 'TestName', '123456');
+        $idUser = $resUser['user_id'];
+
+        $res = $this->CI->lector_library->create_lector($idUser, 'Mi lector');
+        $idLector = $res['lector_id'];
+
+        $res = $this->CI->lector_library->generar_lector_token($idUser, $idLector);
+        $access_key_1 = $res['access_key_1'];
+        $access_key_2 = $res['access_key_2'];
+
+        $res = $this->CI->lector_library->activar_lector($access_key_1, $access_key_2);
+        $public_key = $res['public_key'];
+
+        $idLectorPublicToken = $this->CI->lector_library->get_id_lector($public_key);
+        $this->assertEquals($idLectorPublicToken, $idLector);
+    }
+
+    public function testDesactivarLector() {
+        $resUser = $this->CI->login_auth_library->create_user('test@test.com', 'TestName', '123456');
+        $idUser = $resUser['user_id'];
+
+        $res = $this->CI->lector_library->create_lector($idUser, 'Mi lector');
+        $idLector = $res['lector_id'];
+
+        $res = $this->CI->lector_library->generar_lector_token($idUser, $idLector);
+        $access_key_1 = $res['access_key_1'];
+        $access_key_2 = $res['access_key_2'];
+
+        $this->CI->lector_library->activar_lector($access_key_1, $access_key_2);
+
+        $res = $this->CI->lector_library->desactivar_lector($idLector, $idUser);
+        $this->assertTrue($res !== NULL);
+
+        $res = $this->CI->lector_library->get_id_lector($public_key);
+        $this->assertNull($res);
+    }
 }
