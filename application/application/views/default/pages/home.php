@@ -1,4 +1,21 @@
-<div class="col-lg-9 col-md-8 col-sm-7"></div>
+<div class="col-lg-9 col-md-8 col-sm-7">
+    <div id="info-social">
+        <ul class="lista_horizontal">
+            <li>
+                <div>
+                    <img src="resources/img/home/frigo.png" alt="Frigorífico conectado">
+                    <p>Cuantifica tu frigorífico</p>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <img src="resources/img/home/arduino_uno.png" alt="Arduino uno">
+                    <p>Lector Arduino</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
 <div class="col-lg-3 col-md-4 col-sm-5">
 	<div id="form-login">
 		<form name="form-login" class="form-horizontal" role="form" method="POST" action="<?php echo base_url(array('home','login'));?>">

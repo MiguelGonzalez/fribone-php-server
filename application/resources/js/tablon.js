@@ -66,6 +66,10 @@ var page = {
             event.preventDefault();
             $('#crear-lector-modal').modal('show');
         });
+        $('#content-center').on('click', '#alta-lector', function() {
+            $('#alta-lector-modal .paso_2').hide();
+            $('#alta-lector-modal .paso_1').show();
+        });
     },
     initActionModals: function() {
         $('#anadir-producto-modal').on('input', '.codigo-barras', function() {
@@ -489,7 +493,6 @@ var lector = {
             }).done(function(data) {
                 if(data.ok) {
                     $('#alta-lector-modal .paso_1').hide();
-
 
                     var source   = $('#generar-token-paso-2-template').html();
                     var template = Handlebars.compile(source);

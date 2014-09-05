@@ -3,7 +3,7 @@ var AccionesCuenta = {
 		AccionesCuenta.inicializarValidadorLogin();
 		AccionesCuenta.inicializarValidadorRegistro();
 		AccionesCuenta.inicializarValidadorRecordarPassoword();
-		
+
 
 		if($('#modal-reset-password').length) {
 			$('#modal-reset-password').modal('show');
@@ -51,7 +51,7 @@ var AccionesCuenta = {
 					evt.preventDefault();
 				} else if (event) {
 					event.returnValue = false;
-				} 
+				}
 		    }
 		});
 	},
@@ -83,7 +83,7 @@ var AccionesCuenta = {
 				evt.preventDefault();
 			} else if (event) {
 				event.returnValue = false;
-			} 
+			}
 		});
 	},
 	inicializarValidadorRecordarPassoword: function() {
@@ -110,7 +110,7 @@ var AccionesCuenta = {
 				evt.preventDefault();
 			} else if (event) {
 				event.returnValue = false;
-			} 
+			}
 		});
 	},
 	inicializarValidadorResetPassoword: function() {
@@ -141,7 +141,7 @@ var AccionesCuenta = {
 				evt.preventDefault();
 			} else if (event) {
 				event.returnValue = false;
-			} 
+			}
 		});
 	},
 	registrar: function() {
@@ -172,7 +172,7 @@ var AccionesCuenta = {
 	recordarPasswordSubmit: function() {
 		$('#modal-remember-password').modal('lock');
 		$('#modal-remember-password .modal-footer').hide();
-		
+
 		$('form[name="form-remember-password"]').hide();
 		$('#recordando').show();
 
@@ -203,7 +203,7 @@ var AccionesCuenta = {
 	resetPasswordSubmit: function() {
 		$('#modal-reset-password').modal('lock');
 		$('#modal-reset-password .modal-footer').hide();
-		
+
 		$('form[name="form-reset-password"]').hide();
 		$('#reset').show();
 

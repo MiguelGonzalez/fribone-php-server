@@ -37,7 +37,7 @@ class Rest extends MY_Controller {
         if($id_user !== NULL) {
             $productos = $this->supermercado_library->search_productos_codigo_barras($codigo);
 
-            if(is_null($productos) || count($productos) > 1) {
+            if(is_null($productos) || count($productos) != 1) {
                 $productos = $this->supermercado_library->search_productos_rfid($codigo);
             }
 
@@ -94,7 +94,26 @@ class Rest extends MY_Controller {
     }
 
     public function desvincular($token_user) {
-        echo 'ERROR';
+        $id_user = $this->get_id_user_token($token_user);
+        $desactivado = FALSE;
+
+        if($id_user !== NULL) {
+            $id_lector = $this->lector_library->get_id_lector($token_user);
+
+            if(!is_null($id_lector)) {
+                $res = $this->lector_library->desactivar_lector($id_user, $id_lector);
+
+                if(!is_null($res)) {
+                    $desactivado = TRUE;
+                }
+            }
+        }
+
+        if($desactivado) {
+            echo "OK";
+        } else {
+            echo "ERROR";
+        }
     }
 
     public function fridges($token_user) {
@@ -106,6 +125,43 @@ class Rest extends MY_Controller {
             echo count($fridges);
             foreach($fridges as $fridge) {
                 echo '\n' . $fridge->id . '\n' . $fridge->titulo;
+            }
+        } else {
+            echo 'ERROR';
+        }
+    }
+
+    public function next_fridge($token_user, $actual_fridge) {
+        $id_user = $this->get_id_user_token($token_user);
+
+        if(!is_null($id_user)) {
+            $fridges = $this->fridge_library->get_fridges($id_user);
+
+            if(count($fridges) === 0) {
+                echo '-1';
+            } else {
+                if($actual_fridge === -1) {
+                    echo $fridges[0]->id . '|' . substr($fridges[0]->titulo, 0, 40);
+                } else {
+                    $enc_id = FALSE;
+                    $imp_fridge = FALSE;
+                    foreach($fridges as $fridge) {
+                        if(!$enc_id) {
+                            if($fridge->id === $actual_fridge) {
+                                $enc_id = TRUE;
+                            }
+                        } else {
+                            if(!$imp_fridge) {
+                                $imp_fridge = TRUE;
+                                echo $fridge->id . '|' . substr($fridge->titulo, 0, 40);
+                            }
+                        }
+                    }
+
+                    if(!$enc_id || !$imp_fridge) {
+                        echo $fridges[0]->id . '|' . substr($fridges[0]->titulo, 0, 40);
+                    }
+                }
             }
         } else {
             echo 'ERROR';

@@ -34,9 +34,6 @@
     <h2>
         Comunidad
     </h2>
-    <a href="#" onclick="return false;" data-to="/recetas" class="list-group-item router">
-        Recetas
-    </a>
     <a href="#" data-to="/supermercados" class="list-group-item router">
         Supermercados
     </a>
@@ -363,7 +360,9 @@
                 <button id="alta-lector" type="button" class="btn btn-default" data-toggle="modal" data-target="#alta-lector-modal">Dar de alta</button>
             </p>
         {{else}}
-
+            <p class="well">
+                Lector dado de alta
+            </p>
         {{/compare}}
     </div>
 </script>

@@ -53,3 +53,25 @@ html, body {
 a:hover, a:active, a:focus, a {
 	outline: 0;
 }
+
+.lista_horizontal {
+    list-style: none;
+    overflow: hidden;
+}
+
+.lista_horizontal li {
+    float: left;
+    margin: 0 4.5%;
+}
+
+#info-social {
+    background-color: #eee;
+    overflow: hidden;
+    padding: 25px
+}
+
+#info-social p {
+    text-align: center;
+    color: #000;
+    font-weight: 600
+}

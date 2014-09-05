@@ -47,14 +47,6 @@
             <div class="push-footer"></div>
         </div>
 
-        <footer class="footer" role="contentinfo">
-            <div class="container">
-                <div class="wrapper">
-                    <?php echo $footer;?>
-                </div>
-            </div>
-        </footer>
-
         <?php echo $body;?>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

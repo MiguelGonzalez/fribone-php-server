@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title><?php echo $title;?></title>
         <meta name="description" content="">
-        
+
         <link href='http://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="<?php echo base_url('resources/css/normalize.css');?>">
         <link rel="stylesheet" href="<?php echo base_url('resources/css/main.css');?>">
@@ -35,14 +35,6 @@
             </div>
             <div class="push-footer"></div>
         </div>
-
-        <footer class="footer" role="contentinfo">
-            <div class="container">
-                <div class="wrapper">
-                    <?php echo $footer;?>
-                </div>
-            </div>
-        </footer>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="<?php echo base_url('resources/js/jquery-2.1.1.min.js');?>"><\/script>')</script>
